@@ -116,6 +116,7 @@
 
 </head>
 
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container use-motion">
     <div class="headband"></div>
@@ -272,10 +273,7 @@
 
 
           </div>
-          
-    
-    <div class="comments" id="gitalk-container"></div>
-  
+           <div id="gitalk-container"></div>
 
         </div>
           
@@ -401,6 +399,9 @@
   
 
 
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
@@ -438,24 +439,6 @@
 
   
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID: 'fd0d3847ed5b672838ce',
-      clientSecret: '8d0d135509a1d67edb37a95078b91c2e362b283c',
-      repo: 'lizhimu.github.io',
-      owner: 'lizhimu',
-      admin: ['lizhimu'],
-      id: 'f47af1d1eda4d807b02bba32be15120b',
-        language: window.navigator.language || window.navigator.userLanguage,
-      
-      distractionFreeMode: 'true'
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-</script>
-
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>
