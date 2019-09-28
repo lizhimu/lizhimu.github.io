@@ -55,31 +55,33 @@
   };
 </script>
 
-  <meta name="description" content="Open doors don&apos;t stay open forever">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Moon River&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Problem:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+<meta name="keywords" content="Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 001 TwoSums">
+<meta property="og:url" content="http://yoursite.com/2019/09/28/Leetcode-001-TwoSums/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Open doors don&apos;t stay open forever">
+<meta property="og:description" content="Problem:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-28T20:54:00.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Moon River&#39;s Blog">
-<meta name="twitter:description" content="Open doors don&apos;t stay open forever">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="Leetcode 001 TwoSums">
+<meta name="twitter:description" content="Problem:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+  <link rel="canonical" href="http://yoursite.com/2019/09/28/Leetcode-001-TwoSums/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Moon River's Blog</title>
+  <title>Leetcode 001 TwoSums | Moon River's Blog</title>
   
 
 
@@ -209,12 +211,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/Leetcode-001-TwoSums/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -227,9 +230,8 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/28/Leetcode-001-TwoSums/" class="post-title-link" itemprop="url">Leetcode 001 TwoSums</a>
+        <h1 class="post-title" itemprop="name headline">Leetcode 001 TwoSums
+
           
         </h1>
 
@@ -276,7 +278,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
 <p>Example:</p>
 <p>Given nums = [2, 7, 11, 15], target = 9,</p>
@@ -284,125 +286,59 @@
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSumSolution(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">  	<span class="comment">/*</span></span><br><span class="line"><span class="comment">       * We reduce the look up time from O(n)O(n) to O(1) by</span></span><br><span class="line"><span class="comment">       * trading space for speed. A hash table is built exactly</span></span><br><span class="line"><span class="comment">       * for this purpose, it supports fast look up in near constant time.</span></span><br><span class="line"><span class="comment">       * look up in hash table should be amortized O(1).</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//节省时间的技巧是利用hashmap搜索复杂度为(1)的特点，用hashmap来搜素，而不是</span></span><br><span class="line">      <span class="comment">//手动遍历（O(n)）</span></span><br><span class="line">      Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">     	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">      	map.put(nums[i], i);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> complement = target - nums[i];</span><br><span class="line">          <span class="comment">//&amp;&amp;map.get(complement)!=i也很关键，这样确保数组中的同一个元素不会被重复使用</span></span><br><span class="line">          <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, map.get(complement) &#125;;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 
-        
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-          <div class="post-eof"></div>
         
-      </footer>
-  </div>
-  
-  
-  
-  </article>
+      
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+      <footer class="post-footer">
+          
             
-            <a href="/2019/09/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
           
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-28 15:30:30" itemprop="dateCreated datePublished" datetime="2019-09-28T15:30:30-04:00">2019-09-28</time>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo使用/" itemprop="url" rel="index"><span itemprop="name">hexo使用</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+          <div class="post-tags">
+            
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+            
+          </div>
+        
 
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/28/hello-world/" rel="next" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
   </div>
-
-  
 
 
           </div>
           
+    
+    <div class="comments" id="gitalk-container"></div>
+  
 
         </div>
           
@@ -417,6 +353,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -429,6 +370,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -560,6 +503,24 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'fd0d3847ed5b672838ce',
+      clientSecret: '8d0d135509a1d67edb37a95078b91c2e362b283c',
+      repo: 'lizhimu.github.io',
+      owner: 'lizhimu',
+      admin: ['lizhimu'],
+      id: 'c9eab1f715d65503504372f952addcd2',
+        language: window.navigator.language || window.navigator.userLanguage,
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>
