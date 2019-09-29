@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
+  <meta name="description" content="Problem:Given a string, find the length of the longest substring without repeating characters. Example 1: Input: “abcabcbb”Output: 3Explanation: The answer is “abc”, with the length of 3.Example 2: In">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 002 Add two numbers">
-<meta property="og:url" content="http://yoursite.com/2019/09/29/Leetcode-002-Add-two-numbers/index.html">
+<meta property="og:title" content="Leetcode003 Longest Substring Without Repeating Characters">
+<meta property="og:url" content="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
+<meta property="og:description" content="Problem:Given a string, find the length of the longest substring without repeating characters. Example 1: Input: “abcabcbb”Output: 3Explanation: The answer is “abc”, with the length of 3.Example 2: In">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T13:54:39.683Z">
+<meta property="og:updated_time" content="2019-09-29T20:07:20.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 002 Add two numbers">
-<meta name="twitter:description" content="Problem:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
-  <link rel="canonical" href="http://yoursite.com/2019/09/29/Leetcode-002-Add-two-numbers/">
+<meta name="twitter:title" content="Leetcode003 Longest Substring Without Repeating Characters">
+<meta name="twitter:description" content="Problem:Given a string, find the length of the longest substring without repeating characters. Example 1: Input: “abcabcbb”Output: 3Explanation: The answer is “abc”, with the length of 3.Example 2: In">
+  <link rel="canonical" href="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>Leetcode 002 Add two numbers | Moon River's Blog</title>
+  <title>Leetcode003 Longest Substring Without Repeating Characters | Moon River's Blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/Leetcode-002-Add-two-numbers/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -242,7 +242,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode 002 Add two numbers
+        <h1 class="post-title" itemprop="name headline">Leetcode003 Longest Substring Without Repeating Characters
 
           
         </h1>
@@ -258,7 +258,7 @@
                 
               
 
-              <time title="Created: 2019-09-29 09:21:53 / Modified: 09:54:39" itemprop="dateCreated datePublished" datetime="2019-09-29T09:21:53-04:00">2019-09-29</time>
+              <time title="Created: 2019-09-29 15:30:30 / Modified: 16:07:20" itemprop="dateCreated datePublished" datetime="2019-09-29T15:30:30-04:00">2019-09-29</time>
             </span>
           
             
@@ -290,13 +290,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Example:</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8<br>Explanation: 342 + 465 = 807.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目总体思路非常直观。就是模拟小学的笔算来做加法。其中解题时要注意两个list长度不一样的情况（比如两位数+3位数），这种情况下直接在位数较短的那一方（先访问到null的那一方）填0就行了。</p>
-<p>还有一个要注意的只是对list中的null如何处理。因为处理的表达式较容易，用？：表达式比if else要更方便。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">	ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">	ListNode p = l1, q = l2, curr = dummyHead;</span><br><span class="line">	<span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//这里对于两个list长度不一致的处理方式值得学习</span></span><br><span class="line">	<span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line">		carry = sum / <span class="number">10</span>;</span><br><span class="line">		curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">		curr = curr.next;</span><br><span class="line">		<span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">		<span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dummyHead.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<p>Example 1:</p>
+<p>Input: “abcabcbb”<br>Output: 3<br>Explanation: The answer is “abc”, with the length of 3.<br>Example 2:</p>
+<p>Input: “bbbbb”<br>Output: 1<br>Explanation: The answer is “b”, with the length of 1.<br>Example 3:</p>
+<p>Input: “pwwkew”<br>Output: 3<br>Explanation: The answer is “wke”, with the length of 3.<br>             Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目总体来说就是运用了滑动窗口的思想。如果算法题中一旦出现了固定长度求最值或者提供限制条件求最大长度的时候就应该有使用这个算法的意识。</p>
+<p>如果是固定长度求最值的问题（譬如求数组中连续k个元素最大的和），那么我们就先指定两个下标i，j(j=i+k-1)，对k个元素长的子数组进行求和，然后每次移动i的时候，j也往相同方向移动一格，这样就可以在O(n)的时间复杂度内得到答案。</p>
+<p>如果是限制条件求最大长度的问题（譬如本题），只需在每次移动下标的时候用set对新元素进行检查，如果成功就把j往后移，继续扩展数组长度。否则将i往后移看是否能规避冲突。</p>
+<p>给一个滑动窗口算法相关的讨论链接：<a href="https://www.zhihu.com/question/314669016" target="_blank" rel="noopener">https://www.zhihu.com/question/314669016</a></p>
+<p>以后如果有时间会在博客中讨论这个话题。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstringSolution</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">      <span class="comment">//被答案吊打了。这一题答案采用的是滑动窗口的思想。i表示滑动窗口的头，j表示滑动窗口的尾</span></span><br><span class="line">      <span class="comment">//自己之前没有想到这种方法是因为默认就觉得要用for循环遍历字符串，游标必然++，那么一旦冲突不一定是和第一个字符冲突</span></span><br><span class="line">      <span class="comment">//用滑动窗口就发现在答案算法中就算不和第一个字符冲突，它i往后移动迟早会碰到冲突部分。</span></span><br><span class="line">      <span class="comment">//这题要理解这种算法直接在头脑中想象一个滑动窗口和一个特殊字符串pwwkew就容易了</span></span><br><span class="line">      <span class="keyword">int</span> n=s.length();</span><br><span class="line">      Set&lt;Character&gt; set=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">      <span class="keyword">int</span> ans=<span class="number">0</span>,i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(i&lt;n&amp;&amp;j&lt;n)&#123;</span><br><span class="line">          <span class="keyword">if</span>(!set.contains(s.charAt(j)))  &#123;</span><br><span class="line">              set.add(s.charAt(j++));</span><br><span class="line">              ans=Math.max(ans,j-i);</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              set.remove(s.charAt(i++));</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -321,8 +325,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/28/Leetcode-001-TwoSums/" rel="next" title="Leetcode 001 TwoSums">
-                  <i class="fa fa-chevron-left"></i> Leetcode 001 TwoSums
+                <a href="/2019/09/29/Leetcode-002-Add-two-numbers/" rel="next" title="Leetcode 002 Add two numbers">
+                  <i class="fa fa-chevron-left"></i> Leetcode 002 Add two numbers
                 </a>
               
             </div>
@@ -330,10 +334,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/" rel="prev" title="Leetcode003 Longest Substring Without Repeating Characters">
-                  Leetcode003 Longest Substring Without Repeating Characters <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -382,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-number">2.</span> <span class="nav-text">Intuition:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution:</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-number">1.1.</span> <span class="nav-text">Intuition:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution:</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
