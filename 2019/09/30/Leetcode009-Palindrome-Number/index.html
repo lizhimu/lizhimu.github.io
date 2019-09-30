@@ -55,19 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Problem:Given a string, find the length of the longest substring without repeating characters. Example 1: Input: “abcabcbb”Output: 3Explanation: The answer is “abc”, with the length of 3.Example 2: In">
-<meta name="keywords" content="Leetcode">
+  <meta name="description" content="Problem:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. Example 1: Input: 121Output: trueExample 2: Input: -121Output: falseExplana">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode003 Longest Substring Without Repeating Characters">
-<meta property="og:url" content="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/index.html">
+<meta property="og:title" content="Leetcode009 Palindrome Number">
+<meta property="og:url" content="http://yoursite.com/2019/09/30/Leetcode009-Palindrome-Number/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:Given a string, find the length of the longest substring without repeating characters. Example 1: Input: “abcabcbb”Output: 3Explanation: The answer is “abc”, with the length of 3.Example 2: In">
+<meta property="og:description" content="Problem:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. Example 1: Input: 121Output: trueExample 2: Input: -121Output: falseExplana">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T14:22:14.310Z">
+<meta property="og:updated_time" content="2019-09-30T20:13:02.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode003 Longest Substring Without Repeating Characters">
-<meta name="twitter:description" content="Problem:Given a string, find the length of the longest substring without repeating characters. Example 1: Input: “abcabcbb”Output: 3Explanation: The answer is “abc”, with the length of 3.Example 2: In">
-  <link rel="canonical" href="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
+<meta name="twitter:title" content="Leetcode009 Palindrome Number">
+<meta name="twitter:description" content="Problem:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. Example 1: Input: 121Output: trueExample 2: Input: -121Output: falseExplana">
+  <link rel="canonical" href="http://yoursite.com/2019/09/30/Leetcode009-Palindrome-Number/">
 
 
 <script id="page-configurations">
@@ -81,7 +80,7 @@
   };
 </script>
 
-  <title>Leetcode003 Longest Substring Without Repeating Characters | Moon River's Blog</title>
+  <title>Leetcode009 Palindrome Number | Moon River's Blog</title>
   
 
 
@@ -230,7 +229,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode009-Palindrome-Number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -242,7 +241,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode003 Longest Substring Without Repeating Characters
+        <h1 class="post-title" itemprop="name headline">Leetcode009 Palindrome Number
 
           
         </h1>
@@ -258,33 +257,12 @@
                 
               
 
-              <time title="Created: 2019-09-29 15:30:30" itemprop="dateCreated datePublished" datetime="2019-09-29T15:30:30-04:00">2019-09-29</time>
+              <time title="Created: 2019-09-30 15:50:49 / Modified: 16:13:02" itemprop="dateCreated datePublished" datetime="2019-09-30T15:50:49-04:00">2019-09-30</time>
             </span>
           
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-30 10:22:14" itemprop="dateModified" datetime="2019-09-30T10:22:14-04:00">2019-09-30</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -298,17 +276,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.</p>
 <p>Example 1:</p>
-<p>Input: “abcabcbb”<br>Output: 3<br>Explanation: The answer is “abc”, with the length of 3.<br>Example 2:</p>
-<p>Input: “bbbbb”<br>Output: 1<br>Explanation: The answer is “b”, with the length of 1.<br>Example 3:</p>
-<p>Input: “pwwkew”<br>Output: 3<br>Explanation: The answer is “wke”, with the length of 3.<br>             Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目总体来说就是运用了滑动窗口的思想。如果算法题中一旦出现了固定长度求最值或者提供限制条件求最大长度的时候就应该有使用这个算法的意识。</p>
-<p>如果是固定长度求最值的问题（譬如求数组中连续k个元素最大的和），那么我们就先指定两个下标i，j(j=i+k-1)，对k个元素长的子数组进行求和，然后每次移动i的时候，j也往相同方向移动一格，这样就可以在O(n)的时间复杂度内得到答案。</p>
-<p>如果是限制条件求最大长度的问题（譬如本题），只需在每次移动下标的时候用set对新元素进行检查，如果成功就把j往后移，继续扩展数组长度。否则将i往后移看是否能规避冲突。</p>
-<p>给一个滑动窗口算法相关的讨论链接：<a href="https://www.zhihu.com/question/314669016" target="_blank" rel="noopener">https://www.zhihu.com/question/314669016</a></p>
-<p>以后如果有时间会在博客中讨论这个话题。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstringSolution</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">      <span class="comment">//被答案吊打了。这一题答案采用的是滑动窗口的思想。i表示滑动窗口的头，j表示滑动窗口的尾</span></span><br><span class="line">      <span class="comment">//自己之前没有想到这种方法是因为默认就觉得要用for循环遍历字符串，游标必然++，那么一旦冲突不一定是和第一个字符冲突</span></span><br><span class="line">      <span class="comment">//用滑动窗口就发现在答案算法中就算不和第一个字符冲突，它i往后移动迟早会碰到冲突部分。</span></span><br><span class="line">      <span class="comment">//这题要理解这种算法直接在头脑中想象一个滑动窗口和一个特殊字符串pwwkew就容易了</span></span><br><span class="line">      <span class="keyword">int</span> n=s.length();</span><br><span class="line">      Set&lt;Character&gt; set=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">      <span class="keyword">int</span> ans=<span class="number">0</span>,i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(i&lt;n&amp;&amp;j&lt;n)&#123;</span><br><span class="line">          <span class="keyword">if</span>(!set.contains(s.charAt(j)))  &#123;</span><br><span class="line">              set.add(s.charAt(j++));</span><br><span class="line">              ans=Math.max(ans,j-i);</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              set.remove(s.charAt(i++));</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>Input: 121<br>Output: true<br>Example 2:</p>
+<p>Input: -121<br>Output: false<br>Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.<br>Example 3:</p>
+<p>Input: 10<br>Output: false<br>Explanation: Reads 01 from right to left. Therefore it is not a palindrome.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(x &lt; <span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> b = x;</span><br><span class="line">       <span class="keyword">while</span>(x &gt; <span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">int</span> mod = x % <span class="number">10</span>;</span><br><span class="line">           a = a * <span class="number">10</span> + mod;</span><br><span class="line">           x = x / <span class="number">10</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">if</span>(b == a)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -318,23 +291,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/29/Leetcode-002-Add-two-numbers/" rel="next" title="Leetcode 002 Add two numbers">
-                  <i class="fa fa-chevron-left"></i> Leetcode 002 Add two numbers
+                <a href="/2019/09/30/Leetcode008-String-to-Integer-atoi/" rel="next" title="Leetcode008 String to Integer (atoi)">
+                  <i class="fa fa-chevron-left"></i> Leetcode008 String to Integer (atoi)
                 </a>
               
             </div>
@@ -342,10 +306,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/29/Median-of-Two-Sorted-Arrays/" rel="prev" title="Leetcode004 Median of Two Sorted Arrays">
-                  Leetcode004 Median of Two Sorted Arrays <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -394,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-number">1.1.</span> <span class="nav-text">Intuition:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution:</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution:</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
