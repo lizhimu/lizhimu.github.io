@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21Note:Assume we are dealing with an">
+  <meta name="description" content="Problem:Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting f">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode007 Reverse Integer">
-<meta property="og:url" content="http://yoursite.com/2019/09/30/Leetcode007-Reverse-Integer/index.html">
+<meta property="og:title" content="Leetcode008 String to Integer (atoi)">
+<meta property="og:url" content="http://yoursite.com/2019/09/30/Leetcode008-String-to-Integer-atoi/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21Note:Assume we are dealing with an">
+<meta property="og:description" content="Problem:Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T18:15:41.161Z">
+<meta property="og:updated_time" content="2019-09-30T19:33:52.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode007 Reverse Integer">
-<meta name="twitter:description" content="Problem:Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21Note:Assume we are dealing with an">
-  <link rel="canonical" href="http://yoursite.com/2019/09/30/Leetcode007-Reverse-Integer/">
+<meta name="twitter:title" content="Leetcode008 String to Integer (atoi)">
+<meta name="twitter:description" content="Problem:Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting f">
+  <link rel="canonical" href="http://yoursite.com/2019/09/30/Leetcode008-String-to-Integer-atoi/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>Leetcode007 Reverse Integer | Moon River's Blog</title>
+  <title>Leetcode008 String to Integer (atoi) | Moon River's Blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode007-Reverse-Integer/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode008-String-to-Integer-atoi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -242,7 +242,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode007 Reverse Integer
+        <h1 class="post-title" itemprop="name headline">Leetcode008 String to Integer (atoi)
 
           
         </h1>
@@ -258,7 +258,7 @@
                 
               
 
-              <time title="Created: 2019-09-30 14:05:24 / Modified: 14:15:41" itemprop="dateCreated datePublished" datetime="2019-09-30T14:05:24-04:00">2019-09-30</time>
+              <time title="Created: 2019-09-30 15:02:14 / Modified: 15:33:52" itemprop="dateCreated datePublished" datetime="2019-09-30T15:02:14-04:00">2019-09-30</time>
             </span>
           
             
@@ -290,14 +290,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given a 32-bit signed integer, reverse digits of an integer.</p>
-<p>Example 1:</p>
-<p>Input: 123<br>Output: 321<br>Example 2:</p>
-<p>Input: -123<br>Output: -321<br>Example 3:</p>
-<p>Input: 120<br>Output: 21<br>Note:<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>easy tag,本身要说的内容不多。本题唯一要注意的也就是溢出部分的处理。在java中，integer.MAXVALUE比integer.MINVALUE的绝对值要小1，这个地方如果忽略掉的话就很容易出错。</p>
-<p>下列代码中的7是Integer.MAXVALUE除以10的余数。8是Integer.MINVALUE的绝对值除以10的余数。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> rev = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">int</span> pop = x % <span class="number">10</span>;</span><br><span class="line">         x /= <span class="number">10</span>;</span><br><span class="line">         <span class="keyword">if</span> (rev &gt; Integer.MAX_VALUE/<span class="number">10</span> || (rev == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; pop &gt; <span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">if</span> (rev &lt; Integer.MIN_VALUE/<span class="number">10</span> || (rev == Integer.MIN_VALUE / <span class="number">10</span> &amp;&amp; pop &lt; -<span class="number">8</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">         rev = rev * <span class="number">10</span> + pop;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> rev;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Implement atoi which converts a string to an integer.</p>
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned.</p>
+<p>Note:</p>
+<p>Only the space character ‘ ‘ is considered as whitespace character.<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.<br>Example 1:</p>
+<p>Input: “42”<br>Output: 42<br>Example 2:</p>
+<p>Input: “   -42”<br>Output: -42<br>Explanation: The first non-whitespace character is ‘-‘, which is the minus sign.<br>             Then take as many numerical digits as possible, which gets 42.<br>Example 3:</p>
+<p>Input: “4193 with words”<br>Output: 4193<br>Explanation: Conversion stops at digit ‘3’ as the next character is not a numerical digit.<br>Example 4:</p>
+<p>Input: “words and 987”<br>Output: 0<br>Explanation: The first non-whitespace character is ‘w’, which is not a numerical<br>             digit or a +/- sign. Therefore no valid conversion could be performed.<br>Example 5:</p>
+<p>Input: “-91283472332”<br>Output: -2147483648<br>Explanation: The number “-91283472332” is out of the range of a 32-bit signed integer.<br>             Thefore INT_MIN (−231) is returned.</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这一题的核心逻辑还是边界条件的处理，这部分代码和上一题是一样的。<br>对任意字符串转换成指定结果类型题目的处理通常str=str.trim()这一步都是少不了的。<br>接下来就是对字符的ASCII码进行一个简单的处理，也没有特别多可说的地方。<br>总的来说，熟悉字符串的常规操作以及了解字符串和整数的关系在做这种题目的时候可以省不少时间，而这种题目在考试中也会反复出现，应该引起足够重视。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> 	</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    str = str.trim();</span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> curNum;</span><br><span class="line">    <span class="keyword">while</span> (cur &lt; str.length()) &#123;</span><br><span class="line">        curNum = (<span class="keyword">int</span>)str.charAt(cur) - <span class="string">'0'</span>; <span class="comment">// ASCII</span></span><br><span class="line">        <span class="keyword">if</span> (curNum &lt;= <span class="number">9</span> &amp;&amp; curNum &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (result &gt; Integer.MAX_VALUE / <span class="number">10</span> || (result == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; curNum &gt; <span class="number">7</span>))</span><br><span class="line">                <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (result &lt; Integer.MIN_VALUE / <span class="number">10</span> || (result == Integer.MIN_VALUE / <span class="number">10</span> &amp;&amp; curNum &gt; <span class="number">8</span>))</span><br><span class="line">                <span class="keyword">return</span> Integer.MIN_VALUE;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                result = result * <span class="number">10</span> + flag * curNum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cur == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str.charAt(cur) == <span class="string">'-'</span>) </span><br><span class="line">                flag = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (str.charAt(cur) != <span class="string">'+'</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        cur++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -322,8 +328,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/30/Leetcode006-ZigZag-Conversion/" rel="next" title="Leetcode006 ZigZag Conversion">
-                  <i class="fa fa-chevron-left"></i> Leetcode006 ZigZag Conversion
+                <a href="/2019/09/30/Leetcode007-Reverse-Integer/" rel="next" title="Leetcode007 Reverse Integer">
+                  <i class="fa fa-chevron-left"></i> Leetcode007 Reverse Integer
                 </a>
               
             </div>
@@ -331,10 +337,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/30/Leetcode008-String-to-Integer-atoi/" rel="prev" title="Leetcode008 String to Integer (atoi)">
-                  Leetcode008 String to Integer (atoi) <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
