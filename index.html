@@ -58,14 +58,14 @@
   <meta name="description" content="Open doors don&apos;t stay open forever">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Moon River&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://lizhimu.github.io/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
 <meta property="og:description" content="Open doors don&apos;t stay open forever">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Moon River&#39;s Blog">
 <meta name="twitter:description" content="Open doors don&apos;t stay open forever">
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="https://lizhimu.github.io/">
 
 
 <script id="page-configurations">
@@ -227,7 +227,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode010-Regular-Expression-Matching/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode010-Regular-Expression-Matching/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -267,7 +267,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-02 17:56:09" itemprop="dateModified" datetime="2019-10-02T17:56:09-04:00">2019-10-02</time>
+                <time title="Modified: 2019-10-03 11:14:11" itemprop="dateModified" datetime="2019-10-03T11:14:11-04:00">2019-10-03</time>
               </span>
             
           
@@ -314,7 +314,7 @@
 <p>Input:<br>s = “aab”<br>p = “c<em>a</em>b”<br>Output: true<br>Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches “aab”.<br>Example 5:</p>
 <p>Input:<br>s = “mississippi”<br>p = “mis<em>is*p</em>.”<br>Output: false</p>
 <h3 id="Intuition（Recursion）"><a href="#Intuition（Recursion）" class="headerlink" title="Intuition（Recursion）:"></a>Intuition（Recursion）:</h3><p>这一题难度较大，先考虑用递归的思路来解。本题是要求用正则表达式对字符串进行匹配，那么我们就按从左到右的顺序依次扫描，进行匹配。这个时候难点来了，如何处理.和*这两个正则表达式特有字符。</p>
-<p>.好理解，能够对任意字符进行匹配。<em>则是能够让前面的字符出现任意次。这个任意次放到递归里面表达就可以等价看成忽略正则表达式的前面一个字符再与被匹配字符串进行一次匹配。第一种情况放到代码中实际就是被匹配字符串不动，正则表达式下标右移两格，其中移两格而不是一格的原因是要包括</em>号（isMatch(text, pattern.substring(2))）。</p>
+<p>.好理解，能够对任意字符进行匹配。*则是能够让前面的字符出现任意次。这个任意次放到递归里面表达就可以等价看成忽略正则表达式的前面一个字符再与被匹配字符串进行一次匹配。第一种情况放到代码中实际就是被匹配字符串不动，正则表达式下标右移两格，其中移两格而不是一格的原因是要包括星号（isMatch(text, pattern.substring(2))）。</p>
 <p>第二种情况就是被匹配表达式右移一格，正则表达式不动(first_match &amp;&amp; isMatch(text.substring(1), pattern))。我们可以看到第二种情况不只包括*号前面的字符c出现一次的情况，也能包含c出现任意次的情况。</p>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String text, String pattern)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pattern.isEmpty()) <span class="keyword">return</span> text.isEmpty();</span><br><span class="line">    <span class="keyword">boolean</span> first_match = (!text.isEmpty() &amp;&amp;</span><br><span class="line">            (pattern.charAt(<span class="number">0</span>) == text.charAt(<span class="number">0</span>) || pattern.charAt(<span class="number">0</span>) == <span class="string">'.'</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pattern.length() &gt;= <span class="number">2</span> &amp;&amp; pattern.charAt(<span class="number">1</span>) == <span class="string">'*'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (isMatch(text, pattern.substring(<span class="number">2</span>)) ||</span><br><span class="line">                (first_match &amp;&amp; isMatch(text.substring(<span class="number">1</span>), pattern)));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> first_match &amp;&amp; isMatch(text.substring(<span class="number">1</span>), pattern.substring(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -348,7 +348,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode009-Palindrome-Number/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode009-Palindrome-Number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -452,7 +452,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode008-String-to-Integer-atoi/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode008-String-to-Integer-atoi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -567,7 +567,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode007-Reverse-Integer/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode007-Reverse-Integer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -673,7 +673,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode006-ZigZag-Conversion/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode006-ZigZag-Conversion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -784,7 +784,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Leetcode005-Longest-Palindromic-Substring/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode005-Longest-Palindromic-Substring/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -878,7 +878,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/Median-of-Two-Sorted-Arrays/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/29/Median-of-Two-Sorted-Arrays/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -989,7 +989,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -1106,7 +1106,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/Leetcode-002-Add-two-numbers/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/29/Leetcode-002-Add-two-numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -1211,7 +1211,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/Leetcode-001-TwoSums/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/28/Leetcode-001-TwoSums/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
