@@ -258,7 +258,7 @@
                 
               
 
-              <time title="Created: 2019-10-30 18:22:44 / Modified: 18:45:38" itemprop="dateCreated datePublished" datetime="2019-10-30T18:22:44-04:00">2019-10-30</time>
+              <time title="Created: 2019-10-30 18:22:44 / Modified: 18:48:38" itemprop="dateCreated datePublished" datetime="2019-10-30T18:22:44-04:00">2019-10-30</time>
             </span>
           
             
@@ -304,10 +304,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="主机间的通信方式（两类）"><a href="#主机间的通信方式（两类）" class="headerlink" title="主机间的通信方式（两类）"></a>主机间的通信方式（两类）</h3><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。<br>对等（P2P）：不区分客户和服务器</p>
-<h3 id="主机A与主机B如何通过internet相连？"><a href="#主机A与主机B如何通过internet相连？" class="headerlink" title="主机A与主机B如何通过internet相连？"></a>主机A与主机B如何通过internet相连？</h3><p><img src="/images/IAP/ISP.png" alt></p>
+          <h4 id="主机间的通信方式（两类）"><a href="#主机间的通信方式（两类）" class="headerlink" title="主机间的通信方式（两类）"></a>主机间的通信方式（两类）</h4><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。<br>对等（P2P）：不区分客户和服务器</p>
+<h4 id="主机A与主机B如何通过internet相连？"><a href="#主机A与主机B如何通过internet相连？" class="headerlink" title="主机A与主机B如何通过internet相连？"></a>主机A与主机B如何通过internet相连？</h4><p><img src="/images/IAP/ISP.png" alt></p>
 <p>ISP: interconnected internet service providers</p>
-<h3 id="计算机网络体系结构（OSI模型）"><a href="#计算机网络体系结构（OSI模型）" class="headerlink" title="计算机网络体系结构（OSI模型）"></a>计算机网络体系结构（OSI模型）</h3><p><img src="/images/IAP/OSI.png" alt></p>
+<h4 id="计算机网络体系结构（OSI模型）"><a href="#计算机网络体系结构（OSI模型）" class="headerlink" title="计算机网络体系结构（OSI模型）"></a>计算机网络体系结构（OSI模型）</h4><p><img src="/images/IAP/OSI.png" alt></p>
 <p>应用层 ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。<br>Key words: representation /encoding /session control</p>
 <p>表示层 ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</p>
 <p>会话层 ：建立及管理会话。</p>
@@ -315,7 +315,7 @@
 <p>网络层 ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。<br>Key words: path determination /packet switching /IP</p>
 <p>数据链路层 ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。<br>Keywords: host-to-network /LAN and WAN technology detail</p>
 <p>物理层 ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</p>
-<h3 id="数据在各层之间的传递"><a href="#数据在各层之间的传递" class="headerlink" title="数据在各层之间的传递"></a>数据在各层之间的传递</h3><p><img src="/images/IAP/DataTransfer.png" alt></p>
+<h4 id="数据在各层之间的传递"><a href="#数据在各层之间的传递" class="headerlink" title="数据在各层之间的传递"></a>数据在各层之间的传递</h4><p><img src="/images/IAP/DataTransfer.png" alt></p>
 <p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
 <p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层</p>
 
