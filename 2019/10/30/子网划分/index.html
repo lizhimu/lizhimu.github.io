@@ -57,18 +57,22 @@
   };
 </script>
 
-  <meta name="description" content="Open doors don&apos;t stay open forever">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://lizhimu.github.io/tags/index.html">
+  <meta name="description" content="五类IP地址 这里面五类地址里面A,B,C类地址的范围以及它们分别能用的主机地址位数要记住，笔试出题很可能会只给地址类型，然后让你根据该地址类型以及主机数量进行子网划分。 子网划分规则 子网例题例题1:欲将B类IP地址168.195.0.0划分成27个子网。（方法一、利用子网数来计算） 公式：2^n-2≥x，其中x为所需的子网数，n为所需借的子网位数。168.195.00000000.000000">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="子网划分">
+<meta property="og:url" content="https://lizhimu.github.io/2019/10/30/子网划分/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Open doors don&apos;t stay open forever">
+<meta property="og:description" content="五类IP地址 这里面五类地址里面A,B,C类地址的范围以及它们分别能用的主机地址位数要记住，笔试出题很可能会只给地址类型，然后让你根据该地址类型以及主机数量进行子网划分。 子网划分规则 子网例题例题1:欲将B类IP地址168.195.0.0划分成27个子网。（方法一、利用子网数来计算） 公式：2^n-2≥x，其中x为所需的子网数，n为所需借的子网位数。168.195.00000000.000000">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-02T22:00:36.007Z">
+<meta property="og:image" content="https://lizhimu.github.io/images/IAP/5Class.png">
+<meta property="og:image" content="https://lizhimu.github.io/images/IAP/subnet.png">
+<meta property="og:updated_time" content="2019-10-30T23:36:47.154Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="Open doors don&apos;t stay open forever">
-  <link rel="canonical" href="https://lizhimu.github.io/tags/">
+<meta name="twitter:title" content="子网划分">
+<meta name="twitter:description" content="五类IP地址 这里面五类地址里面A,B,C类地址的范围以及它们分别能用的主机地址位数要记住，笔试出题很可能会只给地址类型，然后让你根据该地址类型以及主机数量进行子网划分。 子网划分规则 子网例题例题1:欲将B类IP地址168.195.0.0划分成27个子网。（方法一、利用子网数来计算） 公式：2^n-2≥x，其中x为所需的子网数，n为所需借的子网位数。168.195.00000000.000000">
+<meta name="twitter:image" content="https://lizhimu.github.io/images/IAP/5Class.png">
+  <link rel="canonical" href="https://lizhimu.github.io/2019/10/30/子网划分/">
 
 
 <script id="page-configurations">
@@ -76,13 +80,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>tags | Moon River's Blog</title>
+  <title>子网划分 | Moon River's Blog</title>
   
 
 
@@ -222,74 +226,150 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/子网划分/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">子网划分
 
-<h1 class="post-title" itemprop="name headline">tags
+          
+        </h1>
 
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-<div class="post-meta">
+              
+                
+              
+
+              <time title="Created: 2019-10-30 19:08:38 / Modified: 19:36:47" itemprop="dateCreated datePublished" datetime="2019-10-30T19:08:38-04:00">2019-10-30</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/10/30/子网划分/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/子网划分/" itemprop="commentCount"></span></a>
+  </span>
+  
   
 
-</div>
+        </div>
+      </header>
 
-</header>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
+        <h4 id="五类IP地址"><a href="#五类IP地址" class="headerlink" title="五类IP地址"></a>五类IP地址</h4><p><img src="/images/IAP/5Class.png" alt></p>
+<p>这里面五类地址里面A,B,C类地址的范围以及它们分别能用的主机地址位数要记住，笔试出题很可能会只给地址类型，然后让你根据该地址类型以及主机数量进行子网划分。</p>
+<h4 id="子网划分规则"><a href="#子网划分规则" class="headerlink" title="子网划分规则"></a>子网划分规则</h4><p><img src="/images/IAP/subnet.png" alt></p>
+<h4 id="子网例题"><a href="#子网例题" class="headerlink" title="子网例题"></a>子网例题</h4><p>例题1:欲将B类IP地址168.195.0.0划分成27个子网。（方法一、利用子网数来计算）</p>
+<p>公式：2^n-2≥x，其中x为所需的子网数，n为所需借的子网位数。<br>168.195.00000000.00000000<br>从原来的主机部分开始，从前向后借子网位。<br>该例中需27个子网，按公式，需借5位，可划分出如下子网：<br>168.195.00000 000.00000000<br>168.195.00001 000.00000000<br>168.195.00010 000.00000000<br>……<br>168.195.11110 000.00000000<br>168.195.11111 000.00000000<br>共2^5=32个子网，其中有效子网30个，掩码均为/21。</p>
+<p>例题2:如需将某C类地址划分20个子网，问第三个有效子网的网络地址、主机地址范围和广播地址？</p>
+<p>解决步骤：<br>  1、需20个子网，则需子网位为5，剩余主机位为3，子网的大小为8。<br>  2、8*3=24，则第三个有效子网的地址为24/29。（第一问）这个29=24+5<br>  3、24+8=32，下一个子网的地址为32/29。<br>  4、广播地址为后一个子网的网络地址减1，为31。（第三问）<br>  5、主机地址范围为25至30。</p>
+
+    </div>
+
+    
+    
+    
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              4 tags in total
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/30/计算机网络基础/" rel="next" title="计算机网络基础">
+                  <i class="fa fa-chevron-left"></i> 计算机网络基础
+                </a>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Leetcode/" style="font-size: 30px; color: #111">Leetcode</a> <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/剑指offer/" style="font-size: 18px; color: #8e8e8e">剑指offer</a> <a href="/tags/计算机网络/" style="font-size: 24px; color: #4f4f4f">计算机网络</a>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
             </div>
           </div>
         
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </div>
+  
+  
+  
+  </article>
 
-    
-    
-    
   </div>
 
 
           </div>
           <div id="gitalk-container"></div>
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -321,6 +401,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#五类IP地址"><span class="nav-number">1.</span> <span class="nav-text">五类IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子网划分规则"><span class="nav-number">2.</span> <span class="nav-text">子网划分规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子网例题"><span class="nav-number">3.</span> <span class="nav-text">子网例题</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
