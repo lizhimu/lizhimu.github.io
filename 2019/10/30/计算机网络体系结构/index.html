@@ -57,19 +57,23 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="主机间的通信方式（两类）客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。对等（P2P）：不区分客户和服务器 主机A与主机B如何通过internet相连？ ISP: interconnected internet service providers 计算机网络体系结构（OSI模型） 应用层 ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。Key w">
+<meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://lizhimu.github.io/2019/09/28/hello-world/index.html">
+<meta property="og:title" content="计算机网络体系结构">
+<meta property="og:url" content="https://lizhimu.github.io/2019/10/30/计算机网络体系结构/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="主机间的通信方式（两类）客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。对等（P2P）：不区分客户和服务器 主机A与主机B如何通过internet相连？ ISP: interconnected internet service providers 计算机网络体系结构（OSI模型） 应用层 ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。Key w">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-28T19:30:30.335Z">
+<meta property="og:image" content="https://lizhimu.github.io/images/IAP/ISP.png">
+<meta property="og:image" content="https://lizhimu.github.io/images/IAP/OSI.png">
+<meta property="og:image" content="https://lizhimu.github.io/images/IAP/DataTransfer.png">
+<meta property="og:updated_time" content="2019-10-30T22:43:48.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-  <link rel="canonical" href="https://lizhimu.github.io/2019/09/28/hello-world/">
+<meta name="twitter:title" content="计算机网络体系结构">
+<meta name="twitter:description" content="主机间的通信方式（两类）客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。对等（P2P）：不区分客户和服务器 主机A与主机B如何通过internet相连？ ISP: interconnected internet service providers 计算机网络体系结构（OSI模型） 应用层 ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。Key w">
+<meta name="twitter:image" content="https://lizhimu.github.io/images/IAP/ISP.png">
+  <link rel="canonical" href="https://lizhimu.github.io/2019/10/30/计算机网络体系结构/">
 
 
 <script id="page-configurations">
@@ -83,7 +87,7 @@
   };
 </script>
 
-  <title>Hello World | Moon River's Blog</title>
+  <title>计算机网络体系结构 | Moon River's Blog</title>
   
 
 
@@ -232,7 +236,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/计算机网络体系结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -244,7 +248,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Hello World
+        <h1 class="post-title" itemprop="name headline">计算机网络体系结构
 
           
         </h1>
@@ -260,8 +264,12 @@
                 
               
 
-              <time title="Created: 2019-09-28 15:30:30" itemprop="dateCreated datePublished" datetime="2019-09-28T15:30:30-04:00">2019-09-28</time>
+              <time title="Created: 2019-10-30 18:22:44 / Modified: 18:43:48" itemprop="dateCreated datePublished" datetime="2019-10-30T18:22:44-04:00">2019-10-30</time>
             </span>
+          
+            
+
+            
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,7 +277,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo使用/" itemprop="url" rel="index"><span itemprop="name">hexo使用</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
 
                 
                 
@@ -288,7 +296,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/09/28/hello-world/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/28/hello-world/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/10/30/计算机网络体系结构/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/计算机网络体系结构/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -302,19 +310,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="主机间的通信方式（两类）"><a href="#主机间的通信方式（两类）" class="headerlink" title="主机间的通信方式（两类）"></a>主机间的通信方式（两类）</h3><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。<br>对等（P2P）：不区分客户和服务器</p>
+<h3 id="主机A与主机B如何通过internet相连？"><a href="#主机A与主机B如何通过internet相连？" class="headerlink" title="主机A与主机B如何通过internet相连？"></a>主机A与主机B如何通过internet相连？</h3><p><img src="/images/IAP/ISP.png" alt></p>
+<p>ISP: interconnected internet service providers</p>
+<h3 id="计算机网络体系结构（OSI模型）"><a href="#计算机网络体系结构（OSI模型）" class="headerlink" title="计算机网络体系结构（OSI模型）"></a>计算机网络体系结构（OSI模型）</h3><p><img src="/images/IAP/OSI.png" alt></p>
+<p>应用层 ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。<br>Key words: representation /encoding /session control</p>
+<p>表示层 ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</p>
+<p>会话层 ：建立及管理会话。</p>
+<p>传输层 ：为进程提供通用数据传输服务。由于应用层协议很多，定义通用的传输层协议就可以支持不断增多的应用层协议。运输层包括两种协议：传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。TCP 主要提供完整性服务，UDP 主要提供及时性服务。<br>Key words: quality-of-service reliability /flow control /error correction</p>
+<p>网络层 ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。<br>Key words: path determination /packet switching /IP</p>
+<p>数据链路层 ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。<br>Keywords: host-to-network /LAN and WAN technology detail</p>
+<p>物理层 ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</p>
+<h3 id="数据在各层之间的传递"><a href="#数据在各层之间的传递" class="headerlink" title="数据在各层之间的传递"></a>数据在各层之间的传递</h3><p><img src="/images/IAP/DataTransfer.png" alt></p>
+<p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
+<p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层</p>
 
     </div>
 
@@ -330,7 +339,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
             
           </div>
         
@@ -340,15 +349,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/10/30/剑指offer002-二维数组查找/" rel="next" title="剑指offer002 二维数组查找">
+                  <i class="fa fa-chevron-left"></i> 剑指offer002 二维数组查找
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/28/Leetcode-001-TwoSums/" rel="prev" title="Leetcode 001 TwoSums">
-                  Leetcode 001 TwoSums <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -400,7 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#主机间的通信方式（两类）"><span class="nav-number">1.</span> <span class="nav-text">主机间的通信方式（两类）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主机A与主机B如何通过internet相连？"><span class="nav-number">2.</span> <span class="nav-text">主机A与主机B如何通过internet相连？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络体系结构（OSI模型）"><span class="nav-number">3.</span> <span class="nav-text">计算机网络体系结构（OSI模型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据在各层之间的传递"><span class="nav-number">4.</span> <span class="nav-text">数据在各层之间的传递</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

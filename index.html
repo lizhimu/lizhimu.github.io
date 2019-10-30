@@ -229,6 +229,119 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/计算机网络体系结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/30/计算机网络体系结构/" class="post-title-link" itemprop="url">计算机网络体系结构</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-30 18:22:44 / Modified: 18:43:48" itemprop="dateCreated datePublished" datetime="2019-10-30T18:22:44-04:00">2019-10-30</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/10/30/计算机网络体系结构/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/计算机网络体系结构/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="主机间的通信方式（两类）"><a href="#主机间的通信方式（两类）" class="headerlink" title="主机间的通信方式（两类）"></a>主机间的通信方式（两类）</h3><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。<br>对等（P2P）：不区分客户和服务器</p>
+<h3 id="主机A与主机B如何通过internet相连？"><a href="#主机A与主机B如何通过internet相连？" class="headerlink" title="主机A与主机B如何通过internet相连？"></a>主机A与主机B如何通过internet相连？</h3><p><img src="/images/IAP/ISP.png" alt></p>
+<p>ISP: interconnected internet service providers</p>
+<h3 id="计算机网络体系结构（OSI模型）"><a href="#计算机网络体系结构（OSI模型）" class="headerlink" title="计算机网络体系结构（OSI模型）"></a>计算机网络体系结构（OSI模型）</h3><p><img src="/images/IAP/OSI.png" alt></p>
+<p>应用层 ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。<br>Key words: representation /encoding /session control</p>
+<p>表示层 ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</p>
+<p>会话层 ：建立及管理会话。</p>
+<p>传输层 ：为进程提供通用数据传输服务。由于应用层协议很多，定义通用的传输层协议就可以支持不断增多的应用层协议。运输层包括两种协议：传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。TCP 主要提供完整性服务，UDP 主要提供及时性服务。<br>Key words: quality-of-service reliability /flow control /error correction</p>
+<p>网络层 ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。<br>Key words: path determination /packet switching /IP</p>
+<p>数据链路层 ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。<br>Keywords: host-to-network /LAN and WAN technology detail</p>
+<p>物理层 ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</p>
+<h3 id="数据在各层之间的传递"><a href="#数据在各层之间的传递" class="headerlink" title="数据在各层之间的传递"></a>数据在各层之间的传递</h3><p><img src="/images/IAP/DataTransfer.png" alt></p>
+<p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
+<p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/剑指offer002-二维数组查找/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -258,7 +371,7 @@
                 
               
 
-              <time title="Created: 2019-10-30 16:42:39 / Modified: 16:50:55" itemprop="dateCreated datePublished" datetime="2019-10-30T16:42:39-04:00">2019-10-30</time>
+              <time title="Created: 2019-10-30 16:42:39 / Modified: 18:23:29" itemprop="dateCreated datePublished" datetime="2019-10-30T16:42:39-04:00">2019-10-30</time>
             </span>
           
             
@@ -308,7 +421,7 @@
 <p>Consider the following matrix:<br>[<br>  [1,   4,  7, 11, 15],<br>  [2,   5,  8, 12, 19],<br>  [3,   6,  9, 16, 22],<br>  [10, 13, 14, 17, 24],<br>  [18, 21, 23, 26, 30]<br>]</p>
 <p>Given target = 5, return true.<br>Given target = 20, return false.<br>Copy to clipboardErrorCopied<br>要求时间复杂度 O(M + N)，空间复杂度 O(1)。其中 M 为行数，N 为 列数。</p>
 <h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>该二维数组中的一个数，小于它的数一定在其左边，大于它的数一定在其下边。因此，从右上角开始查找，就可以根据 target 和当前元素的大小关系来缩小查找区间，当前元素的查找区间为左下角的所有元素。</p>
-<p>  <img src="/images/CYC2018_002.gif" alt></p>
+<p>  <img src="/images/CYC/CYC2018_002.gif" alt></p>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_002</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] arr=<span class="keyword">new</span> <span class="keyword">int</span>[][]&#123; &#123;<span class="number">1</span>,   <span class="number">4</span>,  <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>&#125;, &#123;<span class="number">2</span>,   <span class="number">5</span>,  <span class="number">8</span>, <span class="number">12</span>, <span class="number">19</span>&#125;, &#123;<span class="number">3</span>,   <span class="number">6</span>,  <span class="number">9</span>, <span class="number">16</span>, <span class="number">22</span>&#125;, &#123;<span class="number">10</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">17</span>, <span class="number">24</span>&#125;, &#123;<span class="number">18</span>, <span class="number">21</span>, <span class="number">23</span>, <span class="number">26</span>, <span class="number">30</span>&#125;&#125;;</span><br><span class="line">        System.out.println(Find(<span class="number">16</span>,arr));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> [][] matrix)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length==<span class="number">0</span>||matrix[<span class="number">0</span>].length==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//从右上角出发,想到这个是本题的重点。一般习惯性都会考虑从左上角或者右下角出发开始写循环</span></span><br><span class="line">        <span class="comment">// 本题从右上角出发的原因是每一行从左到右递增排序，从上到下也是递增排序。这就意味着只要向左走数字就会减少，向下数字就会变大。</span></span><br><span class="line">       <span class="keyword">int</span> row=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> col=matrix[<span class="number">0</span>].length-<span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span>(row&lt;=matrix.length-<span class="number">1</span>&amp;&amp;col&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">if</span>(target==matrix[row][col])&#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">           &#125;<span class="keyword">else</span> <span class="keyword">if</span>(target&gt;matrix[row][col])&#123;</span><br><span class="line">               row++;</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               col--;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -364,7 +477,7 @@
                 
               
 
-              <time title="Created: 2019-10-30 15:28:56 / Modified: 16:08:06" itemprop="dateCreated datePublished" datetime="2019-10-30T15:28:56-04:00">2019-10-30</time>
+              <time title="Created: 2019-10-30 15:28:56 / Modified: 18:23:17" itemprop="dateCreated datePublished" datetime="2019-10-30T15:28:56-04:00">2019-10-30</time>
             </span>
           
             
@@ -413,7 +526,7 @@
           <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>在一个长度为 n 的数组里的所有数字都在 0 到 n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。<br>要求时间复杂度 O(N)，空间复杂度 O(1)</p>
 <p>Input:<br>{2, 3, 1, 0, 2, 5}</p>
 <p>Output:<br>2</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>  对于这种数组元素在 [0, n-1] 范围内的问题，可以将值为 i 的元素调整到第 i 个位置上进行求解。<br>  以 (2, 3, 1, 0, 2, 5) 为例，遍历到位置 4 时，该位置上的数为 2，但是第 2 个位置上已经有一个 2 的值了，因此可以知道 2 重复：<br>  <img src="/images/CYC2018_001.gif" alt></p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>  对于这种数组元素在 [0, n-1] 范围内的问题，可以将值为 i 的元素调整到第 i 个位置上进行求解。<br>  以 (2, 3, 1, 0, 2, 5) 为例，遍历到位置 4 时，该位置上的数为 2，但是第 2 个位置上已经有一个 2 的值了，因此可以知道 2 重复：<br>  <img src="/images/CYC/CYC2018_001.gif" alt></p>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> ans=findRepeatNum(a);</span><br><span class="line">        <span class="keyword">if</span>(ans==-<span class="number">1</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"There isn't any repeat number."</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findRepeatNum</span><span class="params">(<span class="keyword">int</span>[] duplicate)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(duplicate==<span class="keyword">null</span>||duplicate.length&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//我们在循环中保证看到一个元素i，就把它放到数组的第i个格子里。那么如果数组中有重复元素就等价于我</span></span><br><span class="line">        <span class="comment">//在对某个元素j换位置的时候发现元素j所在的格子装的数也是j(因为题目已经限定好了数字是从0-n-1)</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;duplicate.length;i++)&#123;</span><br><span class="line">            <span class="comment">//如果duplicate[i]里装的就是i那么我们就什么都不做，直接把下标往后移</span></span><br><span class="line">            <span class="keyword">if</span>(duplicate[i]!=i&amp;&amp;duplicate[duplicate[i]]==duplicate[i])&#123;</span><br><span class="line">                <span class="keyword">return</span> duplicate[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(duplicate[i]!=i)&#123;</span><br><span class="line">                swap(duplicate,i,duplicate[i]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] duplicate,<span class="keyword">int</span> index1,<span class="keyword">int</span> index2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp=duplicate[index1];</span><br><span class="line">        duplicate[index1]=duplicate[index2];</span><br><span class="line">        duplicate[index2]=temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -1197,123 +1310,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/" class="post-title-link" itemprop="url">Leetcode003 Longest Substring Without Repeating Characters</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-29 15:30:30" itemprop="dateCreated datePublished" datetime="2019-09-29T15:30:30-04:00">2019-09-29</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-30 10:22:14" itemprop="dateModified" datetime="2019-09-30T10:22:14-04:00">2019-09-30</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
-<p>Example 1:</p>
-<p>Input: “abcabcbb”<br>Output: 3<br>Explanation: The answer is “abc”, with the length of 3.<br>Example 2:</p>
-<p>Input: “bbbbb”<br>Output: 1<br>Explanation: The answer is “b”, with the length of 1.<br>Example 3:</p>
-<p>Input: “pwwkew”<br>Output: 3<br>Explanation: The answer is “wke”, with the length of 3.<br>             Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目总体来说就是运用了滑动窗口的思想。如果算法题中一旦出现了固定长度求最值或者提供限制条件求最大长度的时候就应该有使用这个算法的意识。</p>
-<p>如果是固定长度求最值的问题（譬如求数组中连续k个元素最大的和），那么我们就先指定两个下标i，j(j=i+k-1)，对k个元素长的子数组进行求和，然后每次移动i的时候，j也往相同方向移动一格，这样就可以在O(n)的时间复杂度内得到答案。</p>
-<p>如果是限制条件求最大长度的问题（譬如本题），只需在每次移动下标的时候用set对新元素进行检查，如果成功就把j往后移，继续扩展数组长度。否则将i往后移看是否能规避冲突。</p>
-<p>给一个滑动窗口算法相关的讨论链接：<a href="https://www.zhihu.com/question/314669016" target="_blank" rel="noopener">https://www.zhihu.com/question/314669016</a></p>
-<p>以后如果有时间会在博客中讨论这个话题。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstringSolution</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">      <span class="comment">//被答案吊打了。这一题答案采用的是滑动窗口的思想。i表示滑动窗口的头，j表示滑动窗口的尾</span></span><br><span class="line">      <span class="comment">//自己之前没有想到这种方法是因为默认就觉得要用for循环遍历字符串，游标必然++，那么一旦冲突不一定是和第一个字符冲突</span></span><br><span class="line">      <span class="comment">//用滑动窗口就发现在答案算法中就算不和第一个字符冲突，它i往后移动迟早会碰到冲突部分。</span></span><br><span class="line">      <span class="comment">//这题要理解这种算法直接在头脑中想象一个滑动窗口和一个特殊字符串pwwkew就容易了</span></span><br><span class="line">      <span class="keyword">int</span> n=s.length();</span><br><span class="line">      Set&lt;Character&gt; set=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">      <span class="keyword">int</span> ans=<span class="number">0</span>,i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(i&lt;n&amp;&amp;j&lt;n)&#123;</span><br><span class="line">          <span class="keyword">if</span>(!set.contains(s.charAt(j)))  &#123;</span><br><span class="line">              set.add(s.charAt(j++));</span><br><span class="line">              ans=Math.max(ans,j-i);</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              set.remove(s.charAt(i++));</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1366,7 +1362,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1379,7 +1375,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1392,7 +1388,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
