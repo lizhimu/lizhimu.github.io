@@ -57,19 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
-<meta name="keywords" content="Leetcode">
+  <meta name="description" content="Problem:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+<meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 002 Add two numbers">
-<meta property="og:url" content="https://lizhimu.github.io/2019/09/29/Leetcode-002-Add-two-numbers/index.html">
+<meta property="og:title" content="剑指offer001 寻找重复数组元素">
+<meta property="og:url" content="https://lizhimu.github.io/2019/10/30/剑指offer001-寻找重复数组元素/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
+<meta property="og:description" content="Problem:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T13:54:39.683Z">
+<meta property="og:updated_time" content="2019-10-30T19:30:08.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 002 Add two numbers">
-<meta name="twitter:description" content="Problem:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
-  <link rel="canonical" href="https://lizhimu.github.io/2019/09/29/Leetcode-002-Add-two-numbers/">
+<meta name="twitter:title" content="剑指offer001 寻找重复数组元素">
+<meta name="twitter:description" content="Problem:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+  <link rel="canonical" href="https://lizhimu.github.io/2019/10/30/剑指offer001-寻找重复数组元素/">
 
 
 <script id="page-configurations">
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title>Leetcode 002 Add two numbers | Moon River's Blog</title>
+  <title>剑指offer001 寻找重复数组元素 | Moon River's Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/29/Leetcode-002-Add-two-numbers/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/剑指offer001-寻找重复数组元素/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -244,7 +244,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode 002 Add two numbers
+        <h1 class="post-title" itemprop="name headline">剑指offer001 寻找重复数组元素
 
           
         </h1>
@@ -260,7 +260,7 @@
                 
               
 
-              <time title="Created: 2019-09-29 09:21:53 / Modified: 09:54:39" itemprop="dateCreated datePublished" datetime="2019-09-29T09:21:53-04:00">2019-09-29</time>
+              <time title="Created: 2019-10-30 15:28:56 / Modified: 15:30:08" itemprop="dateCreated datePublished" datetime="2019-10-30T15:28:56-04:00">2019-10-30</time>
             </span>
           
             
@@ -273,7 +273,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
 
                 
                 
@@ -292,7 +292,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/09/29/Leetcode-002-Add-two-numbers/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/29/Leetcode-002-Add-two-numbers/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/10/30/剑指offer001-寻找重复数组元素/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/剑指offer001-寻找重复数组元素/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -306,13 +306,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Example:</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8<br>Explanation: 342 + 465 = 807.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目总体思路非常直观。就是模拟小学的笔算来做加法。其中解题时要注意两个list长度不一样的情况（比如两位数+3位数），这种情况下直接在位数较短的那一方（先访问到null的那一方）填0就行了。</p>
-<p>还有一个要注意的只是对list中的null如何处理。因为处理的表达式较容易，用？：表达式比if else要更方便。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">	ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">	ListNode p = l1, q = l2, curr = dummyHead;</span><br><span class="line">	<span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//这里对于两个list长度不一致的处理方式值得学习</span></span><br><span class="line">	<span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line">		carry = sum / <span class="number">10</span>;</span><br><span class="line">		curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">		curr = curr.next;</span><br><span class="line">		<span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">		<span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dummyHead.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:<br>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>  首先明确题目需要我们做的是返回一个和所对应的两个加数在数组中的下标。直接两层遍历当然很容易，但是时间复杂度会达到O(n2),那么接下来我们就开始用空间换时间。</p>
+<p>  我们肯定要把整个数组进行一次遍历，那么在遍历的过程中我们只要能够找到和减去当前数组下标元素的差所对应在数组中的下标整个题目就完成了。</p>
+<p>  接下来的任务就是进行高效率的查找。自然而然就会想到查找时间复杂度为O(1)的hashmap.然后我们把数组中的所有元素放到Hashmap里面，key表示为数组中元素的值，这样遍历的时候一旦得到和与当前元素的差，直接用差作为hashmap的key进行查找即可直接返回数组下标。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSumSolution(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">  	<span class="comment">/*</span></span><br><span class="line"><span class="comment">       * We reduce the look up time from O(n)O(n) to O(1) by</span></span><br><span class="line"><span class="comment">       * trading space for speed. A hash table is built exactly</span></span><br><span class="line"><span class="comment">       * for this purpose, it supports fast look up in near constant time.</span></span><br><span class="line"><span class="comment">       * look up in hash table should be amortized O(1).</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//节省时间的技巧是利用hashmap搜索复杂度为(1)的特点，用hashmap来搜素，而不是</span></span><br><span class="line">      <span class="comment">//手动遍历（O(n)）</span></span><br><span class="line">      Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">     	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">      	map.put(nums[i], i);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> complement = target - nums[i];</span><br><span class="line">          <span class="comment">//&amp;&amp;map.get(complement)!=i也很关键，这样确保数组中的同一个元素不会被重复使用</span></span><br><span class="line">          <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, map.get(complement) &#125;;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -327,7 +329,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+              <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
             
           </div>
         
@@ -337,8 +339,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/28/Leetcode-001-TwoSums/" rel="next" title="Leetcode 001 TwoSums">
-                  <i class="fa fa-chevron-left"></i> Leetcode 001 TwoSums
+                <a href="/2019/09/30/Leetcode010-Regular-Expression-Matching/" rel="next" title="Leetcode010 Regular Expression Matching">
+                  <i class="fa fa-chevron-left"></i> Leetcode010 Regular Expression Matching
                 </a>
               
             </div>
@@ -346,10 +348,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/29/Leetcode003-Longest-Substring-Without-Repeating-Characters/" rel="prev" title="Leetcode003 Longest Substring Without Repeating Characters">
-                  Leetcode003 Longest Substring Without Repeating Characters <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
