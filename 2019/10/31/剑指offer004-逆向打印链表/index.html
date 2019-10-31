@@ -57,19 +57,21 @@
   };
 </script>
 
-  <meta name="description" content="Problem:Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21Note:Assume we are dealing with an">
-<meta name="keywords" content="Leetcode">
+  <meta name="description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个">
+<meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode007 Reverse Integer">
-<meta property="og:url" content="https://lizhimu.github.io/2019/09/30/Leetcode007-Reverse-Integer/index.html">
+<meta property="og:title" content="剑指offer004 逆向打印链表">
+<meta property="og:url" content="https://lizhimu.github.io/2019/10/31/剑指offer004-逆向打印链表/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21Note:Assume we are dealing with an">
+<meta property="og:description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T18:15:41.161Z">
+<meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_005.gif">
+<meta property="og:updated_time" content="2019-10-31T17:40:50.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode007 Reverse Integer">
-<meta name="twitter:description" content="Problem:Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21Note:Assume we are dealing with an">
-  <link rel="canonical" href="https://lizhimu.github.io/2019/09/30/Leetcode007-Reverse-Integer/">
+<meta name="twitter:title" content="剑指offer004 逆向打印链表">
+<meta name="twitter:description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个">
+<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/CYC2018_005.gif">
+  <link rel="canonical" href="https://lizhimu.github.io/2019/10/31/剑指offer004-逆向打印链表/">
 
 
 <script id="page-configurations">
@@ -83,7 +85,7 @@
   };
 </script>
 
-  <title>Leetcode007 Reverse Integer | Moon River's Blog</title>
+  <title>剑指offer004 逆向打印链表 | Moon River's Blog</title>
   
 
 
@@ -232,7 +234,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode007-Reverse-Integer/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/剑指offer004-逆向打印链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -244,7 +246,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode007 Reverse Integer
+        <h1 class="post-title" itemprop="name headline">剑指offer004 逆向打印链表
 
           
         </h1>
@@ -260,7 +262,7 @@
                 
               
 
-              <time title="Created: 2019-09-30 14:05:24 / Modified: 14:15:41" itemprop="dateCreated datePublished" datetime="2019-09-30T14:05:24-04:00">2019-09-30</time>
+              <time title="Created: 2019-10-31 13:19:36 / Modified: 13:40:50" itemprop="dateCreated datePublished" datetime="2019-10-31T13:19:36-04:00">2019-10-31</time>
             </span>
           
             
@@ -273,7 +275,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
 
                 
                 
@@ -292,7 +294,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/09/30/Leetcode007-Reverse-Integer/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/30/Leetcode007-Reverse-Integer/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/10/31/剑指offer004-逆向打印链表/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/剑指offer004-逆向打印链表/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -306,14 +308,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given a 32-bit signed integer, reverse digits of an integer.</p>
-<p>Example 1:</p>
-<p>Input: 123<br>Output: 321<br>Example 2:</p>
-<p>Input: -123<br>Output: -321<br>Example 3:</p>
-<p>Input: 120<br>Output: 21<br>Note:<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>easy tag,本身要说的内容不多。本题唯一要注意的也就是溢出部分的处理。在java中，integer.MAXVALUE比integer.MINVALUE的绝对值要小1，这个地方如果忽略掉的话就很容易出错。</p>
-<p>下列代码中的7是Integer.MAXVALUE除以10的余数。8是Integer.MINVALUE的绝对值除以10的余数。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> rev = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">int</span> pop = x % <span class="number">10</span>;</span><br><span class="line">         x /= <span class="number">10</span>;</span><br><span class="line">         <span class="keyword">if</span> (rev &gt; Integer.MAX_VALUE/<span class="number">10</span> || (rev == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; pop &gt; <span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">if</span> (rev &lt; Integer.MIN_VALUE/<span class="number">10</span> || (rev == Integer.MIN_VALUE / <span class="number">10</span> &amp;&amp; pop &lt; -<span class="number">8</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">         rev = rev * <span class="number">10</span> + pop;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> rev;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>将一个字符串中的空格替换成 “%20”。<br>只能在当前字符串内进行操作，不允许新建字符串。</p>
+<p>Input:<br>“A B”</p>
+<p>Output:<br>“A%20B”</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>所有逆序的操作都应该想到 stack 这个先进后出的数据结构</p>
+<p>1.建立一个辅助栈 stack 和一个存储结构 ArrayList<br>2.将 原来链表中的值 一个个 push到 stack中<br>3.将 stack中存储的值 一个个 pop 到 ArrayList</p>
+<p>  <img src="/images/CYC/CYC2018_005.gif" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_004</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.add(listNode.val);</span><br><span class="line">            listNode = listNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty())</span><br><span class="line">            ret.add(stack.pop());</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -328,7 +331,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+              <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
             
           </div>
         
@@ -338,8 +341,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/30/Leetcode006-ZigZag-Conversion/" rel="next" title="Leetcode006 ZigZag Conversion">
-                  <i class="fa fa-chevron-left"></i> Leetcode006 ZigZag Conversion
+                <a href="/2019/10/31/剑指offer003-替换空格/" rel="next" title="剑指offer003 替换空格">
+                  <i class="fa fa-chevron-left"></i> 剑指offer003 替换空格
                 </a>
               
             </div>
@@ -347,10 +350,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/30/Leetcode008-String-to-Integer-atoi/" rel="prev" title="Leetcode008 String to Integer (atoi)">
-                  Leetcode008 String to Integer (atoi) <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
