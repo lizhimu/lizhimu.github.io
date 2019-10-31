@@ -57,19 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个">
+  <meta name="description" content="Problem:从尾到头反过来打印出链表中每个结点的值。 Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个 pop 到 ArrayList    Solution:1234567891011121314pub">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指offer004 逆向打印链表">
 <meta property="og:url" content="https://lizhimu.github.io/2019/10/31/剑指offer004-逆向打印链表/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个">
+<meta property="og:description" content="Problem:从尾到头反过来打印出链表中每个结点的值。 Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个 pop 到 ArrayList    Solution:1234567891011121314pub">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_005.gif">
-<meta property="og:updated_time" content="2019-10-31T17:40:50.748Z">
+<meta property="og:updated_time" content="2019-10-31T17:43:18.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer004 逆向打印链表">
-<meta name="twitter:description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个">
+<meta name="twitter:description" content="Problem:从尾到头反过来打印出链表中每个结点的值。 Intuition:所有逆序的操作都应该想到 stack 这个先进后出的数据结构 1.建立一个辅助栈 stack 和一个存储结构 ArrayList2.将 原来链表中的值 一个个 push到 stack中3.将 stack中存储的值 一个个 pop 到 ArrayList    Solution:1234567891011121314pub">
 <meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/CYC2018_005.gif">
   <link rel="canonical" href="https://lizhimu.github.io/2019/10/31/剑指offer004-逆向打印链表/">
 
@@ -262,7 +262,7 @@
                 
               
 
-              <time title="Created: 2019-10-31 13:19:36 / Modified: 13:40:50" itemprop="dateCreated datePublished" datetime="2019-10-31T13:19:36-04:00">2019-10-31</time>
+              <time title="Created: 2019-10-31 13:19:36 / Modified: 13:43:18" itemprop="dateCreated datePublished" datetime="2019-10-31T13:19:36-04:00">2019-10-31</time>
             </span>
           
             
@@ -308,9 +308,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>将一个字符串中的空格替换成 “%20”。<br>只能在当前字符串内进行操作，不允许新建字符串。</p>
-<p>Input:<br>“A B”</p>
-<p>Output:<br>“A%20B”</p>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>从尾到头反过来打印出链表中每个结点的值。</p>
 <h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>所有逆序的操作都应该想到 stack 这个先进后出的数据结构</p>
 <p>1.建立一个辅助栈 stack 和一个存储结构 ArrayList<br>2.将 原来链表中的值 一个个 push到 stack中<br>3.将 stack中存储的值 一个个 pop 到 ArrayList</p>
 <p>  <img src="/images/CYC/CYC2018_005.gif" alt></p>
