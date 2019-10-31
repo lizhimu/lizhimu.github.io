@@ -57,19 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="CSMA/CD CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。碰撞检测 ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发">
+  <meta name="description" content="CSMA/CD 为什么要有CSMA/CD？CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。 CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据链路层">
 <meta property="og:url" content="https://lizhimu.github.io/2019/10/30/数据链路层/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="CSMA/CD CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。碰撞检测 ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发">
+<meta property="og:description" content="CSMA/CD 为什么要有CSMA/CD？CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。 CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lizhimu.github.io/images/IAP/CSMA.png">
-<meta property="og:updated_time" content="2019-10-30T23:53:04.985Z">
+<meta property="og:updated_time" content="2019-10-31T00:14:59.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据链路层">
-<meta name="twitter:description" content="CSMA/CD CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。碰撞检测 ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发">
+<meta name="twitter:description" content="CSMA/CD 为什么要有CSMA/CD？CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。 CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须">
 <meta name="twitter:image" content="https://lizhimu.github.io/images/IAP/CSMA.png">
   <link rel="canonical" href="https://lizhimu.github.io/2019/10/30/数据链路层/">
 
@@ -262,7 +262,7 @@
                 
               
 
-              <time title="Created: 2019-10-30 19:48:11 / Modified: 19:53:04" itemprop="dateCreated datePublished" datetime="2019-10-30T19:48:11-04:00">2019-10-30</time>
+              <time title="Created: 2019-10-30 19:48:11 / Modified: 20:14:59" itemprop="dateCreated datePublished" datetime="2019-10-30T19:48:11-04:00">2019-10-30</time>
             </span>
           
             
@@ -309,9 +309,12 @@
 
       
         <h4 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h4><p><img src="/images/IAP/CSMA.png" alt></p>
+<p>为什么要有CSMA/CD？<br>CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。</p>
 <p>CSMA/CD 表示载波监听多点接入 / 碰撞检测。</p>
 <p>多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。<br>载波监听 ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。<br>碰撞检测 ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发生碰撞。<br>记端到端的传播时延为 τ，最先发送的站点最多经过 2τ 就可以知道是否发生了碰撞，称 2τ 为 争用期 。只有经过争用期之后还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
 <p>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用 截断二进制指数退避算法 来确定。从离散的整数集合 {0, 1, .., (2k-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。</p>
+<h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><p>MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。</p>
+<p>一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。</p>
 
     </div>
 
@@ -397,7 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSMA-CD"><span class="nav-number">1.</span> <span class="nav-text">CSMA/CD</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSMA-CD"><span class="nav-number">1.</span> <span class="nav-text">CSMA/CD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址"><span class="nav-number">2.</span> <span class="nav-text">MAC地址</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
