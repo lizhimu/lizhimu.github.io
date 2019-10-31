@@ -471,11 +471,19 @@
                 
               
 
-              <time title="Created: 2019-10-30 19:48:11 / Modified: 20:14:59" itemprop="dateCreated datePublished" datetime="2019-10-30T19:48:11-04:00">2019-10-30</time>
+              <time title="Created: 2019-10-30 19:48:11" itemprop="dateCreated datePublished" datetime="2019-10-30T19:48:11-04:00">2019-10-30</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-31 14:30:03" itemprop="dateModified" datetime="2019-10-31T14:30:03-04:00">2019-10-31</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -524,6 +532,18 @@
 <p>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用 截断二进制指数退避算法 来确定。从离散的整数集合 {0, 1, .., (2k-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。</p>
 <h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><p>MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。</p>
 <p>一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。</p>
+<h4 id="虚拟局域网（VLAN）"><a href="#虚拟局域网（VLAN）" class="headerlink" title="虚拟局域网（VLAN）"></a>虚拟局域网（VLAN）</h4><p>虚拟局域网可以建立与物理位置无关的逻辑组，只有在同一个虚拟局域网中的成员才会收到链路层广播信息。</p>
+<p>例如下图中 (A1, A2, A3, A4) 属于一个虚拟局域网，A1 发送的广播会被 A2、A3、A4 收到，而其它站点收不到。</p>
+<p>使用 VLAN 干线连接来建立虚拟局域网，每台交换机上的一个特殊接口被设置为干线接口，以互连 VLAN 交换机。IEEE 定义了一种扩展的以太网帧格式 802.1Q，它在标准以太网帧上加进了 4 字节首部 VLAN 标签，用于表示该帧属于哪一个虚拟局域网。</p>
+<p><img src="/images/IAP/VLAN.png" alt></p>
+<h4 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h4><p>首先明确，ARP协议解决的是局域网内如何通过IP地址得到MAC地址的问题。</p>
+<p><img src="/images/IAP/ARP1.png" alt></p>
+<p>那么ARP的流程是怎么样的呢？</p>
+<p><img src="/images/IAP/ARP2.png" alt></p>
+<p><img src="/images/IAP/ARP6.png" alt></p>
+<p>ARP Request，Reply里面packet里面的内容是什么？</p>
+<p><img src="/images/IAP/ARP3.png" alt></p>
+<p><img src="/images/IAP/ARP4.png" alt></p>
 
         
       
