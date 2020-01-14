@@ -57,27 +57,21 @@
   };
 </script>
 
-  <meta name="description" content="CSMA/CD 为什么要有CSMA/CD？CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。 CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须">
-<meta name="keywords" content="计算机网络">
+  <meta name="description" content="Problem:给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回 。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。 1234567891011public class TreeLinkNode &amp;#123;    int val;    TreeLinkNode left = null;    TreeLinkNode right = null;    Tre">
+<meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据链路层">
-<meta property="og:url" content="https://lizhimu.github.io/2019/10/30/数据链路层/index.html">
+<meta property="og:title" content="剑指offer008 二叉树的下一个节点">
+<meta property="og:url" content="https://lizhimu.github.io/2020/01/14/剑指offer008-二叉树的下一个节点/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="CSMA/CD 为什么要有CSMA/CD？CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。 CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须">
+<meta property="og:description" content="Problem:给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回 。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。 1234567891011public class TreeLinkNode &amp;#123;    int val;    TreeLinkNode left = null;    TreeLinkNode right = null;    Tre">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/CSMA.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/VLAN.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/ARP1.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/ARP2.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/ARP6.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/ARP3.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/IAP/ARP4.png">
-<meta property="og:updated_time" content="2019-11-19T19:08:59.208Z">
+<meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_008.png">
+<meta property="og:updated_time" content="2020-01-14T22:21:27.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据链路层">
-<meta name="twitter:description" content="CSMA/CD 为什么要有CSMA/CD？CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。 CSMA/CD 表示载波监听多点接入 / 碰撞检测。 多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。载波监听 ：每个主机都必须">
-<meta name="twitter:image" content="https://lizhimu.github.io/images/IAP/CSMA.png">
-  <link rel="canonical" href="https://lizhimu.github.io/2019/10/30/数据链路层/">
+<meta name="twitter:title" content="剑指offer008 二叉树的下一个节点">
+<meta name="twitter:description" content="Problem:给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回 。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。 1234567891011public class TreeLinkNode &amp;#123;    int val;    TreeLinkNode left = null;    TreeLinkNode right = null;    Tre">
+<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/CYC2018_008.png">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/01/14/剑指offer008-二叉树的下一个节点/">
 
 
 <script id="page-configurations">
@@ -91,7 +85,7 @@
   };
 </script>
 
-  <title>数据链路层 | Moon River's Blog</title>
+  <title>剑指offer008 二叉树的下一个节点 | Moon River's Blog</title>
   
 
 
@@ -240,7 +234,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/数据链路层/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer008-二叉树的下一个节点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -252,7 +246,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">数据链路层
+        <h1 class="post-title" itemprop="name headline">剑指offer008 二叉树的下一个节点
 
           
         </h1>
@@ -268,19 +262,11 @@
                 
               
 
-              <time title="Created: 2019-10-30 19:48:11" itemprop="dateCreated datePublished" datetime="2019-10-30T19:48:11-04:00">2019-10-30</time>
+              <time title="Created: 2020-01-14 15:59:00 / Modified: 17:21:27" itemprop="dateCreated datePublished" datetime="2020-01-14T15:59:00-05:00">2020-01-14</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-19 14:08:59" itemprop="dateModified" datetime="2019-11-19T14:08:59-05:00">2019-11-19</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -289,7 +275,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
 
                 
                 
@@ -308,7 +294,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/10/30/数据链路层/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/数据链路层/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/01/14/剑指offer008-二叉树的下一个节点/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer008-二叉树的下一个节点/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -322,26 +308,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h4><p><img src="/images/IAP/CSMA.png" alt></p>
-<p>为什么要有CSMA/CD？<br>CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。</p>
-<p>CSMA/CD 表示载波监听多点接入 / 碰撞检测。</p>
-<p>多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。<br>载波监听 ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。<br>碰撞检测 ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发生碰撞。<br>记端到端的传播时延为 τ，最先发送的站点最多经过 2τ 就可以知道是否发生了碰撞，称 2τ 为 争用期 。只有经过争用期之后还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
-<p>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用 截断二进制指数退避算法 来确定。从离散的整数集合 {0, 1, .., (2k-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。</p>
-<h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><p>MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。</p>
-<p>一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。</p>
-<h4 id="虚拟局域网（VLAN）"><a href="#虚拟局域网（VLAN）" class="headerlink" title="虚拟局域网（VLAN）"></a>虚拟局域网（VLAN）</h4><p>虚拟局域网可以建立与物理位置无关的逻辑组，只有在同一个虚拟局域网中的成员才会收到链路层广播信息。</p>
-<p>例如下图中 (A1, A2, A3, A4) 属于一个虚拟局域网，A1 发送的广播会被 A2、A3、A4 收到，而其它站点收不到。</p>
-<p>使用 VLAN 干线连接来建立虚拟局域网，每台交换机上的一个特殊接口被设置为干线接口，以互连 VLAN 交换机。IEEE 定义了一种扩展的以太网帧格式 802.1Q，它在标准以太网帧上加进了 4 字节首部 VLAN 标签，用于表示该帧属于哪一个虚拟局域网。</p>
-<p><img src="/images/IAP/VLAN.png" alt></p>
-<h4 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h4><p>首先明确，ARP协议解决的是局域网内如何通过IP地址得到MAC地址的问题。</p>
-<p><img src="/images/IAP/ARP1.png" alt></p>
-<p>那么ARP的流程是怎么样的呢？</p>
-<p><img src="/images/IAP/ARP2.png" alt></p>
-<p><img src="/images/IAP/ARP6.png" alt></p>
-<p>ARP Request，Reply里面packet里面的内容是什么？</p>
-<p><img src="/images/IAP/ARP3.png" alt></p>
-<p><img src="/images/IAP/ARP4.png" alt></p>
-<h4 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h4>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回 。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeLinkNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeLinkNode left = <span class="keyword">null</span>;</span><br><span class="line">    TreeLinkNode right = <span class="keyword">null</span>;</span><br><span class="line">    TreeLinkNode next = <span class="keyword">null</span>; <span class="comment">// 指向父结点的指针</span></span><br><span class="line"></span><br><span class="line">    TreeLinkNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p> <img src="/images/CYC/CYC2018_008.png" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_008</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeLinkNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeLinkNode left = <span class="keyword">null</span>;</span><br><span class="line">        TreeLinkNode right = <span class="keyword">null</span>;</span><br><span class="line">        TreeLinkNode next = <span class="keyword">null</span>; <span class="comment">// 指向父结点的指针</span></span><br><span class="line"></span><br><span class="line">        TreeLinkNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> TreeLinkNode <span class="title">GetNext</span><span class="params">(TreeLinkNode pNode)</span></span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(pNode.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">             TreeLinkNode node=pNode.right;</span><br><span class="line">             <span class="keyword">while</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                 node=node.left;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> node;</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">             <span class="keyword">while</span>(pNode.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                 <span class="comment">//注意下面的next是指向父节点</span></span><br><span class="line">                 TreeLinkNode parent=pNode.next;</span><br><span class="line">                 <span class="keyword">if</span>(parent.left==pNode)&#123;</span><br><span class="line">                     <span class="keyword">return</span> parent;</span><br><span class="line">                 &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                     pNode=parent;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -356,7 +329,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+              <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
             
           </div>
         
@@ -366,8 +339,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/30/子网划分/" rel="next" title="子网划分">
-                  <i class="fa fa-chevron-left"></i> 子网划分
+                <a href="/2020/01/13/剑指offer005-重建二叉树/" rel="next" title="剑指offer005 重建二叉树">
+                  <i class="fa fa-chevron-left"></i> 剑指offer005 重建二叉树
                 </a>
               
             </div>
@@ -375,10 +348,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/31/剑指offer003-替换空格/" rel="prev" title="剑指offer003 替换空格">
-                  剑指offer003 替换空格 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -430,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSMA-CD"><span class="nav-number">1.</span> <span class="nav-text">CSMA/CD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址"><span class="nav-number">2.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟局域网（VLAN）"><span class="nav-number">3.</span> <span class="nav-text">虚拟局域网（VLAN）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP协议"><span class="nav-number">4.</span> <span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ICMP"><span class="nav-number">5.</span> <span class="nav-text">ICMP</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-number">2.</span> <span class="nav-text">Intuition:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution:</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
