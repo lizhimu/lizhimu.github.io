@@ -57,17 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Open doors don&apos;t stay open forever">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Moon River&#39;s Blog">
-<meta property="og:url" content="https://lizhimu.github.io/categories/java/index.html">
+  <meta name="description" content="Problem:一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。 Intuition:跳 n 阶台阶，可以先跳 1 阶台阶，再跳 n-1 阶台阶；或者先跳 2 阶台阶，再跳 n-2 阶台阶。而 n-1 和 n-2 阶台阶的跳法可以看成子问题，该问题就又可以转化成斐波那契数列的问题了。 Solution:123456789101112public">
+<meta name="keywords" content="剑指offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer010_3 跳台阶">
+<meta property="og:url" content="https://lizhimu.github.io/2020/01/14/剑指offer010-3-跳台阶/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Open doors don&apos;t stay open forever">
+<meta property="og:description" content="Problem:一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。 Intuition:跳 n 阶台阶，可以先跳 1 阶台阶，再跳 n-1 阶台阶；或者先跳 2 阶台阶，再跳 n-2 阶台阶。而 n-1 和 n-2 阶台阶的跳法可以看成子问题，该问题就又可以转化成斐波那契数列的问题了。 Solution:123456789101112public">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-15T00:51:46.122Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Moon River&#39;s Blog">
-<meta name="twitter:description" content="Open doors don&apos;t stay open forever">
-  <link rel="canonical" href="https://lizhimu.github.io/categories/java/">
+<meta name="twitter:title" content="剑指offer010_3 跳台阶">
+<meta name="twitter:description" content="Problem:一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。 Intuition:跳 n 阶台阶，可以先跳 1 阶台阶，再跳 n-1 阶台阶；或者先跳 2 阶台阶，再跳 n-2 阶台阶。而 n-1 和 n-2 阶台阶的跳法可以看成子问题，该问题就又可以转化成斐波那契数列的问题了。 Solution:123456789101112public">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/01/14/剑指offer010-3-跳台阶/">
 
 
 <script id="page-configurations">
@@ -75,13 +77,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Category: java | Moon River's Blog</title>
+  <title>剑指offer010_3 跳台阶 | Moon River's Blog</title>
   
 
 
@@ -221,85 +223,147 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block category">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">java<small>Category</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer010-3-跳台阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">剑指offer010_3 跳台阶
+
+          
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-14 19:50:16 / Modified: 19:51:46" itemprop="dateCreated datePublished" datetime="2020-01-14T19:50:16-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer010-3-跳台阶/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer010-3-跳台阶/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>跳 n 阶台阶，可以先跳 1 阶台阶，再跳 n-1 阶台阶；或者先跳 2 阶台阶，再跳 n-2 阶台阶。而 n-1 和 n-2 阶台阶的跳法可以看成子问题，该问题就又可以转化成斐波那契数列的问题了。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> pre2 = <span class="number">1</span>, pre1 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">        result = pre2 + pre1;</span><br><span class="line">        pre2 = pre1;</span><br><span class="line">        pre1 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  
-  
 
-  
+    </div>
+
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+    
+    
         
-          <a class="post-title-link" href="/2019/10/31/泛型/" itemprop="url">
-            <span itemprop="name">泛型</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
+            
+          </div>
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-31T15:18:28-04:00"
-              content="2019-10-31">
-          10-31
-        </time>
-      </div>
+        
 
-    </header>
-  </article>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/01/14/剑指offer10-2-矩形覆盖/" rel="next" title="剑指offer10.2 矩形覆盖">
+                  <i class="fa fa-chevron-left"></i> 剑指offer10.2 矩形覆盖
+                </a>
+              
+            </div>
 
+            <span class="post-nav-divider"></span>
 
-
-    </div>
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           <div id="gitalk-container"></div>
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -314,6 +378,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -326,6 +395,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-number">2.</span> <span class="nav-text">Intuition:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution:</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
