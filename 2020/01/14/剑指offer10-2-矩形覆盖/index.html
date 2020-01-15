@@ -57,17 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Open doors don&apos;t stay open forever">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Moon River&#39;s Blog">
-<meta property="og:url" content="https://lizhimu.github.io/archives/2020/index.html">
+  <meta name="description" content="Problem:我们可以用 21 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 21 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？ Intuition:这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时">
+<meta name="keywords" content="剑指offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer10.2 矩形覆盖">
+<meta property="og:url" content="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Open doors don&apos;t stay open forever">
+<meta property="og:description" content="Problem:我们可以用 21 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 21 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？ Intuition:这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-15T00:44:30.222Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Moon River&#39;s Blog">
-<meta name="twitter:description" content="Open doors don&apos;t stay open forever">
-  <link rel="canonical" href="https://lizhimu.github.io/archives/2020/">
+<meta name="twitter:title" content="剑指offer10.2 矩形覆盖">
+<meta name="twitter:description" content="Problem:我们可以用 21 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 21 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？ Intuition:这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/">
 
 
 <script id="page-configurations">
@@ -75,13 +77,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>Archive | Moon River's Blog</title>
+  <title>剑指offer10.2 矩形覆盖 | Moon River's Blog</title>
   
 
 
@@ -221,207 +223,147 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        
-        
-        
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">剑指offer10.2 矩形覆盖
+
           
-        
-        <span class="collection-header">Um..! 25 posts in total. Keep on posting.</span>
-      </div>
-      
+        </h1>
 
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-  
-  
+              
+                
+              
 
+              <time title="Created: 2020-01-14 19:34:09 / Modified: 19:44:30" itemprop="dateCreated datePublished" datetime="2020-01-14T19:34:09-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
   
+  <span class="post-meta-item">
     
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
         
-          <a class="post-title-link" href="/2020/01/14/剑指offer10-2-矩形覆盖/" itemprop="url">
-            <span itemprop="name">剑指offer10.2 矩形覆盖</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-01-14T19:34:09-05:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer10-2-矩形覆盖/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer10-2-矩形覆盖/" itemprop="commentCount"></span></a>
+  </span>
   
   
 
-  
+        </div>
+      </header>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2020/01/14/剑指offer010-斐波那契数列/" itemprop="url">
-            <span itemprop="name">剑指offer010 斐波那契数列</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-01-14T18:50:40-05:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2020/01/14/剑指offer009-两个栈实现一个队列/" itemprop="url">
-            <span itemprop="name">剑指offer009 两个栈实现一个队列</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-01-14T17:48:37-05:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2020/01/14/剑指offer008-二叉树的下一个节点/" itemprop="url">
-            <span itemprop="name">剑指offer008 二叉树的下一个节点</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-01-14T15:59:00-05:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2020/01/13/剑指offer005-重建二叉树/" itemprop="url">
-            <span itemprop="name">剑指offer005 重建二叉树</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-01-13T17:25:20-05:00"
-              content="2020-01-13">
-          01-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>我们可以用 2<em>1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2</em>1 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时只有两种摆法。如果n&gt;2,那么我们考虑整个图形的左上角。如果左上角的矩形是竖着摆的，那么这种情况就是f(n-1).如果左上角的矩形时横着摆的（2<em>1），那么我们可以发现它的下面也必须是一个横着摆的矩形。这样上下两个矩形一起就会拼成一个2</em>2的矩形，那么这种情况就是f(n-2)。鉴于左上角的矩形只有两种摆法情况（横着摆或者竖着摆），所以这个问题就被完全转化成了一个斐波那契数列的问题。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">RectCover</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> pre2 = <span class="number">1</span>, pre1 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = pre2 + pre1;</span><br><span class="line">        pre2 = pre1;</span><br><span class="line">        pre1 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/01/14/剑指offer010-斐波那契数列/" rel="next" title="剑指offer010 斐波那契数列">
+                  <i class="fa fa-chevron-left"></i> 剑指offer010 斐波那契数列
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           <div id="gitalk-container"></div>
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -436,6 +378,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -448,6 +395,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-number">2.</span> <span class="nav-text">Intuition:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution:</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 

@@ -229,6 +229,109 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/14/剑指offer10-2-矩形覆盖/" class="post-title-link" itemprop="url">剑指offer10.2 矩形覆盖</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-14 19:34:09 / Modified: 19:44:30" itemprop="dateCreated datePublished" datetime="2020-01-14T19:34:09-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer10-2-矩形覆盖/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer10-2-矩形覆盖/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>我们可以用 2<em>1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2</em>1 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时只有两种摆法。如果n&gt;2,那么我们考虑整个图形的左上角。如果左上角的矩形是竖着摆的，那么这种情况就是f(n-1).如果左上角的矩形时横着摆的（2<em>1），那么我们可以发现它的下面也必须是一个横着摆的矩形。这样上下两个矩形一起就会拼成一个2</em>2的矩形，那么这种情况就是f(n-2)。鉴于左上角的矩形只有两种摆法情况（横着摆或者竖着摆），所以这个问题就被完全转化成了一个斐波那契数列的问题。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">RectCover</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> pre2 = <span class="number">1</span>, pre1 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = pre2 + pre1;</span><br><span class="line">        pre2 = pre1;</span><br><span class="line">        pre1 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer010-斐波那契数列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1235,109 +1338,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/计算机网络基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/30/计算机网络基础/" class="post-title-link" itemprop="url">计算机网络基础</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-30 18:57:52 / Modified: 19:02:49" itemprop="dateCreated datePublished" datetime="2019-10-30T18:57:52-04:00">2019-10-30</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/30/计算机网络基础/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/计算机网络基础/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="主机间的通信方式（两类）"><a href="#主机间的通信方式（两类）" class="headerlink" title="主机间的通信方式（两类）"></a>主机间的通信方式（两类）</h4><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。<br>对等（P2P）：不区分客户和服务器</p>
-<h4 id="主机A与主机B如何通过internet相连？"><a href="#主机A与主机B如何通过internet相连？" class="headerlink" title="主机A与主机B如何通过internet相连？"></a>主机A与主机B如何通过internet相连？</h4><p><img src="/images/IAP/ISP.png" alt></p>
-<p>ISP: interconnected internet service providers</p>
-<h4 id="如何将域名转换为IP地址？"><a href="#如何将域名转换为IP地址？" class="headerlink" title="如何将域名转换为IP地址？"></a>如何将域名转换为IP地址？</h4><p>首先，我们把域名转换为ip地址的软件系统叫做域名服务器，所有来自浏览器的文档请求都被发送到最近的域名服务器。该域名服务器将尝试将完全限定域名转换为IP地址。如果可以，则进行转换。否则，该服务器将这个完全限定域名发送给另外的域名服务器来实现转换操作。</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1390,7 +1390,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
