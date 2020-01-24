@@ -57,22 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:根据二叉树的前序遍历和中序遍历的结果，重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。   Intuition:前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两部分，左部分为树的左子树中序遍历结果，右部分为树的右子树中序遍历的结果。然后分别对左右子树递归地求解。每次递归就相当于在前序数组和中序数组中分别划一刀。首先我们根据root（前序数组的第一">
+  <meta name="description" content="Problem:地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。 例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？ Intuiti">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指offer005 重建二叉树">
-<meta property="og:url" content="https://lizhimu.github.io/2020/01/13/剑指offer005-重建二叉树/index.html">
+<meta property="og:title" content="剑指offer013机器人的运动范围">
+<meta property="og:url" content="https://lizhimu.github.io/2020/01/23/剑指offer013机器人的运动范围/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:根据二叉树的前序遍历和中序遍历的结果，重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。   Intuition:前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两部分，左部分为树的左子树中序遍历结果，右部分为树的右子树中序遍历的结果。然后分别对左右子树递归地求解。每次递归就相当于在前序数组和中序数组中分别划一刀。首先我们根据root（前序数组的第一">
+<meta property="og:description" content="Problem:地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。 例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？ Intuiti">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_006.png">
-<meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_006_002.gif">
-<meta property="og:updated_time" content="2020-01-14T03:51:26.493Z">
+<meta property="og:updated_time" content="2020-01-24T01:30:50.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指offer005 重建二叉树">
-<meta name="twitter:description" content="Problem:根据二叉树的前序遍历和中序遍历的结果，重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。   Intuition:前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两部分，左部分为树的左子树中序遍历结果，右部分为树的右子树中序遍历的结果。然后分别对左右子树递归地求解。每次递归就相当于在前序数组和中序数组中分别划一刀。首先我们根据root（前序数组的第一">
-<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/CYC2018_006.png">
-  <link rel="canonical" href="https://lizhimu.github.io/2020/01/13/剑指offer005-重建二叉树/">
+<meta name="twitter:title" content="剑指offer013机器人的运动范围">
+<meta name="twitter:description" content="Problem:地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。 例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？ Intuiti">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/01/23/剑指offer013机器人的运动范围/">
 
 
 <script id="page-configurations">
@@ -86,7 +83,7 @@
   };
 </script>
 
-  <title>剑指offer005 重建二叉树 | Moon River's Blog</title>
+  <title>剑指offer013机器人的运动范围 | Moon River's Blog</title>
   
 
 
@@ -235,7 +232,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/13/剑指offer005-重建二叉树/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/23/剑指offer013机器人的运动范围/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -247,7 +244,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">剑指offer005 重建二叉树
+        <h1 class="post-title" itemprop="name headline">剑指offer013机器人的运动范围
 
           
         </h1>
@@ -263,7 +260,7 @@
                 
               
 
-              <time title="Created: 2020-01-13 17:25:20 / Modified: 22:51:26" itemprop="dateCreated datePublished" datetime="2020-01-13T17:25:20-05:00">2020-01-13</time>
+              <time title="Created: 2020-01-23 19:48:42 / Modified: 20:30:50" itemprop="dateCreated datePublished" datetime="2020-01-23T19:48:42-05:00">2020-01-23</time>
             </span>
           
             
@@ -295,7 +292,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/01/13/剑指offer005-重建二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/13/剑指offer005-重建二叉树/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/01/23/剑指offer013机器人的运动范围/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/剑指offer013机器人的运动范围/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -309,11 +306,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>根据二叉树的前序遍历和中序遍历的结果，重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
-<p> <img src="/images/CYC/CYC2018_006.png" alt></p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两部分，左部分为树的左子树中序遍历结果，右部分为树的右子树中序遍历的结果。然后分别对左右子树递归地求解。<br>每次递归就相当于在前序数组和中序数组中分别划一刀。首先我们根据root（前序数组的第一个元素）在中序数组中的位置对中序数组划一刀，这样这道划痕的左边部分就是左子树的中序遍历数组，划痕的右边就是右子树的中序遍历数组。然后我们记下左子树的大小，再对前序遍历的数组划一刀，这样就完成了这道题的递归过程。<br>我们这一题应该抓住的核心是前序遍历数组的第一个元素是root,然后该元素在中序遍历数组中的位置的左边即为左子树的元素，右边即为右子树的元素。</p>
-<p> <img src="/images/CYC/CYC2018_006_002.gif" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_005</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">       <span class="keyword">int</span> val;</span><br><span class="line">       TreeNode left;</span><br><span class="line">       TreeNode right;</span><br><span class="line">       TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">           <span class="keyword">this</span>.val=val;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructBinaryTree</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> [] in)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (pre.length == <span class="number">0</span> || in.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(pre[<span class="number">0</span>]);</span><br><span class="line">        <span class="comment">// 在中序中找到前序的根</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; in.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (in[i] == pre[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="comment">// 左子树，注意 copyOfRange 函数，左闭右开</span></span><br><span class="line">                root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, <span class="number">1</span>, i + <span class="number">1</span>), Arrays.copyOfRange(in, <span class="number">0</span>, i));</span><br><span class="line">                <span class="comment">// 右子树，注意 copyOfRange 函数，左闭右开</span></span><br><span class="line">                root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + <span class="number">1</span>, pre.length), Arrays.copyOfRange(in, i + <span class="number">1</span>, in.length));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。</p>
+<p>例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>使用深度优先搜索（Depth First Search，DFS）方法进行求解。回溯是深度优先搜索的一种特例，它在一次搜索过程中需要设置一些本次搜索过程的局部状态，并在本次搜索结束之后清除状态。这一题和前面一题比较类似，机器人从坐标(0,0)开始移动，当它准备进入坐标为(i,j)的格子时，通过检查坐标的数位和来判断机器人是否能够进入。如果机器人能够进入坐标为（i，j）的格子，再判断它是否能够进入4个相邻的格子（i,j-1）,(i-1,j),(i,j+1),(i+1,j)。设置visited数组的原因是为了避免重复访问导致进入死循环，我们保证如果一个点已经被访问过它就不会再被check了从而保证程序能够在有限时间内退出。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_013</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(threshold &lt;= <span class="number">0</span> || rows &lt;= <span class="number">0</span> || cols &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] visitFlags = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows * cols];    <span class="comment">// 元素是否访问过标识</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> movingCountCore(threshold, rows, cols, <span class="number">0</span>, <span class="number">0</span>, visitFlags);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCountCore</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] visitFlags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素符合条件，则判断该元素相邻的4个元素</span></span><br><span class="line">        <span class="keyword">if</span>(check(threshold, rows, cols, row, col, visitFlags)) &#123;</span><br><span class="line">            <span class="keyword">int</span> index = row * cols + col;</span><br><span class="line">            visitFlags[index] = <span class="keyword">true</span>;</span><br><span class="line">            count = <span class="number">1</span> + movingCountCore(threshold, rows, cols, row, col + <span class="number">1</span>, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row, col - <span class="number">1</span>, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row + <span class="number">1</span>, col, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row - <span class="number">1</span>, col, visitFlags);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断row,col的元素是否符合要求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] visitFlags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = row * cols + col;</span><br><span class="line">        <span class="comment">// 索引值在有效范围内、元素尚未访问、各位数和小于等于阈值</span></span><br><span class="line">        <span class="keyword">if</span>(row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols &amp;&amp;</span><br><span class="line">                !visitFlags[index] &amp;&amp; (getDigitsSum(row) + getDigitsSum(col)) &lt;= threshold ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算num的各位数和</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDigitsSum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            sum += num % <span class="number">10</span>;</span><br><span class="line">            num /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -340,8 +336,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/31/泛型/" rel="next" title="泛型">
-                  <i class="fa fa-chevron-left"></i> 泛型
+                <a href="/2020/01/23/剑指offer012矩阵中的路径/" rel="next" title="剑指offer012矩阵中的路径">
+                  <i class="fa fa-chevron-left"></i> 剑指offer012矩阵中的路径
                 </a>
               
             </div>
@@ -349,10 +345,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/01/14/剑指offer008-二叉树的下一个节点/" rel="prev" title="剑指offer008 二叉树的下一个节点">
-                  剑指offer008 二叉树的下一个节点 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
