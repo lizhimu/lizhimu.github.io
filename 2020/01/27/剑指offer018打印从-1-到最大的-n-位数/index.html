@@ -57,19 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:我们可以用 21 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 21 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？ Intuition:这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时">
+  <meta name="description" content="Problem:输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数即 999。 Intuition:由于 n 可能会非常大，因此不能直接用 int 表示数字，而是用 StringBuffer进行存储。既然是用StringBuffer来存，那么我们就要完成两个功能，第一个功能是如何对使用char数组存储的数字进行递增，第二个功能是如">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指offer10.2 矩形覆盖">
-<meta property="og:url" content="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/index.html">
+<meta property="og:title" content="剑指offer018打印从 1 到最大的 n 位数">
+<meta property="og:url" content="https://lizhimu.github.io/2020/01/27/剑指offer018打印从-1-到最大的-n-位数/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:我们可以用 21 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 21 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？ Intuition:这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时">
+<meta property="og:description" content="Problem:输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数即 999。 Intuition:由于 n 可能会非常大，因此不能直接用 int 表示数字，而是用 StringBuffer进行存储。既然是用StringBuffer来存，那么我们就要完成两个功能，第一个功能是如何对使用char数组存储的数字进行递增，第二个功能是如">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-15T00:46:37.729Z">
+<meta property="og:updated_time" content="2020-01-27T07:26:44.649Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指offer10.2 矩形覆盖">
-<meta name="twitter:description" content="Problem:我们可以用 21 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 21 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？ Intuition:这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时">
-  <link rel="canonical" href="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/">
+<meta name="twitter:title" content="剑指offer018打印从 1 到最大的 n 位数">
+<meta name="twitter:description" content="Problem:输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数即 999。 Intuition:由于 n 可能会非常大，因此不能直接用 int 表示数字，而是用 StringBuffer进行存储。既然是用StringBuffer来存，那么我们就要完成两个功能，第一个功能是如何对使用char数组存储的数字进行递增，第二个功能是如">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/01/27/剑指offer018打印从-1-到最大的-n-位数/">
 
 
 <script id="page-configurations">
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title>剑指offer10.2 矩形覆盖 | Moon River's Blog</title>
+  <title>剑指offer018打印从 1 到最大的 n 位数 | Moon River's Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/27/剑指offer018打印从-1-到最大的-n-位数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -244,7 +244,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">剑指offer10.2 矩形覆盖
+        <h1 class="post-title" itemprop="name headline">剑指offer018打印从 1 到最大的 n 位数
 
           
         </h1>
@@ -260,7 +260,7 @@
                 
               
 
-              <time title="Created: 2020-01-14 19:34:09 / Modified: 19:46:37" itemprop="dateCreated datePublished" datetime="2020-01-14T19:34:09-05:00">2020-01-14</time>
+              <time title="Created: 2020-01-27 01:26:47 / Modified: 02:26:44" itemprop="dateCreated datePublished" datetime="2020-01-27T01:26:47-05:00">2020-01-27</time>
             </span>
           
             
@@ -292,7 +292,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/01/14/剑指offer10-2-矩形覆盖/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer10-2-矩形覆盖/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/01/27/剑指offer018打印从-1-到最大的-n-位数/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/27/剑指offer018打印从-1-到最大的-n-位数/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -306,9 +306,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>我们可以用 2<em>1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2</em>1 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时只有两种摆法。如果n&gt;2,那么我们考虑整个图形的左上角。如果左上角的矩形是竖着摆的，那么这种情况就是f(n-1).如果左上角的矩形时横着摆的（2<em>1），那么我们可以发现它的下面也必须是一个横着摆的矩形。这样上下两个矩形一起就会拼成一个2</em>2的矩形，那么这种情况就是f(n-2)。鉴于左上角的矩形只有两种摆法情况（横着摆或者竖着摆），所以这个问题就被完全转化成了一个斐波那契数列的问题。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">RectCover</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> pre2 = <span class="number">1</span>, pre1 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = pre2 + pre1;</span><br><span class="line">        pre2 = pre1;</span><br><span class="line">        pre1 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数即 999。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>由于 n 可能会非常大，因此不能直接用 int 表示数字，而是用 StringBuffer进行存储。既然是用StringBuffer来存，那么我们就要完成两个功能，第一个功能是如何对使用char数组存储的数字进行递增，第二个功能是如何将该数字打印出来（这个部分的核心代码主要是去掉符号扩展自动补上的0）.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_017</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Print1ToMaxOfNDigits(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Print1ToMaxOfNDigits</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        StringBuffer stringBuffer=<span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            stringBuffer.append(<span class="string">'0'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!Increment(stringBuffer))&#123;</span><br><span class="line">            PrintNumber(stringBuffer);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//自加</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">Increment</span><span class="params">(StringBuffer s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//因为是要在原来数字的基础上递增1，所以默认加1，这个1就放在个位的carry上</span></span><br><span class="line">        <span class="keyword">int</span> carry=<span class="number">1</span>;<span class="comment">//carry表示进位</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=s.length()-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> digit=s.charAt(i)-<span class="string">'0'</span>;</span><br><span class="line">            digit=digit+carry;</span><br><span class="line">            <span class="keyword">if</span>(digit&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">                digit-=<span class="number">10</span>;</span><br><span class="line">                carry=<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                carry=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s.setCharAt(i,(<span class="keyword">char</span>)(digit+<span class="string">'0'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(carry==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//打印数字</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PrintNumber</span><span class="params">(StringBuffer s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> startPos=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'0'</span>)&#123;</span><br><span class="line">                startPos++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=startPos;i&lt;s.length();i++)&#123;</span><br><span class="line">            System.out.print(s.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -335,8 +335,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/01/14/剑指offer010-斐波那契数列/" rel="next" title="剑指offer010 斐波那契数列">
-                  <i class="fa fa-chevron-left"></i> 剑指offer010 斐波那契数列
+                <a href="/2020/01/27/剑指offer01打印从-1-到最大的-n-位数/" rel="next" title="剑指offer01打印从 1 到最大的 n 位数">
+                  <i class="fa fa-chevron-left"></i> 剑指offer01打印从 1 到最大的 n 位数
                 </a>
               
             </div>
@@ -345,8 +345,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2020/01/14/剑指offer010-3-跳台阶/" rel="prev" title="剑指offer010_3 跳台阶">
-                  剑指offer010_3 跳台阶 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/01/27/剑指offer019在-O-1-时间内删除链表节点/" rel="prev" title="剑指offer019在 O(1) 时间内删除链表节点">
+                  剑指offer019在 O(1) 时间内删除链表节点 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
