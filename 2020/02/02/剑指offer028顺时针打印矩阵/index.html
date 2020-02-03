@@ -57,19 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:把一根绳子剪成多段，并且使得每段的长度乘积最大。 Intuition:这一题比较容易，算是动态规划的开胃菜。首先我们聊一聊什么样的问题适合用动态规划。动态规划通常适合于要求我们求一个问题的最优解（通常是最大值或者最小值），而且该问题能够分解成若干个字问题，并且子问题之间还有重叠的更小的子问题，就可以考虑用动态规划来解决这个问题。下面的解法我们自己实现的方案既用了贪心算法的思想，也用">
+  <meta name="description" content="Problem:输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10. Intuition:这一题总体思路很好定。要顺时针打印矩阵，我们不难发现每次打印的都是矩阵的外框，这个外框每打印">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指offer014 剪绳子">
-<meta property="og:url" content="https://lizhimu.github.io/2020/01/25/剑指offer014-剪绳子/index.html">
+<meta property="og:title" content="剑指offer028顺时针打印矩阵">
+<meta property="og:url" content="https://lizhimu.github.io/2020/02/02/剑指offer028顺时针打印矩阵/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:把一根绳子剪成多段，并且使得每段的长度乘积最大。 Intuition:这一题比较容易，算是动态规划的开胃菜。首先我们聊一聊什么样的问题适合用动态规划。动态规划通常适合于要求我们求一个问题的最优解（通常是最大值或者最小值），而且该问题能够分解成若干个字问题，并且子问题之间还有重叠的更小的子问题，就可以考虑用动态规划来解决这个问题。下面的解法我们自己实现的方案既用了贪心算法的思想，也用">
+<meta property="og:description" content="Problem:输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10. Intuition:这一题总体思路很好定。要顺时针打印矩阵，我们不难发现每次打印的都是矩阵的外框，这个外框每打印">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-26T00:09:13.747Z">
+<meta property="og:updated_time" content="2020-02-03T04:35:52.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指offer014 剪绳子">
-<meta name="twitter:description" content="Problem:把一根绳子剪成多段，并且使得每段的长度乘积最大。 Intuition:这一题比较容易，算是动态规划的开胃菜。首先我们聊一聊什么样的问题适合用动态规划。动态规划通常适合于要求我们求一个问题的最优解（通常是最大值或者最小值），而且该问题能够分解成若干个字问题，并且子问题之间还有重叠的更小的子问题，就可以考虑用动态规划来解决这个问题。下面的解法我们自己实现的方案既用了贪心算法的思想，也用">
-  <link rel="canonical" href="https://lizhimu.github.io/2020/01/25/剑指offer014-剪绳子/">
+<meta name="twitter:title" content="剑指offer028顺时针打印矩阵">
+<meta name="twitter:description" content="Problem:输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10. Intuition:这一题总体思路很好定。要顺时针打印矩阵，我们不难发现每次打印的都是矩阵的外框，这个外框每打印">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/02/02/剑指offer028顺时针打印矩阵/">
 
 
 <script id="page-configurations">
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title>剑指offer014 剪绳子 | Moon River's Blog</title>
+  <title>剑指offer028顺时针打印矩阵 | Moon River's Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/25/剑指offer014-剪绳子/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/02/剑指offer028顺时针打印矩阵/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -244,7 +244,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">剑指offer014 剪绳子
+        <h1 class="post-title" itemprop="name headline">剑指offer028顺时针打印矩阵
 
           
         </h1>
@@ -260,7 +260,7 @@
                 
               
 
-              <time title="Created: 2020-01-25 17:39:46 / Modified: 19:09:13" itemprop="dateCreated datePublished" datetime="2020-01-25T17:39:46-05:00">2020-01-25</time>
+              <time title="Created: 2020-02-02 23:27:29 / Modified: 23:35:52" itemprop="dateCreated datePublished" datetime="2020-02-02T23:27:29-05:00">2020-02-02</time>
             </span>
           
             
@@ -292,7 +292,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/01/25/剑指offer014-剪绳子/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/25/剑指offer014-剪绳子/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/02/剑指offer028顺时针打印矩阵/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/02/剑指offer028顺时针打印矩阵/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -306,11 +306,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>把一根绳子剪成多段，并且使得每段的长度乘积最大。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这一题比较容易，算是动态规划的开胃菜。首先我们聊一聊什么样的问题适合用动态规划。动态规划通常适合于要求我们求一个问题的最优解（通常是最大值或者最小值），而且该问题能够分解成若干个字问题，并且子问题之间还有重叠的更小的子问题，就可以考虑用动态规划来解决这个问题。下面的解法我们自己实现的方案既用了贪心算法的思想，也用了动态规划的思想。我们发现仅仅由dp[i-2],dp[i-3]就可以决定dp[i]里面的内容，原因是dp[i-p]（p&gt;3）里面的内容一定是可以由dp[i-2]和dp[i-3]来表示的。举个简单的例子，如果最优解是要用到dp[i-4],那么接下里剩下的4肯定是切成2<em>2，那么这种情况就与dp[i-2]</em>2的情况是完全一致的。如果是dp[i-5],那么剩下对于5的切法一定是2<em>3,这个和dp[i-2]</em>3或者dp[i-3]*2就是一致的。依次类推，这时属于贪心算法的内容。接下来就用动态规划来存之前计算的结果就可以了。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//dynamic programming+greedy algorithm</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cutRope</span><span class="params">(<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">   	<span class="comment">//dp[i]表示的就是长度为i的绳子对应的最大乘积，dp[0]没有意义</span></span><br><span class="line">       <span class="keyword">int</span>[] dp=<span class="keyword">new</span> <span class="keyword">int</span>[length+<span class="number">1</span>];</span><br><span class="line">       dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">       dp[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">       dp[<span class="number">2</span>]=<span class="number">2</span>;</span><br><span class="line">       dp[<span class="number">3</span>]=<span class="number">3</span>;</span><br><span class="line">       <span class="keyword">if</span> (length &lt;= <span class="number">3</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> dp[length];</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">4</span>;i&lt;=length;i++)&#123;</span><br><span class="line">           <span class="comment">//这里我们不用再写dp[i-4]*4的原因是dp[i-2]&gt;=dp[i-4]*2,所以dp[i-4]的情况已经被包含在dp[i-2]的情况中了。</span></span><br><span class="line">           dp[i]=Math.max(dp[i-<span class="number">2</span>]*<span class="number">2</span>,dp[i-<span class="number">3</span>]*<span class="number">3</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> dp[length];</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cutRope_D</span><span class="params">(<span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (length == <span class="number">2</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (length == <span class="number">3</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 将最优解存储在数组中</span></span><br><span class="line">       <span class="keyword">int</span>[] products = <span class="keyword">new</span> <span class="keyword">int</span>[length + <span class="number">1</span>];</span><br><span class="line">       <span class="comment">// 数组中第i个元素表示把长度为i的绳子剪成若干段之后的乘积的最大值</span></span><br><span class="line">       products[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">       products[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">       products[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">       products[<span class="number">3</span>] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">4</span>; i &lt;= length; i++) &#123;</span><br><span class="line">           max = <span class="number">0</span>;</span><br><span class="line">           <span class="comment">// 求出所有可能的f(j)*f(i-j)并比较出他们的最大值</span></span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i / <span class="number">2</span>; j++) &#123;</span><br><span class="line">               <span class="keyword">int</span> product = products[j] * products[i - j];</span><br><span class="line">               <span class="keyword">if</span> (product &gt; max) &#123;</span><br><span class="line">                   max = product;</span><br><span class="line">               &#125;</span><br><span class="line">               products[i] = max;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       max = products[length];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这一题总体思路很好定。要顺时针打印矩阵，我们不难发现每次打印的都是矩阵的外框，这个外框每打印一次就往里缩一圈。那么我们用r1,r2来表示外框的行数范围，c1,c2来表示外框的列数范围，然后顺时针进行打印就可以了。需要注意的是特殊情况。如果行数为奇数，那么横着打印的部分在最后一次只有从左到右的一次，而没有从右到左的一次。如果列数为奇数，那么竖着打印的部分在最后一次只有从上到下的那一次。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ppublic <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_028</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> r1 = <span class="number">0</span>, r2 = matrix.length - <span class="number">1</span>, c1 = <span class="number">0</span>, c2 = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (r1 &lt;= r2 &amp;&amp; c1 &lt;= c2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = c1; i &lt;= c2; i++)</span><br><span class="line">                ret.add(matrix[r1][i]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = r1 + <span class="number">1</span>; i &lt;= r2; i++)</span><br><span class="line">                ret.add(matrix[i][c2]);</span><br><span class="line">            <span class="keyword">if</span> (r1 != r2)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = c2 - <span class="number">1</span>; i &gt;= c1; i--)</span><br><span class="line">                    ret.add(matrix[r2][i]);</span><br><span class="line">            <span class="keyword">if</span> (c1 != c2)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = r2 - <span class="number">1</span>; i &gt; r1; i--)</span><br><span class="line">                    ret.add(matrix[i][c1]);</span><br><span class="line">            r1++; r2--; c1++; c2--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -335,8 +333,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/01/23/剑指offer013机器人的运动范围/" rel="next" title="剑指offer013机器人的运动范围">
-                  <i class="fa fa-chevron-left"></i> 剑指offer013机器人的运动范围
+                <a href="/2020/02/02/剑指offer027二叉树的镜像/" rel="next" title="剑指offer027二叉树的镜像">
+                  <i class="fa fa-chevron-left"></i> 剑指offer027二叉树的镜像
                 </a>
               
             </div>
@@ -344,10 +342,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/01/25/剑指offer015-二进制中1的个数/" rel="prev" title="剑指offer015 二进制中1的个数">
-                  剑指offer015 二进制中1的个数 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
