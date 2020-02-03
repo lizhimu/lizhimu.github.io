@@ -57,21 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），因此当遍历到一个空格时，需要在尾部填充两个任意字符。 令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置">
+  <meta name="description" content="Problem:定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 Intuition:这个题目我们要稍微注意一下，找出最小元素的操作可能会进行多次，不是进行一次就结束了。这就意味着我们仅仅用一个整数存最小元素的方案是行不通的，我们要某种数据结构将所有栈中的元素按大小顺序进行保存。 Solution:12345678910111213141516">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指offer003 替换空格">
-<meta property="og:url" content="https://lizhimu.github.io/2019/10/31/剑指offer003-替换空格/index.html">
+<meta property="og:title" content="剑指offer029包含min函数的栈">
+<meta property="og:url" content="https://lizhimu.github.io/2020/02/03/剑指offer029包含min函数的栈/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），因此当遍历到一个空格时，需要在尾部填充两个任意字符。 令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置">
+<meta property="og:description" content="Problem:定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 Intuition:这个题目我们要稍微注意一下，找出最小元素的操作可能会进行多次，不是进行一次就结束了。这就意味着我们仅仅用一个整数存最小元素的方案是行不通的，我们要某种数据结构将所有栈中的元素按大小顺序进行保存。 Solution:12345678910111213141516">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_003.gif">
-<meta property="og:updated_time" content="2019-10-31T17:15:59.056Z">
+<meta property="og:updated_time" content="2020-02-03T17:16:10.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指offer003 替换空格">
-<meta name="twitter:description" content="Problem:将一个字符串中的空格替换成 “%20”。只能在当前字符串内进行操作，不允许新建字符串。 Input:“A B” Output:“A%20B” Intuition:在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），因此当遍历到一个空格时，需要在尾部填充两个任意字符。 令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置">
-<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/CYC2018_003.gif">
-  <link rel="canonical" href="https://lizhimu.github.io/2019/10/31/剑指offer003-替换空格/">
+<meta name="twitter:title" content="剑指offer029包含min函数的栈">
+<meta name="twitter:description" content="Problem:定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 Intuition:这个题目我们要稍微注意一下，找出最小元素的操作可能会进行多次，不是进行一次就结束了。这就意味着我们仅仅用一个整数存最小元素的方案是行不通的，我们要某种数据结构将所有栈中的元素按大小顺序进行保存。 Solution:12345678910111213141516">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/02/03/剑指offer029包含min函数的栈/">
 
 
 <script id="page-configurations">
@@ -85,7 +83,7 @@
   };
 </script>
 
-  <title>剑指offer003 替换空格 | Moon River's Blog</title>
+  <title>剑指offer029包含min函数的栈 | Moon River's Blog</title>
   
 
 
@@ -234,7 +232,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/剑指offer003-替换空格/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer029包含min函数的栈/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -246,7 +244,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">剑指offer003 替换空格
+        <h1 class="post-title" itemprop="name headline">剑指offer029包含min函数的栈
 
           
         </h1>
@@ -262,7 +260,7 @@
                 
               
 
-              <time title="Created: 2019-10-31 13:13:00 / Modified: 13:15:59" itemprop="dateCreated datePublished" datetime="2019-10-31T13:13:00-04:00">2019-10-31</time>
+              <time title="Created: 2020-02-03 12:14:49 / Modified: 12:16:10" itemprop="dateCreated datePublished" datetime="2020-02-03T12:14:49-05:00">2020-02-03</time>
             </span>
           
             
@@ -294,7 +292,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/10/31/剑指offer003-替换空格/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/剑指offer003-替换空格/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/03/剑指offer029包含min函数的栈/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer029包含min函数的栈/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -308,14 +306,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>将一个字符串中的空格替换成 “%20”。<br>只能在当前字符串内进行操作，不允许新建字符串。</p>
-<p>Input:<br>“A B”</p>
-<p>Output:<br>“A%20B”</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），因此当遍历到一个空格时，需要在尾部填充两个任意字符。</p>
-<p>令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置。P1 和 P2 从后向前遍历，当 P1 遍历到一个空格时，就需要令 P2 指向的位置依次填充 02%（注意是逆序的），否则就填充上 P1 指向字符的值。</p>
-<p>从后向前遍是为了在改变 P2 所指向的内容时，不会影响到 P1 遍历原来字符串的内容。</p>
-<p>  <img src="/images/CYC/CYC2018_003.gif" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_003</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">replaceSpace</span><span class="params">(StringBuffer str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> P1 = str.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= P1; i++)</span><br><span class="line">            <span class="keyword">if</span> (str.charAt(i) == <span class="string">' '</span>)</span><br><span class="line">                str.append(<span class="string">"  "</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> P2 = str.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (P1 &gt;= <span class="number">0</span> &amp;&amp; P2 &gt; P1) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = str.charAt(P1--);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">' '</span>) &#123;</span><br><span class="line">                str.setCharAt(P2--, <span class="string">'0'</span>);</span><br><span class="line">                str.setCharAt(P2--, <span class="string">'2'</span>);</span><br><span class="line">                str.setCharAt(P2--, <span class="string">'%'</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                str.setCharAt(P2--, c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目我们要稍微注意一下，找出最小元素的操作可能会进行多次，不是进行一次就结束了。这就意味着我们仅仅用一个整数存最小元素的方案是行不通的，我们要某种数据结构将所有栈中的元素按大小顺序进行保存。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_029</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; dataStack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; minStack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span></span>&#123;</span><br><span class="line">        dataStack.push(node);</span><br><span class="line">        <span class="keyword">if</span>(minStack.isEmpty()||node&lt;minStack.peek())&#123;</span><br><span class="line">            minStack.push(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dataTop=dataStack.peek();</span><br><span class="line">        <span class="keyword">int</span> minTop=minStack.peek();</span><br><span class="line">        dataStack.pop();</span><br><span class="line">        <span class="keyword">if</span>(dataTop==minTop)&#123;</span><br><span class="line">            minStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dataStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">min</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -342,8 +335,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/30/数据链路层/" rel="next" title="数据链路层">
-                  <i class="fa fa-chevron-left"></i> 数据链路层
+                <a href="/2020/02/02/剑指offer028顺时针打印矩阵/" rel="next" title="剑指offer028顺时针打印矩阵">
+                  <i class="fa fa-chevron-left"></i> 剑指offer028顺时针打印矩阵
                 </a>
               
             </div>
@@ -351,10 +344,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/31/剑指offer004-逆向打印链表/" rel="prev" title="剑指offer004 逆向打印链表">
-                  剑指offer004 逆向打印链表 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
