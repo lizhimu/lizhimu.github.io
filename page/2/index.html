@@ -229,6 +229,109 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/31/剑指offer022链表中倒数第K个节点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/31/剑指offer022链表中倒数第K个节点/" class="post-title-link" itemprop="url">剑指offer022链表中倒数第K个节点</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-31 05:39:10 / Modified: 05:41:40" itemprop="dateCreated datePublished" datetime="2020-01-31T05:39:10-05:00">2020-01-31</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/31/剑指offer022链表中倒数第K个节点/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/31/剑指offer022链表中倒数第K个节点/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>设链表的长度为 N。设置两个指针 P1 和 P2，先让 P1 移动 K 个节点，则还有 N - K 个节点可以移动。此时让 P1 和 P2 同时移动，可以知道当 P1 移动到链表结尾时，P2 移动到第 N - K 个节点处，该位置就是倒数第 K 个节点。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_022</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">            val=x;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">FindKthToTail</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode P1 = head;</span><br><span class="line">        <span class="keyword">while</span> (P1 != <span class="keyword">null</span> &amp;&amp; k-- &gt; <span class="number">0</span>)</span><br><span class="line">            P1 = P1.next;</span><br><span class="line">        <span class="keyword">if</span> (k &gt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode P2 = head;</span><br><span class="line">        <span class="keyword">while</span> (P1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            P1 = P1.next;</span><br><span class="line">            P2 = P2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> P2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/31/剑指offer021调整数组顺序使奇数位于偶数前面/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1159,109 +1262,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/23/剑指offer012矩阵中的路径/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/01/23/剑指offer012矩阵中的路径/" class="post-title-link" itemprop="url">剑指offer012矩阵中的路径</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-01-23 19:17:52 / Modified: 19:49:54" itemprop="dateCreated datePublished" datetime="2020-01-23T19:17:52-05:00">2020-01-23</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/01/23/剑指offer012矩阵中的路径/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/剑指offer012矩阵中的路径/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向上下左右移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>使用回溯法（backtracking）进行求解，它是一种暴力搜索方法，通过搜索所有可能的结果来求解问题。回溯法在一次搜索结束时需要进行回溯（回退），将这一次搜索过程中设置的状态进行清除，从而开始一次新的搜索过程。在这一题中我们要做的是额外用一个数组来记录矩阵中的点是否被访问过的状态。<br>个人理解回溯法主要适用于程序需要你进行尝试的情况。那么我们在尝试一步后会修改某些状态，那么在尝试不成功的时候要注意对这些状态进行复原。这个过程颇类似于函数调用的时候对程序上下文进行压栈的情况。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_012</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这一题的重点是要把握好要有一个visited数组来记录哪些地方已经走过。已经走过的点不能被重新访问</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasPath</span><span class="params">(<span class="keyword">char</span>[] matrix, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">char</span>[] str)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 参数校验</span></span><br><span class="line">        <span class="keyword">if</span> (matrix == <span class="keyword">null</span> || matrix.length != rows * cols || str == <span class="keyword">null</span> || str.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 变量初始化</span></span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows * cols];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; visited.length; i++) &#123;</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录结果的数组，</span></span><br><span class="line">        <span class="keyword">int</span> pathLength = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 以每一个点为起始进行搜索</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cols; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (hasPathCore(matrix, rows, cols, str, visited, i, j, pathLength)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 回溯搜索算法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> matrix     输入矩阵</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rows       矩阵行数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cols       矩阵列数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str        要搜索的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> visited    访问标记数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> row        当前处理的行号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> col        当前处理的列号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pathLength 已经处理的str中字符个数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否找到 true是，false否</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasPathCore</span><span class="params">(<span class="keyword">char</span>[] matrix, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">char</span>[] str, <span class="keyword">boolean</span>[] visited,</span></span></span><br><span class="line"><span class="function"><span class="params">                                       <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> pathLength)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (pathLength == str.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> hasPath = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 前面两个条件判断位置是否合法</span></span><br><span class="line">        <span class="comment">//第三个条件判断矩阵位置的当前字符是否与字符串中对应位置的字符一致</span></span><br><span class="line">        <span class="comment">//第四个条件是重点，我们要看这个矩阵位置上的字符是否已经被访问过。</span></span><br><span class="line">        <span class="keyword">if</span> (row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows</span><br><span class="line">                &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols</span><br><span class="line">                &amp;&amp; matrix[row * cols + col] == str[pathLength]</span><br><span class="line">                &amp;&amp; !visited[row * cols + col]) &#123;</span><br><span class="line">            <span class="comment">//跑到这里说明当前矩阵中的字符与字符串对应位置的字符一致，那么我们就把visit状态置为true,但是此时并不能说明就一定成功，还要看后面的字符能不能满足，</span></span><br><span class="line">            <span class="comment">//一旦不满足还要重新置回false.</span></span><br><span class="line">            visited[row * cols + col] = <span class="keyword">true</span>;</span><br><span class="line">            pathLength++;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 按左上右下进行回溯</span></span><br><span class="line">            hasPath = hasPathCore(matrix, rows, cols, str, visited, row, col - <span class="number">1</span>, pathLength)</span><br><span class="line">                    || hasPathCore(matrix, rows, cols, str, visited, row - <span class="number">1</span>, col, pathLength)</span><br><span class="line">                    || hasPathCore(matrix, rows, cols, str, visited, row, col + <span class="number">1</span>, pathLength)</span><br><span class="line">                    || hasPathCore(matrix, rows, cols, str, visited, row + <span class="number">1</span>, col, pathLength);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!hasPath) &#123;</span><br><span class="line">                <span class="comment">//程序执行到了这里就说明当前这个点已经走不通了，需要把它的visit状态重新置回false.</span></span><br><span class="line">                pathLength--;</span><br><span class="line">                visited[row * cols + col] = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> hasPath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1314,7 +1314,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

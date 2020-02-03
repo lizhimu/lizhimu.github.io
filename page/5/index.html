@@ -229,6 +229,121 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode008-String-to-Integer-atoi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/30/Leetcode008-String-to-Integer-atoi/" class="post-title-link" itemprop="url">Leetcode008 String to Integer (atoi)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-30 15:02:14 / Modified: 15:40:42" itemprop="dateCreated datePublished" datetime="2019-09-30T15:02:14-04:00">2019-09-30</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/09/30/Leetcode008-String-to-Integer-atoi/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/30/Leetcode008-String-to-Integer-atoi/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Implement atoi which converts a string to an integer.</p>
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned.</p>
+<p>Note:</p>
+<p>Only the space character ‘ ‘ is considered as whitespace character.<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.<br>Example 1:</p>
+<p>Input: “42”<br>Output: 42<br>Example 2:</p>
+<p>Input: “   -42”<br>Output: -42<br>Explanation: The first non-whitespace character is ‘-‘, which is the minus sign.<br>             Then take as many numerical digits as possible, which gets 42.<br>Example 3:</p>
+<p>Input: “4193 with words”<br>Output: 4193<br>Explanation: Conversion stops at digit ‘3’ as the next character is not a numerical digit.<br>Example 4:</p>
+<p>Input: “words and 987”<br>Output: 0<br>Explanation: The first non-whitespace character is ‘w’, which is not a numerical<br>             digit or a +/- sign. Therefore no valid conversion could be performed.<br>Example 5:</p>
+<p>Input: “-91283472332”<br>Output: -2147483648<br>Explanation: The number “-91283472332” is out of the range of a 32-bit signed integer.<br>             Thefore INT_MIN (−231) is returned.</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这一题的核心逻辑还是边界条件的处理，这部分代码和上一题是一样的。</p>
+<p>对任意字符串转换成指定结果类型题目的处理通常str=str.trim()这一步都是少不了的。</p>
+<p>接下来就是对字符的ASCII码进行一个简单的处理，也没有特别多可说的地方。</p>
+<p>总的来说，熟悉字符串的常规操作以及了解字符串和整数的关系在做这种题目的时候可以省不少时间，而这种题目在考试中也会反复出现，应该引起足够重视。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> 	</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    str = str.trim();</span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> curNum;</span><br><span class="line">    <span class="keyword">while</span> (cur &lt; str.length()) &#123;</span><br><span class="line">        curNum = (<span class="keyword">int</span>)str.charAt(cur) - <span class="string">'0'</span>; <span class="comment">// ASCII</span></span><br><span class="line">        <span class="keyword">if</span> (curNum &lt;= <span class="number">9</span> &amp;&amp; curNum &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (result &gt; Integer.MAX_VALUE / <span class="number">10</span> || (result == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; curNum &gt; <span class="number">7</span>))</span><br><span class="line">                <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (result &lt; Integer.MIN_VALUE / <span class="number">10</span> || (result == Integer.MIN_VALUE / <span class="number">10</span> &amp;&amp; curNum &gt; <span class="number">8</span>))</span><br><span class="line">                <span class="keyword">return</span> Integer.MIN_VALUE;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                result = result * <span class="number">10</span> + flag * curNum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cur == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str.charAt(cur) == <span class="string">'-'</span>) </span><br><span class="line">                flag = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (str.charAt(cur) != <span class="string">'+'</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        cur++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode007-Reverse-Integer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1151,7 +1266,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
