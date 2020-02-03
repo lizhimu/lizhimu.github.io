@@ -57,21 +57,19 @@
   };
 </script>
 
-  <meta name="description" content="Problem:给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。 Intuition:设置快慢指针，都从链表头出发，快指针每次走两步，慢指针一次走一步，假如有环，一定相遇于环中某点(结论1)。接着让两个指针分别从相遇点和链表头出发，两者都改为每次走一步，最终相遇于环入口(结论2)。以下是两个结论证明：两个结论：1、设置快慢指针，假如有环，他们最后一定相遇。2、两个指针分别">
+  <meta name="description" content="Problem:从上往下打印出二叉树的每个节点，同层节点从左至右打印。 Intuition:要实现按层打印，只需要将左右节点存到一个队列里面，按顺序打印即可 Solution:123456789101112131415161718192021222324252627282930313233public class CodingInterview_032 &amp;#123;    class TreeNo">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指offer023链表中环的入口节点">
-<meta property="og:url" content="https://lizhimu.github.io/2020/02/02/剑指offer023链表中环的入口节点/index.html">
+<meta property="og:title" content="剑指offer032.1从上往下打印二叉树">
+<meta property="og:url" content="https://lizhimu.github.io/2020/02/03/剑指offer032-1从上往下打印二叉树/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem:给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。 Intuition:设置快慢指针，都从链表头出发，快指针每次走两步，慢指针一次走一步，假如有环，一定相遇于环中某点(结论1)。接着让两个指针分别从相遇点和链表头出发，两者都改为每次走一步，最终相遇于环入口(结论2)。以下是两个结论证明：两个结论：1、设置快慢指针，假如有环，他们最后一定相遇。2、两个指针分别">
+<meta property="og:description" content="Problem:从上往下打印出二叉树的每个节点，同层节点从左至右打印。 Intuition:要实现按层打印，只需要将左右节点存到一个队列里面，按顺序打印即可 Solution:123456789101112131415161718192021222324252627282930313233public class CodingInterview_032 &amp;#123;    class TreeNo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lizhimu.github.io/images/CYC/CYC2018_023.jpeg">
-<meta property="og:updated_time" content="2020-02-03T00:14:01.443Z">
+<meta property="og:updated_time" content="2020-02-03T20:45:53.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指offer023链表中环的入口节点">
-<meta name="twitter:description" content="Problem:给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。 Intuition:设置快慢指针，都从链表头出发，快指针每次走两步，慢指针一次走一步，假如有环，一定相遇于环中某点(结论1)。接着让两个指针分别从相遇点和链表头出发，两者都改为每次走一步，最终相遇于环入口(结论2)。以下是两个结论证明：两个结论：1、设置快慢指针，假如有环，他们最后一定相遇。2、两个指针分别">
-<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/CYC2018_023.jpeg">
-  <link rel="canonical" href="https://lizhimu.github.io/2020/02/02/剑指offer023链表中环的入口节点/">
+<meta name="twitter:title" content="剑指offer032.1从上往下打印二叉树">
+<meta name="twitter:description" content="Problem:从上往下打印出二叉树的每个节点，同层节点从左至右打印。 Intuition:要实现按层打印，只需要将左右节点存到一个队列里面，按顺序打印即可 Solution:123456789101112131415161718192021222324252627282930313233public class CodingInterview_032 &amp;#123;    class TreeNo">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/02/03/剑指offer032-1从上往下打印二叉树/">
 
 
 <script id="page-configurations">
@@ -85,7 +83,7 @@
   };
 </script>
 
-  <title>剑指offer023链表中环的入口节点 | Moon River's Blog</title>
+  <title>剑指offer032.1从上往下打印二叉树 | Moon River's Blog</title>
   
 
 
@@ -234,7 +232,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/02/剑指offer023链表中环的入口节点/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer032-1从上往下打印二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -246,7 +244,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">剑指offer023链表中环的入口节点
+        <h1 class="post-title" itemprop="name headline">剑指offer032.1从上往下打印二叉树
 
           
         </h1>
@@ -262,7 +260,7 @@
                 
               
 
-              <time title="Created: 2020-02-02 19:07:52 / Modified: 19:14:01" itemprop="dateCreated datePublished" datetime="2020-02-02T19:07:52-05:00">2020-02-02</time>
+              <time title="Created: 2020-02-03 15:18:03 / Modified: 15:45:53" itemprop="dateCreated datePublished" datetime="2020-02-03T15:18:03-05:00">2020-02-03</time>
             </span>
           
             
@@ -294,7 +292,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/02/剑指offer023链表中环的入口节点/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/02/剑指offer023链表中环的入口节点/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/03/剑指offer032-1从上往下打印二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer032-1从上往下打印二叉树/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -308,9 +306,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>设置快慢指针，都从链表头出发，快指针每次走两步，慢指针一次走一步，假如有环，一定相遇于环中某点(结论1)。接着让两个指针分别从相遇点和链表头出发，两者都改为每次走一步，最终相遇于环入口(结论2)。以下是两个结论证明：<br>两个结论：<br>1、设置快慢指针，假如有环，他们最后一定相遇。<br>2、两个指针分别从链表头和相遇点继续出发，每次走一步，最后一定相遇与环入口。<br>证明结论1：设置快慢指针fast和low，fast每次走两步，low每次走一步。假如有环，两者一定会相遇（因为low一旦进环，可看作fast在后面追赶low的过程，每次两者都接近一步，最后一定能追上）。<br>证明结论2：<br>设：<br>链表头到环入口长度为–a<br>环入口到相遇点长度为–b<br>相遇点到环入口长度为–c<br><img src="/images/CYC/CYC2018_023.jpeg" alt><br>则：相遇时<br>快指针路程=a+(b+c)k+b ，k&gt;=1  其中b+c为环的长度，k为绕环的圈数（k&gt;=1,即最少一圈，不能是0圈，不然和慢指针走的一样长，矛盾）。<br>慢指针路程=a+(b+c)l+b ,k-l&gt;=1<br>快指针走的路程是慢指针的两倍，所以：<br>a+(b+c)k=2[a+(b+c)l+b]<br>化简可得：<br>a=(k-l)(b+c)+c 这个式子的意思是： 链表头到环入口的距离=相遇点到环入口的距离+（k-l）圈环长度。其中k&gt;=1,所以k-l&gt;=0圈。所以两个指针分别从链表头和相遇点出发，最后一定相遇于环入口。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_023</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">            val=x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode <span class="title">EntryNodeOfLoop</span><span class="params">(ListNode pHead)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead == <span class="keyword">null</span> || pHead.next == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode p1 = pHead;</span><br><span class="line">        ListNode p2 = pHead;</span><br><span class="line">        <span class="keyword">while</span>(p2 != <span class="keyword">null</span> &amp;&amp; p2.next != <span class="keyword">null</span> )&#123;</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">            p2 = p2.next.next;</span><br><span class="line">            <span class="keyword">if</span>(p1 == p2)&#123;</span><br><span class="line">                p2 = pHead;</span><br><span class="line">                <span class="keyword">while</span>(p1 != p2)&#123;</span><br><span class="line">                    p1 = p1.next;</span><br><span class="line">                    p2 = p2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(p1 == p2)</span><br><span class="line">                    <span class="keyword">return</span> p1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>从上往下打印出二叉树的每个节点，同层节点从左至右打印。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>要实现按层打印，只需要将左右节点存到一个队列里面，按顺序打印即可</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_032</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">PrintFromTopToBottom</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            ArrayList&lt;TreeNode&gt; queue = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> list;</span><br><span class="line">            &#125;</span><br><span class="line">            queue.add(root);</span><br><span class="line">            <span class="keyword">while</span> (queue.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                TreeNode temp = queue.remove(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (temp.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.add(temp.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (temp.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    queue.add(temp.right);</span><br><span class="line">                &#125;</span><br><span class="line">                list.add(temp.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -337,8 +335,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/01/31/剑指offer022链表中倒数第K个节点/" rel="next" title="剑指offer022链表中倒数第K个节点">
-                  <i class="fa fa-chevron-left"></i> 剑指offer022链表中倒数第K个节点
+                <a href="/2020/02/03/剑指offer031栈的压入弹出序列/" rel="next" title="剑指offer031栈的压入弹出序列">
+                  <i class="fa fa-chevron-left"></i> 剑指offer031栈的压入弹出序列
                 </a>
               
             </div>
@@ -346,10 +344,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/02/02/剑指offer024反转链表/" rel="prev" title="剑指offer024反转链表">
-                  剑指offer024反转链表 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
