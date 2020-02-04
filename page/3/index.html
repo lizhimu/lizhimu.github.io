@@ -229,6 +229,110 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/23/剑指offer013机器人的运动范围/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/23/剑指offer013机器人的运动范围/" class="post-title-link" itemprop="url">剑指offer013机器人的运动范围</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-23 19:48:42 / Modified: 20:30:50" itemprop="dateCreated datePublished" datetime="2020-01-23T19:48:42-05:00">2020-01-23</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/23/剑指offer013机器人的运动范围/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/剑指offer013机器人的运动范围/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。</p>
+<p>例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>使用深度优先搜索（Depth First Search，DFS）方法进行求解。回溯是深度优先搜索的一种特例，它在一次搜索过程中需要设置一些本次搜索过程的局部状态，并在本次搜索结束之后清除状态。这一题和前面一题比较类似，机器人从坐标(0,0)开始移动，当它准备进入坐标为(i,j)的格子时，通过检查坐标的数位和来判断机器人是否能够进入。如果机器人能够进入坐标为（i，j）的格子，再判断它是否能够进入4个相邻的格子（i,j-1）,(i-1,j),(i,j+1),(i+1,j)。设置visited数组的原因是为了避免重复访问导致进入死循环，我们保证如果一个点已经被访问过它就不会再被check了从而保证程序能够在有限时间内退出。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_013</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(threshold &lt;= <span class="number">0</span> || rows &lt;= <span class="number">0</span> || cols &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] visitFlags = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows * cols];    <span class="comment">// 元素是否访问过标识</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> movingCountCore(threshold, rows, cols, <span class="number">0</span>, <span class="number">0</span>, visitFlags);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCountCore</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] visitFlags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素符合条件，则判断该元素相邻的4个元素</span></span><br><span class="line">        <span class="keyword">if</span>(check(threshold, rows, cols, row, col, visitFlags)) &#123;</span><br><span class="line">            <span class="keyword">int</span> index = row * cols + col;</span><br><span class="line">            visitFlags[index] = <span class="keyword">true</span>;</span><br><span class="line">            count = <span class="number">1</span> + movingCountCore(threshold, rows, cols, row, col + <span class="number">1</span>, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row, col - <span class="number">1</span>, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row + <span class="number">1</span>, col, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row - <span class="number">1</span>, col, visitFlags);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断row,col的元素是否符合要求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] visitFlags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = row * cols + col;</span><br><span class="line">        <span class="comment">// 索引值在有效范围内、元素尚未访问、各位数和小于等于阈值</span></span><br><span class="line">        <span class="keyword">if</span>(row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols &amp;&amp;</span><br><span class="line">                !visitFlags[index] &amp;&amp; (getDigitsSum(row) + getDigitsSum(col)) &lt;= threshold ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算num的各位数和</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDigitsSum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            sum += num % <span class="number">10</span>;</span><br><span class="line">            num /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/23/剑指offer012矩阵中的路径/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1165,145 +1269,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/泛型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/31/泛型/" class="post-title-link" itemprop="url">泛型</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-31 15:18:28 / Modified: 20:15:50" itemprop="dateCreated datePublished" datetime="2019-10-31T15:18:28-04:00">2019-10-31</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/31/泛型/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/泛型/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先通过一个简单的例子看看泛型的基本使用。假如我们要创建一个礼物对象，但是礼物有很多种，可以是电脑，自行车或者是别的乱七八糟的任何东西。那么这个时候我们怎么描述礼物对象中内容呢？好像用object可以，但是每次使用object都要做强制类型转换，如果转换出错甚至要到运行时才能检测出来。那么这种情况我们就应该考虑用泛型来处理</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gift</span>&lt;<span class="title">T</span>&gt; </span>&#123;<span class="comment">//generic</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Double cost;</span><br><span class="line">    <span class="comment">//创建gift的时候确定T的类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Gift</span><span class="params">(T value,Double cost)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">        <span class="keyword">this</span>.cost=cost;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Double <span class="title">getCost</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cost;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GiftGiver</span> </span>&#123;</span><br><span class="line">    Computer computer=<span class="keyword">new</span> Computer();</span><br><span class="line">    <span class="comment">//&lt;&gt;括号里是interface或者class</span></span><br><span class="line">    Gift&lt;Computer&gt; giftToJon=<span class="keyword">new</span> Gift&lt;Computer&gt;(computer,<span class="number">1500</span>d);</span><br><span class="line">    Bicycle bicycle=<span class="keyword">new</span> Bicycle();</span><br><span class="line">    Gift&lt;Bicycle&gt; giftToBob=<span class="keyword">new</span> Gift&lt;Bicycle&gt;(bicycle,<span class="number">500</span>d);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Computer jonGift=giftToBob.getValue();如果不小心对应错了类型，编译器会自动帮我们检查错误。而如果用原始的object强制类型转换则需要等到运行时才能检查到错误</span></span><br><span class="line">    <span class="comment">//Bicycle bobGift=giftToJon.getValue();</span></span><br><span class="line">    Computer jonGift=giftToJon.getValue();</span><br><span class="line">    Bicycle bobGift=giftToBob.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从上面的代码可以看出，我们使用泛型的时候只需要在调用的时候指出泛型类型就可以了。接下来我们看看泛型的特征<br>1.一个类或者接口可以有0或者多个泛型类型<br>2.通常用一个字母来表示泛型类型（编译器当然不在乎你用多个，你可以用Cat,Dog来表示泛型，但是这样可读性会变差。读者会认为泛型里面只能是你写的那个类，但是实际上你用的是泛型）<br>3.带泛型的类型不能保持其原继承关系（下面的例子有讲解）</p>
-<p>4.泛型里面的内容本身可以是某类的子类或者父类<br>例子：</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">T</span> extends Computer&gt; <span class="built_in">or</span> &lt;<span class="built_in">T</span> super Computer&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5.泛型类型会在编译时被擦除（从JVM的视角来看，泛型压根不存在）<br>6.不能实例化类型变量<br>public Pair(){<br>    first=new T();//error<br>    second=new T();//error<br>}</p>
-<p>下面来通过一个例子来解释第三条</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Echo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">echo</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Echo&lt;T&gt; <span class="title">echo</span><span class="params">(Echo&lt;T&gt; value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EchoChamber</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Echo&lt;Number&gt; numberEcho=<span class="keyword">new</span> Echo&lt;&gt;();</span><br><span class="line">        <span class="comment">//Integer 是 Number的子类，所以可以直接传10。但是Echo&lt;Integer&gt;不是Echo&lt;Number&gt;的子类</span></span><br><span class="line">        numberEcho.echo(<span class="number">10</span>);</span><br><span class="line">        numberEcho.echo(<span class="number">10</span>d);</span><br><span class="line">        numberEcho.echo(<span class="number">10f</span>);</span><br><span class="line">        numberEcho.echo(<span class="number">10L</span>);</span><br><span class="line">        <span class="comment">//这里下面四行会报错，can't resolve method 'echo java.Generics.Echo&lt;java.lang.Integer&gt;'</span></span><br><span class="line">        <span class="comment">//原因是numberEcho中泛型类型是&lt;Number&gt;,Integer虽然继承Nunber,但是Echo&lt;Integer&gt;并不继承Echo&lt;Number&gt;</span></span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Integer&gt;());</span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Double&gt;());</span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Float&gt;());</span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Long&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>泛型的这个特征我们把它叫做invariant的。这一点和数组是反着的，数组我们叫covariant.因为我们学数组的时候都知道，如果A继承数组B,那么A类型的数组也可以在多态中替代B类型的数组。无论S与T有什么联系，echo<s>与echo<t>都没有什么联系。</t></s></p>
-<p>在非泛型类中也可以使用泛型方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayAlg</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String middle= ArrayAlg.&lt;String&gt; getMiddle(<span class="string">"John"</span>,<span class="string">"Q."</span>,<span class="string">"Public"</span>);</span><br><span class="line">        System.out.println(middle);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T...a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a[a.length/<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在泛型中，一个泛型类型可以被多个条件约束。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面T可以实现多个接口，但是只能继承一个类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultipleBounds</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span> &amp;<span class="title">Comparable</span>&amp; <span class="title">Serializable</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T number;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MultipleBounds</span><span class="params">(T number)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number=number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getNumber</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在泛型中，泛型类型可以被其他泛型类型约束</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面如果T是String这种没有子类的类型,那么S只能是String</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedGenericTypes</span>&lt;<span class="title">T</span>,<span class="title">S</span> <span class="keyword">extends</span> <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> S subValue;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BoundedGenericTypes</span><span class="params">(T value,S subValue)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">        <span class="keyword">this</span>.subValue=subValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> S <span class="title">getSubValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> subValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里插入一个小考题，下面这段代码会被编译通过吗？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericsAreNotStatic</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T reference;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>答案是不行，因为静态成员是所有类成员公用的，你在这里制定静态成员是泛型的。那么加入我们的对象中一个T取的是String,另一个T取的是Integer,这里就无法确定reference的类型了。</p>
-<p>接下来我们看看泛型特征的第五条，泛型类型会在编译时被擦除。那么我们的java编译器是如何处理泛型的呢？<br>实际上编译器就是帮我们加上了强制类型转换</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RuntimeGenerics</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        RuntimeGenerics&lt;Number&gt; runtimeGenericNumber=<span class="keyword">new</span> RuntimeGenerics&lt;Number&gt;(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">//compiler inserts the following</span></span><br><span class="line">        <span class="comment">//Number numberValue=(Number) runtimeGenericNumber.getValue();</span></span><br><span class="line">        Number numberValue=runtimeGenericNumber.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RuntimeGenerics</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由于泛型类型会在编译时被擦除，那么我们可以得到以下几条结论<br>1.泛型类型的尖括号里不能是基础数据类型（不能在运行时将基础数据类型转换为其autobox后的类型）<br>2.不能用instance of 来对泛型进行类型检查（instance of 是运行时进行检查）<br>顺带提一下，getClass总是返回原始类型。例如：<br>Pair<string> stringPair=…<br>Pair<empolyee> empolyeePair=…;<br>if(stringPair.getClass()==employeePair.getClass())//they are equal<br>比较的结果是true,因为getClass只返回原始类型Pair<br>3.不能抛出或捕获泛型类的实例（原因同上）<br>4.不能使用带泛型类型的array(前面提过，array是covariant,generic type是invariant的)</empolyee></string></p>
-<p>接下来我们看看泛型的继承</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClass</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GenericClass</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//extends GenericClass&lt;T&gt;这个&lt;T&gt;一定不能少，否则编译器将用object取代T</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubGenericClass</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">GenericClass</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SubGenericClass</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="keyword">super</span>.getValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来我们来聊java泛型中的重点，通配符。<br>我们还是先来看一个例子来看看没有通配符会发生什么。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GiftPrinter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Gift&lt;Computer&gt; computerGift=<span class="keyword">new</span> Gift&lt;&gt;(<span class="keyword">new</span> Computer(),<span class="number">1500</span>d);</span><br><span class="line">        GiftPrinter printer=<span class="keyword">new</span> GiftPrinter();</span><br><span class="line">        <span class="comment">//编译器报错：print Gift&lt;Object&gt; can't be applied to Gift&lt;Computer&gt;</span></span><br><span class="line">        <span class="comment">//虽然Gift 继承自Object,但是显然编译器并不认为Gift&lt;Computer&gt;与Gift&lt;Object&gt;有任何关系</span></span><br><span class="line">        printer.print(computerGift);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Gift&lt;Object&gt; gift)</span></span>&#123;</span><br><span class="line">        System.out.printf(<span class="string">"%s%n"</span>,gift);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么这个时候通配符的作用就出现了，我们用通配符重写print方法<br>public void print(Gift&lt;?&gt; gift){<br>    System.out.printf(“%s,%n”,gift);<br>}<br>通配符的意思是说我不管你Gift&lt;&gt;尖括号里装什么东西，编译器你都让它通过。</p>
-<p>关于通配符有下面一点要注意：<br>通配符只能用于实例上（不能用于class或者method）<br>比如，我们不能写 public Class Type<?>,public <?> void methodName()<br>而这样写就是可以的：public void methodName(Gift&lt;?&gt; gift)</p>
-<p>上面的例子中通配符是没有限定条件的，但是我们也可以给通配符加上限定条件，请看下面代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedWildCard</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subClasses</span><span class="params">(Gift&lt;? extends Number&gt; gift)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">superClasses</span><span class="params">(Gift&lt;? <span class="keyword">super</span> Integer&gt; gift)</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1356,7 +1321,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
