@@ -229,6 +229,634 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/23/剑指offer013机器人的运动范围/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/23/剑指offer013机器人的运动范围/" class="post-title-link" itemprop="url">剑指offer013机器人的运动范围</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-23 19:48:42 / Modified: 20:30:50" itemprop="dateCreated datePublished" datetime="2020-01-23T19:48:42-05:00">2020-01-23</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/23/剑指offer013机器人的运动范围/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/剑指offer013机器人的运动范围/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。</p>
+<p>例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>使用深度优先搜索（Depth First Search，DFS）方法进行求解。回溯是深度优先搜索的一种特例，它在一次搜索过程中需要设置一些本次搜索过程的局部状态，并在本次搜索结束之后清除状态。这一题和前面一题比较类似，机器人从坐标(0,0)开始移动，当它准备进入坐标为(i,j)的格子时，通过检查坐标的数位和来判断机器人是否能够进入。如果机器人能够进入坐标为（i，j）的格子，再判断它是否能够进入4个相邻的格子（i,j-1）,(i-1,j),(i,j+1),(i+1,j)。设置visited数组的原因是为了避免重复访问导致进入死循环，我们保证如果一个点已经被访问过它就不会再被check了从而保证程序能够在有限时间内退出。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_013</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(threshold &lt;= <span class="number">0</span> || rows &lt;= <span class="number">0</span> || cols &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] visitFlags = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows * cols];    <span class="comment">// 元素是否访问过标识</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> movingCountCore(threshold, rows, cols, <span class="number">0</span>, <span class="number">0</span>, visitFlags);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCountCore</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] visitFlags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素符合条件，则判断该元素相邻的4个元素</span></span><br><span class="line">        <span class="keyword">if</span>(check(threshold, rows, cols, row, col, visitFlags)) &#123;</span><br><span class="line">            <span class="keyword">int</span> index = row * cols + col;</span><br><span class="line">            visitFlags[index] = <span class="keyword">true</span>;</span><br><span class="line">            count = <span class="number">1</span> + movingCountCore(threshold, rows, cols, row, col + <span class="number">1</span>, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row, col - <span class="number">1</span>, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row + <span class="number">1</span>, col, visitFlags) +</span><br><span class="line">                    movingCountCore(threshold, rows, cols, row - <span class="number">1</span>, col, visitFlags);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断row,col的元素是否符合要求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] visitFlags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = row * cols + col;</span><br><span class="line">        <span class="comment">// 索引值在有效范围内、元素尚未访问、各位数和小于等于阈值</span></span><br><span class="line">        <span class="keyword">if</span>(row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols &amp;&amp;</span><br><span class="line">                !visitFlags[index] &amp;&amp; (getDigitsSum(row) + getDigitsSum(col)) &lt;= threshold ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算num的各位数和</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDigitsSum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            sum += num % <span class="number">10</span>;</span><br><span class="line">            num /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/23/剑指offer012矩阵中的路径/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/23/剑指offer012矩阵中的路径/" class="post-title-link" itemprop="url">剑指offer012矩阵中的路径</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-23 19:17:52 / Modified: 19:49:54" itemprop="dateCreated datePublished" datetime="2020-01-23T19:17:52-05:00">2020-01-23</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/23/剑指offer012矩阵中的路径/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/剑指offer012矩阵中的路径/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向上下左右移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>使用回溯法（backtracking）进行求解，它是一种暴力搜索方法，通过搜索所有可能的结果来求解问题。回溯法在一次搜索结束时需要进行回溯（回退），将这一次搜索过程中设置的状态进行清除，从而开始一次新的搜索过程。在这一题中我们要做的是额外用一个数组来记录矩阵中的点是否被访问过的状态。<br>个人理解回溯法主要适用于程序需要你进行尝试的情况。那么我们在尝试一步后会修改某些状态，那么在尝试不成功的时候要注意对这些状态进行复原。这个过程颇类似于函数调用的时候对程序上下文进行压栈的情况。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_012</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这一题的重点是要把握好要有一个visited数组来记录哪些地方已经走过。已经走过的点不能被重新访问</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasPath</span><span class="params">(<span class="keyword">char</span>[] matrix, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">char</span>[] str)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 参数校验</span></span><br><span class="line">        <span class="keyword">if</span> (matrix == <span class="keyword">null</span> || matrix.length != rows * cols || str == <span class="keyword">null</span> || str.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 变量初始化</span></span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows * cols];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; visited.length; i++) &#123;</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录结果的数组，</span></span><br><span class="line">        <span class="keyword">int</span> pathLength = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 以每一个点为起始进行搜索</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cols; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (hasPathCore(matrix, rows, cols, str, visited, i, j, pathLength)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 回溯搜索算法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> matrix     输入矩阵</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rows       矩阵行数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cols       矩阵列数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str        要搜索的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> visited    访问标记数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> row        当前处理的行号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> col        当前处理的列号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pathLength 已经处理的str中字符个数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否找到 true是，false否</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasPathCore</span><span class="params">(<span class="keyword">char</span>[] matrix, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">char</span>[] str, <span class="keyword">boolean</span>[] visited,</span></span></span><br><span class="line"><span class="function"><span class="params">                                       <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> pathLength)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (pathLength == str.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> hasPath = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 前面两个条件判断位置是否合法</span></span><br><span class="line">        <span class="comment">//第三个条件判断矩阵位置的当前字符是否与字符串中对应位置的字符一致</span></span><br><span class="line">        <span class="comment">//第四个条件是重点，我们要看这个矩阵位置上的字符是否已经被访问过。</span></span><br><span class="line">        <span class="keyword">if</span> (row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows</span><br><span class="line">                &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols</span><br><span class="line">                &amp;&amp; matrix[row * cols + col] == str[pathLength]</span><br><span class="line">                &amp;&amp; !visited[row * cols + col]) &#123;</span><br><span class="line">            <span class="comment">//跑到这里说明当前矩阵中的字符与字符串对应位置的字符一致，那么我们就把visit状态置为true,但是此时并不能说明就一定成功，还要看后面的字符能不能满足，</span></span><br><span class="line">            <span class="comment">//一旦不满足还要重新置回false.</span></span><br><span class="line">            visited[row * cols + col] = <span class="keyword">true</span>;</span><br><span class="line">            pathLength++;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 按左上右下进行回溯</span></span><br><span class="line">            hasPath = hasPathCore(matrix, rows, cols, str, visited, row, col - <span class="number">1</span>, pathLength)</span><br><span class="line">                    || hasPathCore(matrix, rows, cols, str, visited, row - <span class="number">1</span>, col, pathLength)</span><br><span class="line">                    || hasPathCore(matrix, rows, cols, str, visited, row, col + <span class="number">1</span>, pathLength)</span><br><span class="line">                    || hasPathCore(matrix, rows, cols, str, visited, row + <span class="number">1</span>, col, pathLength);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!hasPath) &#123;</span><br><span class="line">                <span class="comment">//程序执行到了这里就说明当前这个点已经走不通了，需要把它的visit状态重新置回false.</span></span><br><span class="line">                pathLength--;</span><br><span class="line">                visited[row * cols + col] = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> hasPath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/15/剑指offer011-旋转数组的最小数字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/15/剑指offer011-旋转数组的最小数字/" class="post-title-link" itemprop="url">剑指offer011 旋转数组的最小数字</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-15 17:28:38 / Modified: 18:05:47" itemprop="dateCreated datePublished" datetime="2020-01-15T17:28:38-05:00">2020-01-15</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/15/剑指offer011-旋转数组的最小数字/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/15/剑指offer011-旋转数组的最小数字/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。</p>
+<p> <img src="/images/CYC/CYC2018_011.png" alt></p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>此时问题的关键在于确定对半分得到的两个数组哪一个是旋转数组，哪一个是非递减数组。我们很容易知道非递减数组的第一个元素一定小于等于最后一个元素。那么对于初始情况来说，一个是非递减数组和一个旋转数组。其中最小的数肯定在旋转数组中，那么我们每次二分法都扔掉递增数组，只保留旋转数组。同时保证递增数组中最小的数字（也是第一个元素）被留下来。</p>
+<p>通过修改二分查找算法进行求解（l 代表 low，m 代表 mid，h 代表 high）：</p>
+<p>当 nums[m] &lt;= nums[h] 时，表示 [m, h] 区间内的数组是非递减数组，[l, m] 区间内的数组是旋转数组，此时令 h = m；<br>否则 [m + 1, h] 区间内的数组是旋转数组，令 l = m + 1。</p>
+<p>  <img src="/images/CYC/CYC2018_011_02.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minNumberInRotateArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;h)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid=(l+h)/<span class="number">2</span>;</span><br><span class="line">            <span class="comment">//h=mid就是保留下了递增数组中最小的数字</span></span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&lt;=nums[h])&#123;</span><br><span class="line">                h=mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l=mid+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[l];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>做到上面这里核心思路也就完成了，面试官应该也比较满意了，但是解法中还有一点没有考虑到。如果数组元素允许重复，会出现一个特殊的情况：nums[l] == nums[m] == nums[h]，此时无法确定解在哪个区间，需要切换到顺序查找。例如对于数组 {1,1,1,0,1}，l、m 和 h 指向的数都为 1，此时无法知道最小数字 0 在哪个区间。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minNumberInRotateArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">        <span class="keyword">int</span> m = l + (h - l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[l] == nums[m] &amp;&amp; nums[m] == nums[h])</span><br><span class="line">            <span class="keyword">return</span> minNumber(nums, l, h);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[m] &lt;= nums[h])</span><br><span class="line">            h = m;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = m + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[l];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">minNumber</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> l, <span class="keyword">int</span> h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt; h; i++)</span><br><span class="line">        <span class="keyword">if</span> (nums[i] &gt; nums[i + <span class="number">1</span>])</span><br><span class="line">            <span class="keyword">return</span> nums[i + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> nums[l];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer10-4-变态跳台阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/14/剑指offer10-4-变态跳台阶/" class="post-title-link" itemprop="url">剑指offer10.4 变态跳台阶</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-14 21:31:33 / Modified: 21:45:05" itemprop="dateCreated datePublished" datetime="2020-01-14T21:31:33-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer10-4-变态跳台阶/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer10-4-变态跳台阶/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级… 它也可以跳上 n 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>数学推导<br>跳上 n-1 级台阶，可以从 n-2 级跳 1 级上去，也可以从 n-3 级跳 2 级上去…，那么</p>
+<p>f(n-1) = f(n-2) + f(n-3) + … + f(0)<br>同样，跳上 n 级台阶，可以从 n-1 级跳 1 级上去，也可以从 n-2 级跳 2 级上去… ，那么</p>
+<p>f(n) = f(n-1) + f(n-2) + … + f(0)<br>综上可得</p>
+<p>f(n) - f(n-1) = f(n-1)<br>即</p>
+<p>f(n) = 2*f(n-1)<br>所以 f(n) 是一个等比数列</p>
+<h3 id="solution"><a href="#solution" class="headerlink" title="solution:"></a>solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloorII</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>) Math.pow(<span class="number">2</span>, target - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer010-3-跳台阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/14/剑指offer010-3-跳台阶/" class="post-title-link" itemprop="url">剑指offer010_3 跳台阶</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-14 19:50:16 / Modified: 19:51:46" itemprop="dateCreated datePublished" datetime="2020-01-14T19:50:16-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer010-3-跳台阶/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer010-3-跳台阶/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>跳 n 阶台阶，可以先跳 1 阶台阶，再跳 n-1 阶台阶；或者先跳 2 阶台阶，再跳 n-2 阶台阶。而 n-1 和 n-2 阶台阶的跳法可以看成子问题，该问题就又可以转化成斐波那契数列的问题了。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> pre2 = <span class="number">1</span>, pre1 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">        result = pre2 + pre1;</span><br><span class="line">        pre2 = pre1;</span><br><span class="line">        pre1 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer10-2-矩形覆盖/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/14/剑指offer10-2-矩形覆盖/" class="post-title-link" itemprop="url">剑指offer10.2 矩形覆盖</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-14 19:34:09 / Modified: 19:46:37" itemprop="dateCreated datePublished" datetime="2020-01-14T19:34:09-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer10-2-矩形覆盖/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer10-2-矩形覆盖/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>我们可以用 2<em>1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2</em>1 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个问题就是一个地地道道的斐波那契数列的问题，但是因为隐藏的比较深，看题的时候可能第一时间没办法发现这个事实。不过我们可以做到的是看到这个题第一时间反应过来这是一个递归的问题。我们可以轻易发现n=1时只有一种摆法，n=2时只有两种摆法。如果n&gt;2,那么我们考虑整个图形的左上角。如果左上角的矩形是竖着摆的，那么这种情况就是f(n-1).如果左上角的矩形时横着摆的（2<em>1），那么我们可以发现它的下面也必须是一个横着摆的矩形。这样上下两个矩形一起就会拼成一个2</em>2的矩形，那么这种情况就是f(n-2)。鉴于左上角的矩形只有两种摆法情况（横着摆或者竖着摆），所以这个问题就被完全转化成了一个斐波那契数列的问题。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">RectCover</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> pre2 = <span class="number">1</span>, pre1 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = pre2 + pre1;</span><br><span class="line">        pre2 = pre1;</span><br><span class="line">        pre1 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer010-斐波那契数列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -641,703 +1269,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/泛型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/31/泛型/" class="post-title-link" itemprop="url">泛型</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-31 15:18:28 / Modified: 20:15:50" itemprop="dateCreated datePublished" datetime="2019-10-31T15:18:28-04:00">2019-10-31</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/31/泛型/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/泛型/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先通过一个简单的例子看看泛型的基本使用。假如我们要创建一个礼物对象，但是礼物有很多种，可以是电脑，自行车或者是别的乱七八糟的任何东西。那么这个时候我们怎么描述礼物对象中内容呢？好像用object可以，但是每次使用object都要做强制类型转换，如果转换出错甚至要到运行时才能检测出来。那么这种情况我们就应该考虑用泛型来处理</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gift</span>&lt;<span class="title">T</span>&gt; </span>&#123;<span class="comment">//generic</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Double cost;</span><br><span class="line">    <span class="comment">//创建gift的时候确定T的类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Gift</span><span class="params">(T value,Double cost)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">        <span class="keyword">this</span>.cost=cost;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Double <span class="title">getCost</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cost;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GiftGiver</span> </span>&#123;</span><br><span class="line">    Computer computer=<span class="keyword">new</span> Computer();</span><br><span class="line">    <span class="comment">//&lt;&gt;括号里是interface或者class</span></span><br><span class="line">    Gift&lt;Computer&gt; giftToJon=<span class="keyword">new</span> Gift&lt;Computer&gt;(computer,<span class="number">1500</span>d);</span><br><span class="line">    Bicycle bicycle=<span class="keyword">new</span> Bicycle();</span><br><span class="line">    Gift&lt;Bicycle&gt; giftToBob=<span class="keyword">new</span> Gift&lt;Bicycle&gt;(bicycle,<span class="number">500</span>d);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Computer jonGift=giftToBob.getValue();如果不小心对应错了类型，编译器会自动帮我们检查错误。而如果用原始的object强制类型转换则需要等到运行时才能检查到错误</span></span><br><span class="line">    <span class="comment">//Bicycle bobGift=giftToJon.getValue();</span></span><br><span class="line">    Computer jonGift=giftToJon.getValue();</span><br><span class="line">    Bicycle bobGift=giftToBob.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从上面的代码可以看出，我们使用泛型的时候只需要在调用的时候指出泛型类型就可以了。接下来我们看看泛型的特征<br>1.一个类或者接口可以有0或者多个泛型类型<br>2.通常用一个字母来表示泛型类型（编译器当然不在乎你用多个，你可以用Cat,Dog来表示泛型，但是这样可读性会变差。读者会认为泛型里面只能是你写的那个类，但是实际上你用的是泛型）<br>3.带泛型的类型不能保持其原继承关系（下面的例子有讲解）</p>
-<p>4.泛型里面的内容本身可以是某类的子类或者父类<br>例子：</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">T</span> extends Computer&gt; <span class="built_in">or</span> &lt;<span class="built_in">T</span> super Computer&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5.泛型类型会在编译时被擦除（从JVM的视角来看，泛型压根不存在）<br>6.不能实例化类型变量<br>public Pair(){<br>    first=new T();//error<br>    second=new T();//error<br>}</p>
-<p>下面来通过一个例子来解释第三条</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Echo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">echo</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Echo&lt;T&gt; <span class="title">echo</span><span class="params">(Echo&lt;T&gt; value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EchoChamber</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Echo&lt;Number&gt; numberEcho=<span class="keyword">new</span> Echo&lt;&gt;();</span><br><span class="line">        <span class="comment">//Integer 是 Number的子类，所以可以直接传10。但是Echo&lt;Integer&gt;不是Echo&lt;Number&gt;的子类</span></span><br><span class="line">        numberEcho.echo(<span class="number">10</span>);</span><br><span class="line">        numberEcho.echo(<span class="number">10</span>d);</span><br><span class="line">        numberEcho.echo(<span class="number">10f</span>);</span><br><span class="line">        numberEcho.echo(<span class="number">10L</span>);</span><br><span class="line">        <span class="comment">//这里下面四行会报错，can't resolve method 'echo java.Generics.Echo&lt;java.lang.Integer&gt;'</span></span><br><span class="line">        <span class="comment">//原因是numberEcho中泛型类型是&lt;Number&gt;,Integer虽然继承Nunber,但是Echo&lt;Integer&gt;并不继承Echo&lt;Number&gt;</span></span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Integer&gt;());</span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Double&gt;());</span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Float&gt;());</span><br><span class="line">        numberEcho.echo(<span class="keyword">new</span> Echo&lt;Long&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>泛型的这个特征我们把它叫做invariant的。这一点和数组是反着的，数组我们叫covariant.因为我们学数组的时候都知道，如果A继承数组B,那么A类型的数组也可以在多态中替代B类型的数组。无论S与T有什么联系，echo<s>与echo<t>都没有什么联系。</t></s></p>
-<p>在非泛型类中也可以使用泛型方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayAlg</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String middle= ArrayAlg.&lt;String&gt; getMiddle(<span class="string">"John"</span>,<span class="string">"Q."</span>,<span class="string">"Public"</span>);</span><br><span class="line">        System.out.println(middle);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T...a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a[a.length/<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在泛型中，一个泛型类型可以被多个条件约束。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面T可以实现多个接口，但是只能继承一个类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultipleBounds</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span> &amp;<span class="title">Comparable</span>&amp; <span class="title">Serializable</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T number;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MultipleBounds</span><span class="params">(T number)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number=number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getNumber</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在泛型中，泛型类型可以被其他泛型类型约束</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面如果T是String这种没有子类的类型,那么S只能是String</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedGenericTypes</span>&lt;<span class="title">T</span>,<span class="title">S</span> <span class="keyword">extends</span> <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> S subValue;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BoundedGenericTypes</span><span class="params">(T value,S subValue)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">        <span class="keyword">this</span>.subValue=subValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> S <span class="title">getSubValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> subValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里插入一个小考题，下面这段代码会被编译通过吗？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericsAreNotStatic</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T reference;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>答案是不行，因为静态成员是所有类成员公用的，你在这里制定静态成员是泛型的。那么加入我们的对象中一个T取的是String,另一个T取的是Integer,这里就无法确定reference的类型了。</p>
-<p>接下来我们看看泛型特征的第五条，泛型类型会在编译时被擦除。那么我们的java编译器是如何处理泛型的呢？<br>实际上编译器就是帮我们加上了强制类型转换</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RuntimeGenerics</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        RuntimeGenerics&lt;Number&gt; runtimeGenericNumber=<span class="keyword">new</span> RuntimeGenerics&lt;Number&gt;(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">//compiler inserts the following</span></span><br><span class="line">        <span class="comment">//Number numberValue=(Number) runtimeGenericNumber.getValue();</span></span><br><span class="line">        Number numberValue=runtimeGenericNumber.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RuntimeGenerics</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由于泛型类型会在编译时被擦除，那么我们可以得到以下几条结论<br>1.泛型类型的尖括号里不能是基础数据类型（不能在运行时将基础数据类型转换为其autobox后的类型）<br>2.不能用instance of 来对泛型进行类型检查（instance of 是运行时进行检查）<br>顺带提一下，getClass总是返回原始类型。例如：<br>Pair<string> stringPair=…<br>Pair<empolyee> empolyeePair=…;<br>if(stringPair.getClass()==employeePair.getClass())//they are equal<br>比较的结果是true,因为getClass只返回原始类型Pair<br>3.不能抛出或捕获泛型类的实例（原因同上）<br>4.不能使用带泛型类型的array(前面提过，array是covariant,generic type是invariant的)</empolyee></string></p>
-<p>接下来我们看看泛型的继承</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClass</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GenericClass</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//extends GenericClass&lt;T&gt;这个&lt;T&gt;一定不能少，否则编译器将用object取代T</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubGenericClass</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">GenericClass</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SubGenericClass</span><span class="params">(T value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="keyword">super</span>.getValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来我们来聊java泛型中的重点，通配符。<br>我们还是先来看一个例子来看看没有通配符会发生什么。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GiftPrinter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Gift&lt;Computer&gt; computerGift=<span class="keyword">new</span> Gift&lt;&gt;(<span class="keyword">new</span> Computer(),<span class="number">1500</span>d);</span><br><span class="line">        GiftPrinter printer=<span class="keyword">new</span> GiftPrinter();</span><br><span class="line">        <span class="comment">//编译器报错：print Gift&lt;Object&gt; can't be applied to Gift&lt;Computer&gt;</span></span><br><span class="line">        <span class="comment">//虽然Gift 继承自Object,但是显然编译器并不认为Gift&lt;Computer&gt;与Gift&lt;Object&gt;有任何关系</span></span><br><span class="line">        printer.print(computerGift);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Gift&lt;Object&gt; gift)</span></span>&#123;</span><br><span class="line">        System.out.printf(<span class="string">"%s%n"</span>,gift);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么这个时候通配符的作用就出现了，我们用通配符重写print方法<br>public void print(Gift&lt;?&gt; gift){<br>    System.out.printf(“%s,%n”,gift);<br>}<br>通配符的意思是说我不管你Gift&lt;&gt;尖括号里装什么东西，编译器你都让它通过。</p>
-<p>关于通配符有下面一点要注意：<br>通配符只能用于实例上（不能用于class或者method）<br>比如，我们不能写 public Class Type<?>,public <?> void methodName()<br>而这样写就是可以的：public void methodName(Gift&lt;?&gt; gift)</p>
-<p>上面的例子中通配符是没有限定条件的，但是我们也可以给通配符加上限定条件，请看下面代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedWildCard</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subClasses</span><span class="params">(Gift&lt;? extends Number&gt; gift)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">superClasses</span><span class="params">(Gift&lt;? <span class="keyword">super</span> Integer&gt; gift)</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/剑指offer004-逆向打印链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/31/剑指offer004-逆向打印链表/" class="post-title-link" itemprop="url">剑指offer004 逆向打印链表</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-31 13:19:36 / Modified: 13:43:18" itemprop="dateCreated datePublished" datetime="2019-10-31T13:19:36-04:00">2019-10-31</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/31/剑指offer004-逆向打印链表/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/剑指offer004-逆向打印链表/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>从尾到头反过来打印出链表中每个结点的值。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>所有逆序的操作都应该想到 stack 这个先进后出的数据结构</p>
-<p>1.建立一个辅助栈 stack 和一个存储结构 ArrayList<br>2.将 原来链表中的值 一个个 push到 stack中<br>3.将 stack中存储的值 一个个 pop 到 ArrayList</p>
-<p>  <img src="/images/CYC/CYC2018_005.gif" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_004</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.add(listNode.val);</span><br><span class="line">            listNode = listNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty())</span><br><span class="line">            ret.add(stack.pop());</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/剑指offer003-替换空格/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/31/剑指offer003-替换空格/" class="post-title-link" itemprop="url">剑指offer003 替换空格</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-31 13:13:00 / Modified: 13:15:59" itemprop="dateCreated datePublished" datetime="2019-10-31T13:13:00-04:00">2019-10-31</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/31/剑指offer003-替换空格/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/剑指offer003-替换空格/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>将一个字符串中的空格替换成 “%20”。<br>只能在当前字符串内进行操作，不允许新建字符串。</p>
-<p>Input:<br>“A B”</p>
-<p>Output:<br>“A%20B”</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），因此当遍历到一个空格时，需要在尾部填充两个任意字符。</p>
-<p>令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置。P1 和 P2 从后向前遍历，当 P1 遍历到一个空格时，就需要令 P2 指向的位置依次填充 02%（注意是逆序的），否则就填充上 P1 指向字符的值。</p>
-<p>从后向前遍是为了在改变 P2 所指向的内容时，不会影响到 P1 遍历原来字符串的内容。</p>
-<p>  <img src="/images/CYC/CYC2018_003.gif" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_003</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">replaceSpace</span><span class="params">(StringBuffer str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> P1 = str.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= P1; i++)</span><br><span class="line">            <span class="keyword">if</span> (str.charAt(i) == <span class="string">' '</span>)</span><br><span class="line">                str.append(<span class="string">"  "</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> P2 = str.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (P1 &gt;= <span class="number">0</span> &amp;&amp; P2 &gt; P1) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = str.charAt(P1--);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">' '</span>) &#123;</span><br><span class="line">                str.setCharAt(P2--, <span class="string">'0'</span>);</span><br><span class="line">                str.setCharAt(P2--, <span class="string">'2'</span>);</span><br><span class="line">                str.setCharAt(P2--, <span class="string">'%'</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                str.setCharAt(P2--, c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/数据链路层/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/30/数据链路层/" class="post-title-link" itemprop="url">数据链路层</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-30 19:48:11" itemprop="dateCreated datePublished" datetime="2019-10-30T19:48:11-04:00">2019-10-30</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-19 14:08:59" itemprop="dateModified" datetime="2019-11-19T14:08:59-05:00">2019-11-19</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/30/数据链路层/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/数据链路层/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h4><p><img src="/images/IAP/CSMA.png" alt></p>
-<p>为什么要有CSMA/CD？<br>CSMA/CD就是解决在有多个主机占据同一条信道的情况下如何来分配信道资源的问题。在CSMA/CD这个协议下，站点在发送数据之前需要先监听信道。如果信道空闲，站点就可以发送数据；如果信道忙，则站点不能发送数据。</p>
-<p>CSMA/CD 表示载波监听多点接入 / 碰撞检测。</p>
-<p>多点接入 ：说明这是总线型网络，许多主机以多点的方式连接到总线上。<br>载波监听 ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。<br>碰撞检测 ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发生碰撞。<br>记端到端的传播时延为 τ，最先发送的站点最多经过 2τ 就可以知道是否发生了碰撞，称 2τ 为 争用期 。只有经过争用期之后还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
-<p>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用 截断二进制指数退避算法 来确定。从离散的整数集合 {0, 1, .., (2k-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。</p>
-<h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><p>MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。</p>
-<p>一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。</p>
-<h4 id="虚拟局域网（VLAN）"><a href="#虚拟局域网（VLAN）" class="headerlink" title="虚拟局域网（VLAN）"></a>虚拟局域网（VLAN）</h4><p>虚拟局域网可以建立与物理位置无关的逻辑组，只有在同一个虚拟局域网中的成员才会收到链路层广播信息。</p>
-<p>例如下图中 (A1, A2, A3, A4) 属于一个虚拟局域网，A1 发送的广播会被 A2、A3、A4 收到，而其它站点收不到。</p>
-<p>使用 VLAN 干线连接来建立虚拟局域网，每台交换机上的一个特殊接口被设置为干线接口，以互连 VLAN 交换机。IEEE 定义了一种扩展的以太网帧格式 802.1Q，它在标准以太网帧上加进了 4 字节首部 VLAN 标签，用于表示该帧属于哪一个虚拟局域网。</p>
-<p><img src="/images/IAP/VLAN.png" alt></p>
-<h4 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h4><p>首先明确，ARP协议解决的是局域网内如何通过IP地址得到MAC地址的问题。</p>
-<p><img src="/images/IAP/ARP1.png" alt></p>
-<p>那么ARP的流程是怎么样的呢？</p>
-<p><img src="/images/IAP/ARP2.png" alt></p>
-<p><img src="/images/IAP/ARP6.png" alt></p>
-<p>ARP Request，Reply里面packet里面的内容是什么？</p>
-<p><img src="/images/IAP/ARP3.png" alt></p>
-<p><img src="/images/IAP/ARP4.png" alt></p>
-<h4 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h4>
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/子网划分/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/30/子网划分/" class="post-title-link" itemprop="url">子网划分</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-30 19:08:38 / Modified: 20:14:37" itemprop="dateCreated datePublished" datetime="2019-10-30T19:08:38-04:00">2019-10-30</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/30/子网划分/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/子网划分/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="五类IP地址"><a href="#五类IP地址" class="headerlink" title="五类IP地址"></a>五类IP地址</h4><p><img src="/images/IAP/5Class.png" alt></p>
-<p>这里面五类地址里面A,B,C类地址的范围以及它们分别能用的主机地址位数要记住，笔试出题很可能会只给地址类型，然后让你根据该地址类型以及主机数量进行子网划分。</p>
-<h4 id="无分类编址"><a href="#无分类编址" class="headerlink" title="无分类编址"></a>无分类编址</h4><p>无分类编址 CIDR 消除了传统 A 类、B 类和 C 类地址以及划分子网的概念，使用网络前缀和主机号来对 IP 地址进行编码，网络前缀的长度可以根据需要变化。</p>
-<p>IP 地址 ::= {&lt; 网络前缀号 &gt;, &lt; 主机号 &gt;}</p>
-<p>CIDR 的记法上采用在 IP 地址后面加上网络前缀长度的方法，例如 128.14.35.7/20 表示前 20 位为网络前缀。</p>
-<p>CIDR 的地址掩码可以继续称为子网掩码，子网掩码首 1 长度为网络前缀的长度。</p>
-<p>一个 CIDR 地址块中有很多地址，一个 CIDR 表示的网络就可以表示原来的很多个网络，并且在路由表中只需要一个路由就可以代替原来的多个路由，减少了路由表项的数量。把这种通过使用网络前缀来减少路由表项的方式称为路由聚合，也称为 构成超网 。</p>
-<p>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</p>
-<h4 id="子网划分规则"><a href="#子网划分规则" class="headerlink" title="子网划分规则"></a>子网划分规则</h4><p><img src="/images/IAP/subnet.png" alt></p>
-<p>通过在主机号字段中拿一部分作为子网号，把两级 IP 地址划分为三级 IP 地址。</p>
-<p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</p>
-<p>要使用子网，必须配置子网掩码。一个 B 类地址的默认子网掩码为 255.255.0.0，如果 B 类地址的子网占两个比特，那么子网掩码为 11111111 11111111 11000000 00000000，也就是 255.255.192.0。</p>
-<p>注意，外部网络看不到子网的存在。</p>
-<h4 id="子网例题"><a href="#子网例题" class="headerlink" title="子网例题"></a>子网例题</h4><p>例题1:欲将B类IP地址168.195.0.0划分成27个子网。（方法一、利用子网数来计算）</p>
-<p>公式：2^n-2≥x，其中x为所需的子网数，n为所需借的子网位数。<br>168.195.00000000.00000000<br>从原来的主机部分开始，从前向后借子网位。<br>该例中需27个子网，按公式，需借5位，可划分出如下子网：<br>168.195.00000 000.00000000<br>168.195.00001 000.00000000<br>168.195.00010 000.00000000<br>……<br>168.195.11110 000.00000000<br>168.195.11111 000.00000000<br>共2^5=32个子网，其中有效子网30个，掩码均为/21。</p>
-<p>例题2:如需将某C类地址划分20个子网，问第三个有效子网的网络地址、主机地址范围和广播地址？</p>
-<p>解决步骤：<br>  1、需20个子网，则需子网位为5，剩余主机位为3，子网的大小为8。<br>  2、8*3=24，则第三个有效子网的地址为24/29。（第一问）这个29=24+5<br>  3、24+8=32，下一个子网的地址为32/29。<br>  4、广播地址为后一个子网的网络地址减1，为31。（第三问）<br>  5、主机地址范围为25至30。</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/计算机网络基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/30/计算机网络基础/" class="post-title-link" itemprop="url">计算机网络基础</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-30 18:57:52 / Modified: 19:02:49" itemprop="dateCreated datePublished" datetime="2019-10-30T18:57:52-04:00">2019-10-30</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/30/计算机网络基础/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/计算机网络基础/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="主机间的通信方式（两类）"><a href="#主机间的通信方式（两类）" class="headerlink" title="主机间的通信方式（两类）"></a>主机间的通信方式（两类）</h4><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。<br>对等（P2P）：不区分客户和服务器</p>
-<h4 id="主机A与主机B如何通过internet相连？"><a href="#主机A与主机B如何通过internet相连？" class="headerlink" title="主机A与主机B如何通过internet相连？"></a>主机A与主机B如何通过internet相连？</h4><p><img src="/images/IAP/ISP.png" alt></p>
-<p>ISP: interconnected internet service providers</p>
-<h4 id="如何将域名转换为IP地址？"><a href="#如何将域名转换为IP地址？" class="headerlink" title="如何将域名转换为IP地址？"></a>如何将域名转换为IP地址？</h4><p>首先，我们把域名转换为ip地址的软件系统叫做域名服务器，所有来自浏览器的文档请求都被发送到最近的域名服务器。该域名服务器将尝试将完全限定域名转换为IP地址。如果可以，则进行转换。否则，该服务器将这个完全限定域名发送给另外的域名服务器来实现转换操作。</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1390,7 +1321,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
