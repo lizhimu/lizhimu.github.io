@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="google-site-verification" content="uglbUjTKLMNifql_It56YaxhKHDgfX4bdc5vy5CnkmM" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <meta name="google-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="创建表CREATE TABLE mytable ( int 类型，不为空，自增  id INT NOT NULL AUTO_INCREMENT, int 类型，不可为空，默认值为 1，不为空  col1 INT NOT NULL DEFAULT 1, 变长字符串类型，最长为 45 个字符，可以为空  col2 VARCHAR(45) NULL, 日期类型，可为空  col3 DATE NULL,">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基本操作">
+<meta property="og:url" content="https://lizhimu.github.io/2020/02/20/数据库基本操作/index.html">
+<meta property="og:site_name" content="Moon River&#39;s Blog">
+<meta property="og:description" content="创建表CREATE TABLE mytable ( int 类型，不为空，自增  id INT NOT NULL AUTO_INCREMENT, int 类型，不可为空，默认值为 1，不为空  col1 INT NOT NULL DEFAULT 1, 变长字符串类型，最长为 45 个字符，可以为空  col2 VARCHAR(45) NULL, 日期类型，可为空  col3 DATE NULL,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-20T22:02:21.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库基本操作">
+<meta name="twitter:description" content="创建表CREATE TABLE mytable ( int 类型，不为空，自增  id INT NOT NULL AUTO_INCREMENT, int 类型，不可为空，默认值为 1，不为空  col1 INT NOT NULL DEFAULT 1, 变长字符串类型，最长为 45 个字符，可以为空  col2 VARCHAR(45) NULL, 日期类型，可为空  col3 DATE NULL,">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/02/20/数据库基本操作/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>数据库基本操作 | Moon River's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Moon River's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/20/数据库基本操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">数据库基本操作
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-20 15:23:43 / Modified: 17:02:21" itemprop="dateCreated datePublished" datetime="2020-02-20T15:23:43-05:00">2020-02-20</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/20/数据库基本操作/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/20/数据库基本操作/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><p>CREATE TABLE mytable (</p>
+<h1 id="int-类型，不为空，自增"><a href="#int-类型，不为空，自增" class="headerlink" title="int 类型，不为空，自增"></a>int 类型，不为空，自增</h1><p>  id INT NOT NULL AUTO_INCREMENT,</p>
+<h1 id="int-类型，不可为空，默认值为-1，不为空"><a href="#int-类型，不可为空，默认值为-1，不为空" class="headerlink" title="int 类型，不可为空，默认值为 1，不为空"></a>int 类型，不可为空，默认值为 1，不为空</h1><p>  col1 INT NOT NULL DEFAULT 1,</p>
+<h1 id="变长字符串类型，最长为-45-个字符，可以为空"><a href="#变长字符串类型，最长为-45-个字符，可以为空" class="headerlink" title="变长字符串类型，最长为 45 个字符，可以为空"></a>变长字符串类型，最长为 45 个字符，可以为空</h1><p>  col2 VARCHAR(45) NULL,</p>
+<h1 id="日期类型，可为空"><a href="#日期类型，可为空" class="headerlink" title="日期类型，可为空"></a>日期类型，可为空</h1><p>  col3 DATE NULL,</p>
+<h1 id="设置主键为-id"><a href="#设置主键为-id" class="headerlink" title="设置主键为 id"></a>设置主键为 id</h1><p>  PRIMARY KEY (<code>id</code>));</p>
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><p>添加列</p>
+<p>ALTER TABLE mytable<br>ADD col CHAR(20);<br>删除列</p>
+<p>ALTER TABLE mytable<br>DROP COLUMN col;<br>删除表</p>
+<p>DROP TABLE mytable;</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>普通插入</p>
+<p>INSERT INTO mytable(col1, col2)<br>VALUES(val1, val2);</p>
+<p>插入检索出来的数据</p>
+<p>INSERT INTO mytable1(col1, col2)<br>SELECT col1, col2<br>FROM mytable2;<br>将一个表的内容插入到一个新表</p>
+<p>CREATE TABLE newtable AS<br>SELECT * FROM mytable;</p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>UPDATE mytable<br>SET col = val<br>WHERE id = 1;</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>DELETE FROM mytable<br>WHERE id = 1;</p>
+<p>TRUNCATE TABLE 可以清空表，也就是删除所有行。</p>
+<p>TRUNCATE TABLE mytable;</p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>DISTINCT<br>相同值只会出现一次。它作用于所有列，也就是说所有列的值都相同才算相同。</p>
+<p>SELECT DISTINCT col1, col2<br>FROM mytable;<br>LIMIT<br>限制返回的行数。可以有两个参数，第一个参数为起始行，从 0 开始；第二个参数为返回的总行数。</p>
+<p>返回前 5 行：</p>
+<p>SELECT *<br>FROM mytable<br>LIMIT 5;<br>SELECT *<br>FROM mytable<br>LIMIT 0, 5;<br>返回第 3 ~ 5 行：</p>
+<p>SELECT *<br>FROM mytable<br>LIMIT 2, 3;</p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>ASC ：升序（默认）<br>DESC ：降序<br>可以按多个列进行排序，并且为每个列指定不同的排序方式：</p>
+<p>SELECT *<br>FROM mytable<br>ORDER BY col1 DESC, col2 ASC;</p>
+<p>先根据col1降序排序，再根据col2升序排序</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>不进行过滤的数据非常大，导致通过网络传输了多余的数据，从而浪费了网络带宽。因此尽量使用 SQL 语句来过滤不必要的数据，而不是传输所有的数据到客户端中然后由客户端进行过滤。</p>
+<p>SELECT *<br>FROM mytable<br>WHERE col IS NULL;<br>下表显示了 WHERE 子句可用的操作符</p>
+<p>操作符    说明<br>=    等于<br>&lt;    小于</p>
+<blockquote>
+<p>   大于<br>&lt;&gt; !=    不等于<br>&lt;= !&gt;    小于等于<br>= !&lt;    大于等于<br>BETWEEN    在两个值之间<br>IS NULL    为 NULL 值<br>应该注意到，NULL 与 0、空字符串都不同。</p>
+</blockquote>
+<p>AND 和 OR 用于连接多个过滤条件。优先处理 AND，当一个过滤表达式涉及到多个 AND 和 OR 时，可以使用 () 来决定优先级，使得优先级关系更清晰。</p>
+<p>IN 操作符用于匹配一组值，其后也可以接一个 SELECT 子句，从而匹配子查询得到的一组值。</p>
+<p>NOT 操作符用于否定一个条件。</p>
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>通配符也是用在过滤语句中，但它只能用于文本字段。</p>
+<p>% 匹配 &gt;=0 个任意字符；</p>
+<p>_ 匹配 ==1 个任意字符；</p>
+<p>[ ] 可以匹配集合内的字符，例如 [ab] 将匹配字符 a 或者 b。用脱字符 ^ 可以对其进行否定，也就是不匹配集合内的字符。</p>
+<p>使用 Like 来进行通配符匹配。</p>
+<p>SELECT *<br>FROM mytable<br>WHERE col LIKE ‘[^AB]%’; – 不以 A 和 B 开头的任意文本<br>不要滥用通配符，通配符位于开头处匹配会非常慢。</p>
+<p><a href="/images/CYC/database004.png"></a><br><a href="/images/CYC/database005.png"></a></p>
+<h4 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h4><p>在数据库服务器上完成数据的转换和格式化的工作往往比客户端上快得多，并且转换和格式化后的数据量更少的话可以减少网络通信量。</p>
+<p>计算字段通常需要使用 AS 来取别名，否则输出的时候字段名为计算表达式。</p>
+<p>SELECT col1 * col2 AS alias<br>FROM mytable;<br>CONCAT() 用于连接两个字段。许多数据库会使用空格把一个值填充为列宽，因此连接的结果会出现一些不必要的空格，使用 TRIM() 可以去除首尾空格。</p>
+<p>SELECT CONCAT(TRIM(col1), ‘(‘, TRIM(col2), ‘)’) AS concat_col<br>FROM mytable;</p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>各个 DBMS 的函数都是不相同的，因此不可移植，以下主要是 MySQL 的函数。</p>
+<p>汇总<br>函 数    说 明<br>AVG()    返回某列的平均值<br>COUNT()    返回某列的行数<br>MAX()    返回某列的最大值<br>MIN()    返回某列的最小值<br>SUM()    返回某列值之和<br>AVG() 会忽略 NULL 行。</p>
+<p>使用 DISTINCT 可以汇总不同的值。</p>
+<p>SELECT AVG(DISTINCT col1) AS avg_col<br>FROM mytable;</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>把具有相同的数据值的行放在同一组中。</p>
+<p>可以对同一分组数据使用汇总函数进行处理，例如求分组数据的平均值等。</p>
+<p>指定的分组字段除了能按该字段进行分组，也会自动按该字段进行排序。</p>
+<p>SELECT col, COUNT(<em>) AS num<br>FROM mytable<br>GROUP BY col;<br><br>GROUP BY 自动按分组字段进行排序，ORDER BY 也可以按汇总字段来进行排序。上面这一行语句打印出来就是col,num的数对，每一个col对应一个统计数据。比如下面这个例子<br><a href="/images/CYC/database_003.png"></a><br><br>SELECT col, COUNT(</em>) AS num<br>FROM mytable<br>GROUP BY col<br>ORDER BY num;<br>WHERE 过滤行，HAVING 过滤分组，行过滤应当先于分组过滤。</p>
+<p>SELECT col, COUNT(*) AS num<br>FROM mytable<br>WHERE col &gt; 2<br>GROUP BY col<br>HAVING num &gt;= 2;<br>分组规定：<br><br>GROUP BY 子句出现在 WHERE 子句之后，ORDER BY 子句之前；<br>除了汇总字段外，SELECT 语句中的每一字段都必须在 GROUP BY 子句中给出；<br>NULL 的行会单独分为一组；<br>大多数 SQL 实现不支持 GROUP BY 列具有可变长度的数据类型。<br>\</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>子查询中只能返回一个字段的数据。<br><br>可以将子查询的结果作为 WHRER 语句的过滤条件：<br>SELECT *<br>FROM mytable1<br>WHERE col1 IN (SELECT col2<br>               FROM mytable2);<br>下面的语句可以检索出客户的订单数量，子查询语句会对第一个查询检索出的每个客户执行一次：<br>SELECT cust_name, (SELECT COUNT(*)<br>                   FROM Orders<br>                   WHERE Orders.cust_id = Customers.cust_id)<br>                   AS orders_num<br>FROM Customers<br>ORDER BY cust_name;</p>
+<p><a href="/images/CYC/database006.png"></a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/02/20/数据库四大范式/" rel="next" title="数据库四大范式">
+                  <i class="fa fa-chevron-left"></i> 数据库四大范式
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          <div id="gitalk-container"></div>
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表"><span class="nav-number">1.</span> <span class="nav-text">创建表</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#int-类型，不为空，自增"><span class="nav-number"></span> <span class="nav-text">int 类型，不为空，自增</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#int-类型，不可为空，默认值为-1，不为空"><span class="nav-number"></span> <span class="nav-text">int 类型，不可为空，默认值为 1，不为空</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变长字符串类型，最长为-45-个字符，可以为空"><span class="nav-number"></span> <span class="nav-text">变长字符串类型，最长为 45 个字符，可以为空</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期类型，可为空"><span class="nav-number"></span> <span class="nav-text">日期类型，可为空</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置主键为-id"><span class="nav-number"></span> <span class="nav-text">设置主键为 id</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表"><span class="nav-number">1.</span> <span class="nav-text">修改表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入"><span class="nav-number">2.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新"><span class="nav-number">3.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询"><span class="nav-number">5.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序"><span class="nav-number">6.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">7.</span> <span class="nav-text">过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符"><span class="nav-number">8.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算字段"><span class="nav-number">9.</span> <span class="nav-text">计算字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">10.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组"><span class="nav-number">11.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询"><span class="nav-number">12.</span> <span class="nav-text">子查询</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="lizhimu">
+  <p class="site-author-name" itemprop="name">lizhimu</p>
+  <div class="site-description" itemprop="description">Open doors don't stay open forever</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lizhimu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iYaCjKe76EXspKgXEH50YAN2-gzGzoHsz',
+    appKey: 'OsdLIhqpy0FwFnq7nvvf8IFD',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

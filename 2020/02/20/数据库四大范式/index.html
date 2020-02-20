@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Moon River&#39;s Blog">
 <meta property="og:description" content="异常（范式理论解决的是什么问题）以下的学生课程关系的函数依赖为 {Sno, Cname} -&amp;gt; {Sname, Sdept, Mname, Grade}，键码为 {Sno, Cname}。也就是说，确定学生和课程之后，就能确定其它信息。 Sno    Sname    Sdept    Mname    Cname    Grade1    学生-1    学院-1    院长-1    课">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-20T17:21:13.421Z">
+<meta property="og:updated_time" content="2020-02-20T19:24:07.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库四大范式">
 <meta name="twitter:description" content="异常（范式理论解决的是什么问题）以下的学生课程关系的函数依赖为 {Sno, Cname} -&amp;gt; {Sname, Sdept, Mname, Grade}，键码为 {Sno, Cname}。也就是说，确定学生和课程之后，就能确定其它信息。 Sno    Sname    Sdept    Mname    Cname    Grade1    学生-1    学院-1    院长-1    课">
@@ -260,7 +260,7 @@
                 
               
 
-              <time title="Created: 2020-02-20 11:09:41 / Modified: 12:21:13" itemprop="dateCreated datePublished" datetime="2020-02-20T11:09:41-05:00">2020-02-20</time>
+              <time title="Created: 2020-02-20 11:09:41 / Modified: 14:24:07" itemprop="dateCreated datePublished" datetime="2020-02-20T11:09:41-05:00">2020-02-20</time>
             </span>
           
             
@@ -330,7 +330,9 @@
 <p>Sno    Sname    Sdept<br>1    学生-1    学院-1<br>2    学生-2    学院-2<br>3    学生-3    学院-2<br>关系-12</p>
 <p>Sdept    Mname<br>学院-1    院长-1<br>学院-2    院长-2</p>
 <p>4.BCNF是3NF的改进形式</p>
-<p>若关系模式R是第一范式，且每个属性都不传递依赖于R的候选键。这种关系模式就是BCNF模式。即在第三范式的基础上，数据库表中如果不存在任何字段对任一候选关键字段的传递函数依赖则符合鲍依斯-科得范式。</p>
+<p>候选键:<br>能够确定全部属性的某个属性或某组属性，称为候选键。若候选键多于一个，则选定其中一个作为主键。</p>
+<p>主属性：<br>包含在任何一个候选键中的属性，叫做主属性(Prime attribute),不包含在任何候选键中的属性称为非主属性或非键属性或非关键字段。</p>
+<p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。BCNF范式排除了任何属性(不光是非主属性，2NF和3NF所限制的都是非主属性)对候选键的传递依赖与部分依赖。</p>
 
     </div>
 
@@ -365,6 +367,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/02/20/数据库基本操作/" rel="prev" title="数据库基本操作">
+                  数据库基本操作 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -434,7 +440,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

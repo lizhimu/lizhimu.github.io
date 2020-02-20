@@ -229,6 +229,163 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/20/数据库基本操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/20/数据库基本操作/" class="post-title-link" itemprop="url">数据库基本操作</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-20 15:23:43 / Modified: 17:02:21" itemprop="dateCreated datePublished" datetime="2020-02-20T15:23:43-05:00">2020-02-20</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/20/数据库基本操作/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/20/数据库基本操作/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><p>CREATE TABLE mytable (</p>
+<h1 id="int-类型，不为空，自增"><a href="#int-类型，不为空，自增" class="headerlink" title="int 类型，不为空，自增"></a>int 类型，不为空，自增</h1><p>  id INT NOT NULL AUTO_INCREMENT,</p>
+<h1 id="int-类型，不可为空，默认值为-1，不为空"><a href="#int-类型，不可为空，默认值为-1，不为空" class="headerlink" title="int 类型，不可为空，默认值为 1，不为空"></a>int 类型，不可为空，默认值为 1，不为空</h1><p>  col1 INT NOT NULL DEFAULT 1,</p>
+<h1 id="变长字符串类型，最长为-45-个字符，可以为空"><a href="#变长字符串类型，最长为-45-个字符，可以为空" class="headerlink" title="变长字符串类型，最长为 45 个字符，可以为空"></a>变长字符串类型，最长为 45 个字符，可以为空</h1><p>  col2 VARCHAR(45) NULL,</p>
+<h1 id="日期类型，可为空"><a href="#日期类型，可为空" class="headerlink" title="日期类型，可为空"></a>日期类型，可为空</h1><p>  col3 DATE NULL,</p>
+<h1 id="设置主键为-id"><a href="#设置主键为-id" class="headerlink" title="设置主键为 id"></a>设置主键为 id</h1><p>  PRIMARY KEY (<code>id</code>));</p>
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><p>添加列</p>
+<p>ALTER TABLE mytable<br>ADD col CHAR(20);<br>删除列</p>
+<p>ALTER TABLE mytable<br>DROP COLUMN col;<br>删除表</p>
+<p>DROP TABLE mytable;</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>普通插入</p>
+<p>INSERT INTO mytable(col1, col2)<br>VALUES(val1, val2);</p>
+<p>插入检索出来的数据</p>
+<p>INSERT INTO mytable1(col1, col2)<br>SELECT col1, col2<br>FROM mytable2;<br>将一个表的内容插入到一个新表</p>
+<p>CREATE TABLE newtable AS<br>SELECT * FROM mytable;</p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>UPDATE mytable<br>SET col = val<br>WHERE id = 1;</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>DELETE FROM mytable<br>WHERE id = 1;</p>
+<p>TRUNCATE TABLE 可以清空表，也就是删除所有行。</p>
+<p>TRUNCATE TABLE mytable;</p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>DISTINCT<br>相同值只会出现一次。它作用于所有列，也就是说所有列的值都相同才算相同。</p>
+<p>SELECT DISTINCT col1, col2<br>FROM mytable;<br>LIMIT<br>限制返回的行数。可以有两个参数，第一个参数为起始行，从 0 开始；第二个参数为返回的总行数。</p>
+<p>返回前 5 行：</p>
+<p>SELECT *<br>FROM mytable<br>LIMIT 5;<br>SELECT *<br>FROM mytable<br>LIMIT 0, 5;<br>返回第 3 ~ 5 行：</p>
+<p>SELECT *<br>FROM mytable<br>LIMIT 2, 3;</p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>ASC ：升序（默认）<br>DESC ：降序<br>可以按多个列进行排序，并且为每个列指定不同的排序方式：</p>
+<p>SELECT *<br>FROM mytable<br>ORDER BY col1 DESC, col2 ASC;</p>
+<p>先根据col1降序排序，再根据col2升序排序</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>不进行过滤的数据非常大，导致通过网络传输了多余的数据，从而浪费了网络带宽。因此尽量使用 SQL 语句来过滤不必要的数据，而不是传输所有的数据到客户端中然后由客户端进行过滤。</p>
+<p>SELECT *<br>FROM mytable<br>WHERE col IS NULL;<br>下表显示了 WHERE 子句可用的操作符</p>
+<p>操作符    说明<br>=    等于<br>&lt;    小于</p>
+<blockquote>
+<p>   大于<br>&lt;&gt; !=    不等于<br>&lt;= !&gt;    小于等于<br>= !&lt;    大于等于<br>BETWEEN    在两个值之间<br>IS NULL    为 NULL 值<br>应该注意到，NULL 与 0、空字符串都不同。</p>
+</blockquote>
+<p>AND 和 OR 用于连接多个过滤条件。优先处理 AND，当一个过滤表达式涉及到多个 AND 和 OR 时，可以使用 () 来决定优先级，使得优先级关系更清晰。</p>
+<p>IN 操作符用于匹配一组值，其后也可以接一个 SELECT 子句，从而匹配子查询得到的一组值。</p>
+<p>NOT 操作符用于否定一个条件。</p>
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>通配符也是用在过滤语句中，但它只能用于文本字段。</p>
+<p>% 匹配 &gt;=0 个任意字符；</p>
+<p>_ 匹配 ==1 个任意字符；</p>
+<p>[ ] 可以匹配集合内的字符，例如 [ab] 将匹配字符 a 或者 b。用脱字符 ^ 可以对其进行否定，也就是不匹配集合内的字符。</p>
+<p>使用 Like 来进行通配符匹配。</p>
+<p>SELECT *<br>FROM mytable<br>WHERE col LIKE ‘[^AB]%’; – 不以 A 和 B 开头的任意文本<br>不要滥用通配符，通配符位于开头处匹配会非常慢。</p>
+<p><a href="/images/CYC/database004.png"></a><br><a href="/images/CYC/database005.png"></a></p>
+<h4 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h4><p>在数据库服务器上完成数据的转换和格式化的工作往往比客户端上快得多，并且转换和格式化后的数据量更少的话可以减少网络通信量。</p>
+<p>计算字段通常需要使用 AS 来取别名，否则输出的时候字段名为计算表达式。</p>
+<p>SELECT col1 * col2 AS alias<br>FROM mytable;<br>CONCAT() 用于连接两个字段。许多数据库会使用空格把一个值填充为列宽，因此连接的结果会出现一些不必要的空格，使用 TRIM() 可以去除首尾空格。</p>
+<p>SELECT CONCAT(TRIM(col1), ‘(‘, TRIM(col2), ‘)’) AS concat_col<br>FROM mytable;</p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>各个 DBMS 的函数都是不相同的，因此不可移植，以下主要是 MySQL 的函数。</p>
+<p>汇总<br>函 数    说 明<br>AVG()    返回某列的平均值<br>COUNT()    返回某列的行数<br>MAX()    返回某列的最大值<br>MIN()    返回某列的最小值<br>SUM()    返回某列值之和<br>AVG() 会忽略 NULL 行。</p>
+<p>使用 DISTINCT 可以汇总不同的值。</p>
+<p>SELECT AVG(DISTINCT col1) AS avg_col<br>FROM mytable;</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>把具有相同的数据值的行放在同一组中。</p>
+<p>可以对同一分组数据使用汇总函数进行处理，例如求分组数据的平均值等。</p>
+<p>指定的分组字段除了能按该字段进行分组，也会自动按该字段进行排序。</p>
+<p>SELECT col, COUNT(<em>) AS num<br>FROM mytable<br>GROUP BY col;<br><br>GROUP BY 自动按分组字段进行排序，ORDER BY 也可以按汇总字段来进行排序。上面这一行语句打印出来就是col,num的数对，每一个col对应一个统计数据。比如下面这个例子<br><a href="/images/CYC/database_003.png"></a><br><br>SELECT col, COUNT(</em>) AS num<br>FROM mytable<br>GROUP BY col<br>ORDER BY num;<br>WHERE 过滤行，HAVING 过滤分组，行过滤应当先于分组过滤。</p>
+<p>SELECT col, COUNT(*) AS num<br>FROM mytable<br>WHERE col &gt; 2<br>GROUP BY col<br>HAVING num &gt;= 2;<br>分组规定：<br><br>GROUP BY 子句出现在 WHERE 子句之后，ORDER BY 子句之前；<br>除了汇总字段外，SELECT 语句中的每一字段都必须在 GROUP BY 子句中给出；<br>NULL 的行会单独分为一组；<br>大多数 SQL 实现不支持 GROUP BY 列具有可变长度的数据类型。<br>\</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>子查询中只能返回一个字段的数据。<br><br>可以将子查询的结果作为 WHRER 语句的过滤条件：<br>SELECT *<br>FROM mytable1<br>WHERE col1 IN (SELECT col2<br>               FROM mytable2);<br>下面的语句可以检索出客户的订单数量，子查询语句会对第一个查询检索出的每个客户执行一次：<br>SELECT cust_name, (SELECT COUNT(*)<br>                   FROM Orders<br>                   WHERE Orders.cust_id = Customers.cust_id)<br>                   AS orders_num<br>FROM Customers<br>ORDER BY cust_name;</p>
+<p><a href="/images/CYC/database006.png"></a></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/20/数据库四大范式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -258,7 +415,7 @@
                 
               
 
-              <time title="Created: 2020-02-20 11:09:41 / Modified: 12:21:13" itemprop="dateCreated datePublished" datetime="2020-02-20T11:09:41-05:00">2020-02-20</time>
+              <time title="Created: 2020-02-20 11:09:41 / Modified: 14:24:07" itemprop="dateCreated datePublished" datetime="2020-02-20T11:09:41-05:00">2020-02-20</time>
             </span>
           
             
@@ -328,7 +485,9 @@
 <p>Sno    Sname    Sdept<br>1    学生-1    学院-1<br>2    学生-2    学院-2<br>3    学生-3    学院-2<br>关系-12</p>
 <p>Sdept    Mname<br>学院-1    院长-1<br>学院-2    院长-2</p>
 <p>4.BCNF是3NF的改进形式</p>
-<p>若关系模式R是第一范式，且每个属性都不传递依赖于R的候选键。这种关系模式就是BCNF模式。即在第三范式的基础上，数据库表中如果不存在任何字段对任一候选关键字段的传递函数依赖则符合鲍依斯-科得范式。</p>
+<p>候选键:<br>能够确定全部属性的某个属性或某组属性，称为候选键。若候选键多于一个，则选定其中一个作为主键。</p>
+<p>主属性：<br>包含在任何一个候选键中的属性，叫做主属性(Prime attribute),不包含在任何候选键中的属性称为非主属性或非键属性或非关键字段。</p>
+<p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。BCNF范式排除了任何属性(不光是非主属性，2NF和3NF所限制的都是非主属性)对候选键的传递依赖与部分依赖。</p>
 
         
       
@@ -1225,110 +1384,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/11/剑指offer036二叉搜索树与双向链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/11/剑指offer036二叉搜索树与双向链表/" class="post-title-link" itemprop="url">剑指offer036二叉搜索树与双向链表</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-11 16:36:35 / Modified: 16:38:25" itemprop="dateCreated datePublished" datetime="2020-02-11T16:36:35-05:00">2020-02-11</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/11/剑指offer036二叉搜索树与双向链表/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/11/剑指offer036二叉搜索树与双向链表/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目实际上只是要我们在原来的树上添加一些边。举个简单的例子，二叉搜索树叶子节点本来左右子树都是null,经过算法处理后现在左应该指向小于它的最大元素，右子树现在应该指向大于它的最小元素。</p>
-<p>解题思路：<br>1.将左子树构造成双链表，并返回链表头节点。<br>2.定位至左子树双链表最后一个节点。<br>3.如果左子树链表不为空的话，将当前root追加到左子树链表。<br>4.将右子树构造成双链表，并返回链表头节点。<br>5.如果右子树链表不为空的话，将该链表追加到root节点之后。<br>6.根据左子树链表是否为空确定返回的节点。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_036</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">Convert</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        <span class="comment">// 1.将左子树构造成双链表，并返回链表头节点</span></span><br><span class="line">        TreeNode left = Convert(root.left);</span><br><span class="line">        TreeNode p = left;</span><br><span class="line">        <span class="comment">// 2.定位至左子树双链表最后一个节点</span></span><br><span class="line">        <span class="keyword">while</span>(p!=<span class="keyword">null</span>&amp;&amp;p.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3.如果左子树链表不为空的话，将当前root追加到左子树链表</span></span><br><span class="line">        <span class="keyword">if</span>(left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            p.right = root;</span><br><span class="line">            root.left = p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 4.将右子树构造成双链表，并返回链表头节点</span></span><br><span class="line">        TreeNode right = Convert(root.right);</span><br><span class="line">        <span class="comment">// 5.如果右子树链表不为空的话，将该链表追加到root节点之后</span></span><br><span class="line">        <span class="keyword">if</span>(right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            right.left = root;</span><br><span class="line">            root.right = right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left!=<span class="keyword">null</span>?left:root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1381,7 +1436,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
