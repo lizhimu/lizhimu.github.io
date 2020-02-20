@@ -65,10 +65,15 @@
 <meta property="og:site_name" content="Moon River&#39;s Blog">
 <meta property="og:description" content="创建表CREATE TABLE mytable (  int 类型，不为空，自增  id INT NOT NULL AUTO_INCREMENT,  int 类型，不可为空，默认值为 1，不为空  col1 INT NOT NULL DEFAULT 1,  变长字符串类型，最长为 45 个字符，可以为空  col2 VARCHAR(45) NULL,  日期类型，可为空  col3 DATE NU">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-20T22:06:55.329Z">
+<meta property="og:image" content="https://lizhimu.github.io/images/CYC/database004.png">
+<meta property="og:image" content="https://lizhimu.github.io/images/CYC/database005.png">
+<meta property="og:image" content="https://lizhimu.github.io/images/CYC/database_003.png">
+<meta property="og:image" content="https://lizhimu.github.io/images/CYC/database006.png">
+<meta property="og:updated_time" content="2020-02-20T22:27:43.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基本操作">
 <meta name="twitter:description" content="创建表CREATE TABLE mytable (  int 类型，不为空，自增  id INT NOT NULL AUTO_INCREMENT,  int 类型，不可为空，默认值为 1，不为空  col1 INT NOT NULL DEFAULT 1,  变长字符串类型，最长为 45 个字符，可以为空  col2 VARCHAR(45) NULL,  日期类型，可为空  col3 DATE NU">
+<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/database004.png">
   <link rel="canonical" href="https://lizhimu.github.io/2020/02/20/数据库基本操作/">
 
 
@@ -260,7 +265,7 @@
                 
               
 
-              <time title="Created: 2020-02-20 15:23:43 / Modified: 17:06:55" itemprop="dateCreated datePublished" datetime="2020-02-20T15:23:43-05:00">2020-02-20</time>
+              <time title="Created: 2020-02-20 15:23:43 / Modified: 17:27:43" itemprop="dateCreated datePublished" datetime="2020-02-20T15:23:43-05:00">2020-02-20</time>
             </span>
           
             
@@ -343,7 +348,7 @@
 <p>[ ] 可以匹配集合内的字符，例如 [ab] 将匹配字符 a 或者 b。用脱字符 ^ 可以对其进行否定，也就是不匹配集合内的字符。</p>
 <p>使用 Like 来进行通配符匹配。</p>
 <p>SELECT *<br>FROM mytable<br>WHERE col LIKE ‘[^AB]%’; – 不以 A 和 B 开头的任意文本<br>不要滥用通配符，通配符位于开头处匹配会非常慢。</p>
-<p><a href="/images/CYC/database004.png"></a><br><a href="/images/CYC/database005.png"></a></p>
+<p><img src="/images/CYC/database004.png" alt><br><img src="/images/CYC/database005.png" alt></p>
 <h4 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h4><p>在数据库服务器上完成数据的转换和格式化的工作往往比客户端上快得多，并且转换和格式化后的数据量更少的话可以减少网络通信量。</p>
 <p>计算字段通常需要使用 AS 来取别名，否则输出的时候字段名为计算表达式。</p>
 <p>SELECT col1 * col2 AS alias<br>FROM mytable;<br>CONCAT() 用于连接两个字段。许多数据库会使用空格把一个值填充为列宽，因此连接的结果会出现一些不必要的空格，使用 TRIM() 可以去除首尾空格。</p>
@@ -355,10 +360,10 @@
 <h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>把具有相同的数据值的行放在同一组中。</p>
 <p>可以对同一分组数据使用汇总函数进行处理，例如求分组数据的平均值等。</p>
 <p>指定的分组字段除了能按该字段进行分组，也会自动按该字段进行排序。</p>
-<p>SELECT col, COUNT(<em>) AS num<br>FROM mytable<br>GROUP BY col;<br><br>GROUP BY 自动按分组字段进行排序，ORDER BY 也可以按汇总字段来进行排序。上面这一行语句打印出来就是col,num的数对，每一个col对应一个统计数据。比如下面这个例子<br><a href="/images/CYC/database_003.png"></a><br><br>SELECT col, COUNT(</em>) AS num<br>FROM mytable<br>GROUP BY col<br>ORDER BY num;<br>WHERE 过滤行，HAVING 过滤分组，行过滤应当先于分组过滤。</p>
+<p>SELECT col, COUNT(<em>) AS num<br>FROM mytable<br>GROUP BY col;<br><br>GROUP BY 自动按分组字段进行排序，ORDER BY 也可以按汇总字段来进行排序。上面这一行语句打印出来就是col,num的数对，每一个col对应一个统计数据。比如下面这个例子<br><img src="/images/CYC/database_003.png" alt><br><br>SELECT col, COUNT(</em>) AS num<br>FROM mytable<br>GROUP BY col<br>ORDER BY num;<br>WHERE 过滤行，HAVING 过滤分组，行过滤应当先于分组过滤。</p>
 <p>SELECT col, COUNT(*) AS num<br>FROM mytable<br>WHERE col &gt; 2<br>GROUP BY col<br>HAVING num &gt;= 2;<br>分组规定：<br>GROUP BY 子句出现在 WHERE 子句之后，ORDER BY 子句之前；<br>除了汇总字段外，SELECT 语句中的每一字段都必须在 GROUP BY 子句中给出；<br>NULL 的行会单独分为一组；<br>大多数 SQL 实现不支持 GROUP BY 列具有可变长度的数据类型。</p>
 <h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>子查询中只能返回一个字段的数据。<br>可以将子查询的结果作为 WHRER 语句的过滤条件：<br>SELECT *<br>FROM mytable1<br>WHERE col1 IN (SELECT col2<br>               FROM mytable2);<br>下面的语句可以检索出客户的订单数量，子查询语句会对第一个查询检索出的每个客户执行一次：<br>SELECT cust_name, (SELECT COUNT(*)<br>                   FROM Orders<br>                   WHERE Orders.cust_id = Customers.cust_id)<br>                   AS orders_num<br>FROM Customers<br>ORDER BY cust_name;</p>
-<p><a href="/images/CYC/database006.png"></a></p>
+<p><img src="/images/CYC/database006.png" alt></p>
 
     </div>
 
