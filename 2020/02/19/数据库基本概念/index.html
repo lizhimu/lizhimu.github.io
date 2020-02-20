@@ -57,20 +57,20 @@
   };
 </script>
 
-  <meta name="description" content="ACIDAtomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预">
+  <meta name="description" content="ACID数据库的四大特性： Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库基本概念">
 <meta property="og:url" content="https://lizhimu.github.io/2020/02/19/数据库基本概念/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="ACIDAtomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预">
+<meta property="og:description" content="ACID数据库的四大特性： Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lizhimu.github.io/images/CYC/database_001.png">
 <meta property="og:image" content="https://lizhimu.github.io/images/CYC/database_002.png">
-<meta property="og:updated_time" content="2020-02-20T06:11:33.810Z">
+<meta property="og:updated_time" content="2020-02-20T16:39:18.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基本概念">
-<meta name="twitter:description" content="ACIDAtomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预">
+<meta name="twitter:description" content="ACID数据库的四大特性： Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料">
 <meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/database_001.png">
   <link rel="canonical" href="https://lizhimu.github.io/2020/02/19/数据库基本概念/">
 
@@ -274,7 +274,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-20 01:11:33" itemprop="dateModified" datetime="2020-02-20T01:11:33-05:00">2020-02-20</time>
+                <time title="Modified: 2020-02-20 11:39:18" itemprop="dateModified" datetime="2020-02-20T11:39:18-05:00">2020-02-20</time>
               </span>
             
           
@@ -317,7 +317,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h4><p>Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。<br>Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设约束、触发器、级联回滚等。<br>Isolation（隔离性）：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括未提交读（Read uncommitted）、提交读（read committed）、可重复读（repeatable read）和串行化（Serializable）。<br>Durability（持久性）：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+        <h4 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h4><p>数据库的四大特性：</p>
+<p>Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。<br>Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设约束、触发器、级联回滚等。<br>Isolation（隔离性）：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括未提交读（Read uncommitted）、提交读（read committed）、可重复读（repeatable read）和串行化（Serializable）。<br>Durability（持久性）：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
 <p>ACID特性之间的关系：<br>只有满足一致性，事务的执行结果才是正确的。<br>在无并发的情况下，事务串行执行，隔离性一定能够满足。此时只要能满足原子性，就一定能满足一致性。<br>在并发的情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。<br>事务满足持久化是为了能应对系统崩溃的情况。</p>
 <p><img src="/images/CYC/database_001.png" alt></p>
 <p>数据库如何解决并发中的一致性问题？</p>
@@ -367,6 +368,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/02/20/数据库四大范式/" rel="prev" title="数据库四大范式">
+                  数据库四大范式 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -436,7 +441,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
