@@ -229,6 +229,211 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/18/剑指offer038按字典序打印字符串的所有排列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/18/剑指offer038按字典序打印字符串的所有排列/" class="post-title-link" itemprop="url">剑指offer038按字典序打印字符串的所有排列</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-18 17:18:47 / Modified: 17:24:39" itemprop="dateCreated datePublished" datetime="2020-02-18T17:18:47-05:00">2020-02-18</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/18/剑指offer038按字典序打印字符串的所有排列/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/剑指offer038按字典序打印字符串的所有排列/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个字符串，按字典序打印出该字符串中字符的所有排列。例如输入字符串 abc，则打印出由字符 a, b, c 所能排列出来的所有字符串 abc, acb, bac, bca, cab 和 cba。</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>对于无重复值的情况：固定第一个字符，递归取得首位后面的各种字符串组合；再把第一个字符与后面每一个字符交换，并同样递归获得首位后面的字符串组合；递归的出口，就是只剩一个字符的时候，递归的循环过程，就是从每个子串的第二个字符开始依次与第一个字符换，然后继续处理子串。对于无重复值的情况：由于全排列就是从第一个数字起，每个数分别与它后面的数字交换，我们先尝试加个这样的判断——如果一个数与后面的数字相同那么这两个数就不交换了。例如abb，第一个数与后面两个数交换得bab，bba。然后abb中第二个数和第三个数相同，就不用交换了。但是对bab，第二个数和第三个数不 同，则需要交换，得到bba。由于这里的bba和开始第一个数与第三个数交换的结果相同了，因此这个方法不行。换种思维，对abb，第一个数a与第二个数b交换得到bab，然后考虑第一个数与第三个数交换，此时由于第三个数等于第二个数， 所以第一个数就不再用与第三个数交换了。再考虑bab，它的第二个数与第三个数交换可以解决bba。此时全排列生成完毕！</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_038</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">Permutation</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">if</span>(str!=<span class="keyword">null</span> &amp;&amp; str.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            PermutationHelper(str.toCharArray(),<span class="number">0</span>,list);</span><br><span class="line">            <span class="comment">//Collections.sort可以直接按字典序打印出字符串的排列，所以我们要做的实际上只是把字符串的全排列放到list里面去就行了</span></span><br><span class="line">            Collections.sort(list);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//i表示用第i位与后面的字符交换</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">PermutationHelper</span><span class="params">(<span class="keyword">char</span>[] chars,<span class="keyword">int</span> i,ArrayList&lt;String&gt; list)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == chars.length-<span class="number">1</span>)&#123;</span><br><span class="line">            list.add(String.valueOf(chars));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            Set&lt;Character&gt; charSet = <span class="keyword">new</span> HashSet&lt;Character&gt;();</span><br><span class="line">            <span class="comment">//用当前字符（下标为i的字符）放在第i位对应的字符串排列总数</span></span><br><span class="line">            charSet.add(chars[i]);</span><br><span class="line">            PermutationHelper(chars,i+<span class="number">1</span>,list);</span><br><span class="line">            <span class="comment">//将第i个字符依次与后面的字符交换放在第i位对应第字符串第排列总数。</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;chars.length;++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!charSet.contains(chars[j]))&#123;</span><br><span class="line">                    charSet.add(chars[j]);</span><br><span class="line">                    swap(chars,i,j);</span><br><span class="line">                    PermutationHelper(chars,i+<span class="number">1</span>,list);</span><br><span class="line">                    swap(chars,j,i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">char</span>[] cs,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> temp = cs[i];</span><br><span class="line">        cs[i] = cs[j];</span><br><span class="line">        cs[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/18/剑指offer037序列化和反序列化二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/18/剑指offer037序列化和反序列化二叉树/" class="post-title-link" itemprop="url">剑指offer037序列化和反序列化二叉树</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-18 17:18:05 / Modified: 17:23:01" itemprop="dateCreated datePublished" datetime="2020-02-18T17:18:05-05:00">2020-02-18</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/18/剑指offer037序列化和反序列化二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/剑指offer037序列化和反序列化二叉树/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>请实现两个函数，分别用来序列化和反序列化二叉树<br>二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存。<br>序列化可以基于先序、中序、后序、层序的二叉树遍历方式来进行修改，序列化的结果是一个字符串，序列化时通过 某种符号表示空节点（#），<br>以 ！ 表示一个结点值的结束（value!）。<br>二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_037</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//这一题我们需要先明确serialze之后表示树的字符串长成什么样子，比如一个最简单的树以1为root，2，3分别为其左右节点的树经过前序遍历的字符串打印出来应该是：1,2,#,#,3,#,#,的</span></span><br><span class="line">        TreeNode t=<span class="keyword">new</span> TreeNode(<span class="number">1</span>);</span><br><span class="line">        t.left=<span class="keyword">new</span> TreeNode(<span class="number">2</span>);</span><br><span class="line">        t.right=<span class="keyword">new</span> TreeNode(<span class="number">3</span>);</span><br><span class="line">        CodingInterview_037 c=<span class="keyword">new</span> CodingInterview_037();</span><br><span class="line">        String s=c.Serialize(t);</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> index=-<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">Serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//通过前序遍历构建二叉树字符串</span></span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            sb.append(<span class="string">"#,"</span>);</span><br><span class="line">            <span class="keyword">return</span> sb.toString();</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(root.val + <span class="string">","</span>);</span><br><span class="line">        sb.append(Serialize(root.left));</span><br><span class="line">        sb.append(Serialize(root.right));</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">Deserialize</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        String[] numberArray=str.split(<span class="string">","</span>);</span><br><span class="line">        TreeNode node=DeserialzieArray(numberArray);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//下面这种解法是错误范例，结合例子很容易就看出来右子树的下标不对，这种情况下我们应该用全局变量来处理，让递归函数自己递增下标。</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    private TreeNode DeserialzieArray(String[] numberArray,int index)&#123;</span></span><br><span class="line"><span class="comment">        if(numberArray[index].equals("#"))&#123;</span></span><br><span class="line"><span class="comment">            return null;</span></span><br><span class="line"><span class="comment">        &#125;else&#123;</span></span><br><span class="line"><span class="comment">            TreeNode node=new TreeNode(Integer.parseInt(numberArray[index]));</span></span><br><span class="line"><span class="comment">            node.left=DeserialzieArray(numberArray,index+1);</span></span><br><span class="line"><span class="comment">            node.right=DeserialzieArray(numberArray,index+2);</span></span><br><span class="line"><span class="comment">            return node;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">//像这种感觉需要返回多个值的递归问题，我们都可以采用全局变量来处理。本题中用全局变量index来追踪index的位置</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">DeserialzieArray</span><span class="params">(String[] numberArray)</span></span>&#123;</span><br><span class="line">        index++;</span><br><span class="line">        <span class="keyword">if</span>(numberArray[index].equals(<span class="string">"#"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            TreeNode node=<span class="keyword">new</span> TreeNode(Integer.parseInt(numberArray[index]));</span><br><span class="line">            node.left=DeserialzieArray(numberArray);</span><br><span class="line">            node.right=DeserialzieArray(numberArray);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/11/剑指offer036二叉搜索树与双向链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1063,210 +1268,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer029包含min函数的栈/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/03/剑指offer029包含min函数的栈/" class="post-title-link" itemprop="url">剑指offer029包含min函数的栈</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-03 12:14:49 / Modified: 12:16:10" itemprop="dateCreated datePublished" datetime="2020-02-03T12:14:49-05:00">2020-02-03</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/03/剑指offer029包含min函数的栈/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer029包含min函数的栈/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目我们要稍微注意一下，找出最小元素的操作可能会进行多次，不是进行一次就结束了。这就意味着我们仅仅用一个整数存最小元素的方案是行不通的，我们要某种数据结构将所有栈中的元素按大小顺序进行保存。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_029</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; dataStack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; minStack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span></span>&#123;</span><br><span class="line">        dataStack.push(node);</span><br><span class="line">        <span class="keyword">if</span>(minStack.isEmpty()||node&lt;minStack.peek())&#123;</span><br><span class="line">            minStack.push(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dataTop=dataStack.peek();</span><br><span class="line">        <span class="keyword">int</span> minTop=minStack.peek();</span><br><span class="line">        dataStack.pop();</span><br><span class="line">        <span class="keyword">if</span>(dataTop==minTop)&#123;</span><br><span class="line">            minStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dataStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">min</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/02/剑指offer028顺时针打印矩阵/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/02/剑指offer028顺时针打印矩阵/" class="post-title-link" itemprop="url">剑指offer028顺时针打印矩阵</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-02 23:27:29 / Modified: 23:37:09" itemprop="dateCreated datePublished" datetime="2020-02-02T23:27:29-05:00">2020-02-02</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/02/剑指offer028顺时针打印矩阵/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/02/剑指offer028顺时针打印矩阵/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这一题总体思路很好定。要顺时针打印矩阵，我们不难发现每次打印的都是矩阵的外框，这个外框每打印一次就往里缩一圈。那么我们用r1,r2来表示外框的行数范围，c1,c2来表示外框的列数范围，然后顺时针进行打印就可以了。需要注意的是特殊情况。如果行数为奇数，那么横着打印的部分在最后一次只有从左到右的一次，而没有从右到左的一次。如果列数为奇数，那么竖着打印的部分在最后一次只有从上到下的那一次。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_028</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> r1 = <span class="number">0</span>, r2 = matrix.length - <span class="number">1</span>, c1 = <span class="number">0</span>, c2 = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (r1 &lt;= r2 &amp;&amp; c1 &lt;= c2) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = c1; i &lt;= c2; i++)</span><br><span class="line">                ret.add(matrix[r1][i]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = r1 + <span class="number">1</span>; i &lt;= r2; i++)</span><br><span class="line">                ret.add(matrix[i][c2]);</span><br><span class="line">            <span class="keyword">if</span> (r1 != r2)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = c2 - <span class="number">1</span>; i &gt;= c1; i--)</span><br><span class="line">                    ret.add(matrix[r2][i]);</span><br><span class="line">            <span class="keyword">if</span> (c1 != c2)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = r2 - <span class="number">1</span>; i &gt; r1; i--)</span><br><span class="line">                    ret.add(matrix[i][c1]);</span><br><span class="line">            r1++; r2--; c1++; c2--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1319,7 +1320,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
