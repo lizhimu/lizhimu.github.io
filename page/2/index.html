@@ -229,7 +229,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/18/剑指offer039找出出现次数超过数组长度一半的数字/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/Leetcode182-Duplicate-Emails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -243,7 +243,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/02/18/剑指offer039找出出现次数超过数组长度一半的数字/" class="post-title-link" itemprop="url">剑指offer039找出出现次数超过数组长度一半的数字</a>
+            <a href="/2020/02/21/Leetcode182-Duplicate-Emails/" class="post-title-link" itemprop="url">Leetcode182 Duplicate Emails</a>
           
         </h1>
 
@@ -258,418 +258,7 @@
                 
               
 
-              <time title="Created: 2020-02-18 17:19:37 / Modified: 17:25:58" itemprop="dateCreated datePublished" datetime="2020-02-18T17:19:37-05:00">2020-02-18</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/18/剑指offer039找出出现次数超过数组长度一半的数字/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/剑指offer039找出出现次数超过数组长度一半的数字/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_039</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    第一种思路是比较正常的思路，用map记录所有数字出现的次数。然后直接进行比较就可以。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">MoreThanHalfNumWithMap_Solution</span><span class="params">(<span class="keyword">int</span> [] array)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer,Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> len =  array.length ;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len ;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(array[i]))&#123;</span><br><span class="line">                <span class="keyword">int</span> count = map.get(array[i]);</span><br><span class="line">                ++count;</span><br><span class="line">                map.put(array[i],count);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                map.put(array[i],<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer,Integer&gt; entry: map.entrySet())&#123;</span><br><span class="line">            <span class="keyword">if</span>(entry.getValue() &gt; (len/<span class="number">2</span>))&#123;</span><br><span class="line">                num = entry.getKey();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    某个数字出现的次数大于数组长度的一半，意思就是它出现的次数比其他所有数字出现的次数和还要多。因此我们可以在遍历数组的时候记录两个值：1. 数组中的数字;2. 次数。</span></span><br><span class="line"><span class="comment">    遍历下一个数字时，若它与之前保存的数字相同，则次数加1，否则次数减1；若次数为0，则保存下一个数字，并将次数置为1。遍历结束后，所保存的数字即为所求。最后再判断它是否符合条件。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">MoreThanHalfNum_Solution</span><span class="params">(<span class="keyword">int</span> [] array)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = array[<span class="number">0</span>], count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;array.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] == res)</span><br><span class="line">                count++;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                count--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">                res = array[i];</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;array.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] == res)</span><br><span class="line">                count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count &gt; array.length/<span class="number">2</span> ? res : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/18/剑指offer038按字典序打印字符串的所有排列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/18/剑指offer038按字典序打印字符串的所有排列/" class="post-title-link" itemprop="url">剑指offer038按字典序打印字符串的所有排列</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-18 17:18:47 / Modified: 17:24:39" itemprop="dateCreated datePublished" datetime="2020-02-18T17:18:47-05:00">2020-02-18</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/18/剑指offer038按字典序打印字符串的所有排列/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/剑指offer038按字典序打印字符串的所有排列/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个字符串，按字典序打印出该字符串中字符的所有排列。例如输入字符串 abc，则打印出由字符 a, b, c 所能排列出来的所有字符串 abc, acb, bac, bca, cab 和 cba。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>对于无重复值的情况：固定第一个字符，递归取得首位后面的各种字符串组合；再把第一个字符与后面每一个字符交换，并同样递归获得首位后面的字符串组合；递归的出口，就是只剩一个字符的时候，递归的循环过程，就是从每个子串的第二个字符开始依次与第一个字符换，然后继续处理子串。对于无重复值的情况：由于全排列就是从第一个数字起，每个数分别与它后面的数字交换，我们先尝试加个这样的判断——如果一个数与后面的数字相同那么这两个数就不交换了。例如abb，第一个数与后面两个数交换得bab，bba。然后abb中第二个数和第三个数相同，就不用交换了。但是对bab，第二个数和第三个数不 同，则需要交换，得到bba。由于这里的bba和开始第一个数与第三个数交换的结果相同了，因此这个方法不行。换种思维，对abb，第一个数a与第二个数b交换得到bab，然后考虑第一个数与第三个数交换，此时由于第三个数等于第二个数， 所以第一个数就不再用与第三个数交换了。再考虑bab，它的第二个数与第三个数交换可以解决bba。此时全排列生成完毕！</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_038</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">Permutation</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">if</span>(str!=<span class="keyword">null</span> &amp;&amp; str.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            PermutationHelper(str.toCharArray(),<span class="number">0</span>,list);</span><br><span class="line">            <span class="comment">//Collections.sort可以直接按字典序打印出字符串的排列，所以我们要做的实际上只是把字符串的全排列放到list里面去就行了</span></span><br><span class="line">            Collections.sort(list);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//i表示用第i位与后面的字符交换</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">PermutationHelper</span><span class="params">(<span class="keyword">char</span>[] chars,<span class="keyword">int</span> i,ArrayList&lt;String&gt; list)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == chars.length-<span class="number">1</span>)&#123;</span><br><span class="line">            list.add(String.valueOf(chars));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            Set&lt;Character&gt; charSet = <span class="keyword">new</span> HashSet&lt;Character&gt;();</span><br><span class="line">            <span class="comment">//用当前字符（下标为i的字符）放在第i位对应的字符串排列总数</span></span><br><span class="line">            charSet.add(chars[i]);</span><br><span class="line">            PermutationHelper(chars,i+<span class="number">1</span>,list);</span><br><span class="line">            <span class="comment">//将第i个字符依次与后面的字符交换放在第i位对应第字符串第排列总数。</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;chars.length;++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!charSet.contains(chars[j]))&#123;</span><br><span class="line">                    charSet.add(chars[j]);</span><br><span class="line">                    swap(chars,i,j);</span><br><span class="line">                    PermutationHelper(chars,i+<span class="number">1</span>,list);</span><br><span class="line">                    swap(chars,j,i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">char</span>[] cs,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> temp = cs[i];</span><br><span class="line">        cs[i] = cs[j];</span><br><span class="line">        cs[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/18/剑指offer037序列化和反序列化二叉树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/18/剑指offer037序列化和反序列化二叉树/" class="post-title-link" itemprop="url">剑指offer037序列化和反序列化二叉树</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-18 17:18:05 / Modified: 17:23:01" itemprop="dateCreated datePublished" datetime="2020-02-18T17:18:05-05:00">2020-02-18</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/18/剑指offer037序列化和反序列化二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/剑指offer037序列化和反序列化二叉树/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>请实现两个函数，分别用来序列化和反序列化二叉树<br>二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存。<br>序列化可以基于先序、中序、后序、层序的二叉树遍历方式来进行修改，序列化的结果是一个字符串，序列化时通过 某种符号表示空节点（#），<br>以 ！ 表示一个结点值的结束（value!）。<br>二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_037</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//这一题我们需要先明确serialze之后表示树的字符串长成什么样子，比如一个最简单的树以1为root，2，3分别为其左右节点的树经过前序遍历的字符串打印出来应该是：1,2,#,#,3,#,#,的</span></span><br><span class="line">        TreeNode t=<span class="keyword">new</span> TreeNode(<span class="number">1</span>);</span><br><span class="line">        t.left=<span class="keyword">new</span> TreeNode(<span class="number">2</span>);</span><br><span class="line">        t.right=<span class="keyword">new</span> TreeNode(<span class="number">3</span>);</span><br><span class="line">        CodingInterview_037 c=<span class="keyword">new</span> CodingInterview_037();</span><br><span class="line">        String s=c.Serialize(t);</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> index=-<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">Serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//通过前序遍历构建二叉树字符串</span></span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            sb.append(<span class="string">"#,"</span>);</span><br><span class="line">            <span class="keyword">return</span> sb.toString();</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(root.val + <span class="string">","</span>);</span><br><span class="line">        sb.append(Serialize(root.left));</span><br><span class="line">        sb.append(Serialize(root.right));</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">Deserialize</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        String[] numberArray=str.split(<span class="string">","</span>);</span><br><span class="line">        TreeNode node=DeserialzieArray(numberArray);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//下面这种解法是错误范例，结合例子很容易就看出来右子树的下标不对，这种情况下我们应该用全局变量来处理，让递归函数自己递增下标。</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    private TreeNode DeserialzieArray(String[] numberArray,int index)&#123;</span></span><br><span class="line"><span class="comment">        if(numberArray[index].equals("#"))&#123;</span></span><br><span class="line"><span class="comment">            return null;</span></span><br><span class="line"><span class="comment">        &#125;else&#123;</span></span><br><span class="line"><span class="comment">            TreeNode node=new TreeNode(Integer.parseInt(numberArray[index]));</span></span><br><span class="line"><span class="comment">            node.left=DeserialzieArray(numberArray,index+1);</span></span><br><span class="line"><span class="comment">            node.right=DeserialzieArray(numberArray,index+2);</span></span><br><span class="line"><span class="comment">            return node;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">//像这种感觉需要返回多个值的递归问题，我们都可以采用全局变量来处理。本题中用全局变量index来追踪index的位置</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">DeserialzieArray</span><span class="params">(String[] numberArray)</span></span>&#123;</span><br><span class="line">        index++;</span><br><span class="line">        <span class="keyword">if</span>(numberArray[index].equals(<span class="string">"#"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            TreeNode node=<span class="keyword">new</span> TreeNode(Integer.parseInt(numberArray[index]));</span><br><span class="line">            node.left=DeserialzieArray(numberArray);</span><br><span class="line">            node.right=DeserialzieArray(numberArray);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/11/剑指offer036二叉搜索树与双向链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/11/剑指offer036二叉搜索树与双向链表/" class="post-title-link" itemprop="url">剑指offer036二叉搜索树与双向链表</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-11 16:36:35 / Modified: 16:38:25" itemprop="dateCreated datePublished" datetime="2020-02-11T16:36:35-05:00">2020-02-11</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/11/剑指offer036二叉搜索树与双向链表/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/11/剑指offer036二叉搜索树与双向链表/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目实际上只是要我们在原来的树上添加一些边。举个简单的例子，二叉搜索树叶子节点本来左右子树都是null,经过算法处理后现在左应该指向小于它的最大元素，右子树现在应该指向大于它的最小元素。</p>
-<p>解题思路：<br>1.将左子树构造成双链表，并返回链表头节点。<br>2.定位至左子树双链表最后一个节点。<br>3.如果左子树链表不为空的话，将当前root追加到左子树链表。<br>4.将右子树构造成双链表，并返回链表头节点。<br>5.如果右子树链表不为空的话，将该链表追加到root节点之后。<br>6.根据左子树链表是否为空确定返回的节点。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_036</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">Convert</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        <span class="comment">// 1.将左子树构造成双链表，并返回链表头节点</span></span><br><span class="line">        TreeNode left = Convert(root.left);</span><br><span class="line">        TreeNode p = left;</span><br><span class="line">        <span class="comment">// 2.定位至左子树双链表最后一个节点</span></span><br><span class="line">        <span class="keyword">while</span>(p!=<span class="keyword">null</span>&amp;&amp;p.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3.如果左子树链表不为空的话，将当前root追加到左子树链表</span></span><br><span class="line">        <span class="keyword">if</span>(left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            p.right = root;</span><br><span class="line">            root.left = p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 4.将右子树构造成双链表，并返回链表头节点</span></span><br><span class="line">        TreeNode right = Convert(root.right);</span><br><span class="line">        <span class="comment">// 5.如果右子树链表不为空的话，将该链表追加到root节点之后</span></span><br><span class="line">        <span class="keyword">if</span>(right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            right.left = root;</span><br><span class="line">            root.right = right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left!=<span class="keyword">null</span>?left:root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/07/剑指offer035复杂链表的复制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/07/剑指offer035复杂链表的复制/" class="post-title-link" itemprop="url">剑指offer035复杂链表的复制</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-07 16:04:12" itemprop="dateCreated datePublished" datetime="2020-02-07T16:04:12-05:00">2020-02-07</time>
+              <time title="Created: 2020-02-21 16:13:39" itemprop="dateCreated datePublished" datetime="2020-02-21T16:13:39-05:00">2020-02-21</time>
             </span>
           
             
@@ -680,7 +269,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-11 16:35:53" itemprop="dateModified" datetime="2020-02-11T16:35:53-05:00">2020-02-11</time>
+                <time title="Modified: 2020-02-22 10:09:41" itemprop="dateModified" datetime="2020-02-22T10:09:41-05:00">2020-02-22</time>
               </span>
             
           
@@ -690,7 +279,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -709,7 +298,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/07/剑指offer035复杂链表的复制/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/07/剑指offer035复杂链表的复制/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/21/Leetcode182-Duplicate-Emails/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/Leetcode182-Duplicate-Emails/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -723,9 +312,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>第一反应是这道题需要做吗？不就从头到尾复制一遍就完事了吗？但是我们要注意链表里面的节点需要指向下一个节点，那这里就出现问题，不能直接复制了。因为你肯定不能直接指向原链表的节点进行复制。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_035</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> label;</span><br><span class="line">        RandomListNode next = <span class="keyword">null</span>;</span><br><span class="line">        RandomListNode random = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        RandomListNode(<span class="keyword">int</span> label) &#123;</span><br><span class="line">            <span class="keyword">this</span>.label = label;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RandomListNode <span class="title">Clone</span><span class="params">(RandomListNode pHead)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        RandomListNode currentNode = pHead;</span><br><span class="line">        <span class="comment">//1、复制每个结点，如复制结点A得到A1，将结点A1插到结点A后面；</span></span><br><span class="line">        <span class="keyword">while</span>(currentNode != <span class="keyword">null</span>)&#123;</span><br><span class="line">            RandomListNode cloneNode = <span class="keyword">new</span> RandomListNode(currentNode.label);</span><br><span class="line">            RandomListNode nextNode = currentNode.next;</span><br><span class="line">            currentNode.next = cloneNode;</span><br><span class="line">            cloneNode.next = nextNode;</span><br><span class="line">            currentNode = nextNode;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        currentNode = pHead;</span><br><span class="line">        <span class="comment">//2、重新遍历链表，复制老结点的随机指针给新结点，如A1.random = A.random.next;这里选择A.random.next的原因是本来应该指向A.random,但是经过第一次操作后</span></span><br><span class="line">        <span class="comment">//A.random.next对应的就是复制后链表中的A.random.</span></span><br><span class="line">        <span class="keyword">while</span>(currentNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            currentNode.next.random = currentNode.random==<span class="keyword">null</span>?<span class="keyword">null</span>:currentNode.random.next;</span><br><span class="line">            currentNode = currentNode.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3、拆分链表，将链表拆分为原链表和复制后的链表</span></span><br><span class="line">        currentNode = pHead;</span><br><span class="line">        RandomListNode pCloneHead = pHead.next;</span><br><span class="line">        <span class="keyword">while</span>(currentNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            RandomListNode cloneNode = currentNode.next;</span><br><span class="line">            currentNode.next = cloneNode.next;</span><br><span class="line">            <span class="comment">//因为这里需要操作.next.next,所以需要判断null,否则会抛异常</span></span><br><span class="line">            cloneNode.next = cloneNode.next==<span class="keyword">null</span>?<span class="keyword">null</span>:cloneNode.next.next;</span><br><span class="line">            currentNode = currentNode.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pCloneHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database182.png" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    Email</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    Email</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">    <span class="keyword">COUNT</span>( * ) &gt;= <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
 
         
@@ -751,7 +339,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/04/剑指offer034二叉树中和为某一值的路径/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/Leetcode596-Classes-More-Than-5-Students/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -765,7 +353,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/02/04/剑指offer034二叉树中和为某一值的路径/" class="post-title-link" itemprop="url">剑指offer034二叉树中和为某一值的路径</a>
+            <a href="/2020/02/21/Leetcode596-Classes-More-Than-5-Students/" class="post-title-link" itemprop="url">Leetcode596 Classes More Than 5 Students</a>
           
         </h1>
 
@@ -780,7 +368,7 @@
                 
               
 
-              <time title="Created: 2020-02-04 15:17:06" itemprop="dateCreated datePublished" datetime="2020-02-04T15:17:06-05:00">2020-02-04</time>
+              <time title="Created: 2020-02-21 16:12:53" itemprop="dateCreated datePublished" datetime="2020-02-21T16:12:53-05:00">2020-02-21</time>
             </span>
           
             
@@ -791,7 +379,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-11 14:57:53" itemprop="dateModified" datetime="2020-02-11T14:57:53-05:00">2020-02-11</time>
+                <time title="Modified: 2020-02-22 10:06:46" itemprop="dateModified" datetime="2020-02-22T10:06:46-05:00">2020-02-22</time>
               </span>
             
           
@@ -801,7 +389,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -820,7 +408,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/04/剑指offer034二叉树中和为某一值的路径/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/04/剑指offer034二叉树中和为某一值的路径/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/21/Leetcode596-Classes-More-Than-5-Students/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/Leetcode596-Classes-More-Than-5-Students/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -834,9 +422,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。(注意: 在返回值的list中，数组长度大的数组靠前)</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>这个题目是个典型的递归结构，本质上面是一个深度搜索的问题。我们看递归的问题要明白，递归问题的返回其实是返回到调用递归函数的下面一行代码。比如我们访问完左子树，return之后对应的下面的代码就是返回到backtracking(node.right,target,path).那么这个时候我们检查递归用到的参数，就会发现我们需要删除之前添加的节点才能够保证接下来的代码正常运行。<br><img src="/images/CYC/CYC0034.jpeg" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_034</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        backtracking(root, target, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(TreeNode node, <span class="keyword">int</span> target, ArrayList&lt;Integer&gt; path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        path.add(node.val);</span><br><span class="line">        target -= node.val;</span><br><span class="line">        <span class="comment">//路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。所以要判断叶子节点的左右节点是否为空</span></span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span> &amp;&amp; node.left == <span class="keyword">null</span> &amp;&amp; node.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            ret.add(<span class="keyword">new</span> ArrayList&lt;&gt;(path));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            backtracking(node.left, target, path);</span><br><span class="line">            backtracking(node.right, target, path);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//下面这一行是深度优先搜索的关键，我们注意到上面有一个path.add(node.val),现在这个节点检查完之后就应该删除这个节点。</span></span><br><span class="line">        path.remove(path.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database596.png" alt></p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>对 class 列进行分组之后，再使用 count 汇总函数统计每个分组的记录个数，之后使用 HAVING 进行筛选。HAVING 针对分组进行筛选，而 WHERE 针对每个记录（行）进行筛选。<br>我们需要注意涉及到统计（SUM,COUNT）之类的操作一般都用group by 来进行处理。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">class</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    courses</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">class</span></span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">    <span class="keyword">count</span>( <span class="keyword">DISTINCT</span> student ) &gt;= <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
 
         
@@ -862,7 +450,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer033二叉搜索树的后序遍历序列/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/Leetcode620-Not-Boring-Movies/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -876,7 +464,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/02/03/剑指offer033二叉搜索树的后序遍历序列/" class="post-title-link" itemprop="url">剑指offer033二叉搜索树的后序遍历序列</a>
+            <a href="/2020/02/21/Leetcode620-Not-Boring-Movies/" class="post-title-link" itemprop="url">Leetcode620 Not Boring Movies</a>
           
         </h1>
 
@@ -891,7 +479,7 @@
                 
               
 
-              <time title="Created: 2020-02-03 21:58:01 / Modified: 22:42:57" itemprop="dateCreated datePublished" datetime="2020-02-03T21:58:01-05:00">2020-02-03</time>
+              <time title="Created: 2020-02-21 15:59:04 / Modified: 16:09:02" itemprop="dateCreated datePublished" datetime="2020-02-21T15:59:04-05:00">2020-02-21</time>
             </span>
           
             
@@ -904,7 +492,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -923,7 +511,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/03/剑指offer033二叉搜索树的后序遍历序列/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer033二叉搜索树的后序遍历序列/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/21/Leetcode620-Not-Boring-Movies/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/Leetcode620-Not-Boring-Movies/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -937,9 +525,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>已知条件：后序序列最后一个值为root；二叉搜索树左子树值都比root小，右子树值都比root大。<br>1、确定root；<br>2、遍历序列（除去root结点），找到第一个大于root的位置，则该位置左边为左子树，右边为右子树；<br>3、遍历右子树，若发现有小于root的值，则直接返回false；<br>4、分别判断左子树和右子树是否仍是二叉搜索树（即递归步骤1、2、3）。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_033</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">VerifySquenceOfBST</span><span class="params">(<span class="keyword">int</span> [] sequence)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sequence.length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sequence.length == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> judge(sequence,<span class="number">0</span>,sequence.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start &gt;= end)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i = start;</span><br><span class="line">        <span class="keyword">while</span>(a[i] &lt; a[end])&#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;end;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &lt; a[end])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> judge(a,start,i-<span class="number">1</span>) &amp;&amp; judge(a,i,end-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database620.png" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    *</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    cinema</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">id</span> % <span class="number">2</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> description != <span class="string">'boring'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    rating <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
 
 
         
@@ -965,7 +552,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer032-3按之字形顺序打印二叉树/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/Leetcode627-Swap-salary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -979,7 +566,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/02/03/剑指offer032-3按之字形顺序打印二叉树/" class="post-title-link" itemprop="url">剑指offer032.3按之字形顺序打印二叉树</a>
+            <a href="/2020/02/21/Leetcode627-Swap-salary/" class="post-title-link" itemprop="url">Leetcode627 Swap salary</a>
           
         </h1>
 
@@ -994,7 +581,7 @@
                 
               
 
-              <time title="Created: 2020-02-03 17:54:19 / Modified: 21:53:37" itemprop="dateCreated datePublished" datetime="2020-02-03T17:54:19-05:00">2020-02-03</time>
+              <time title="Created: 2020-02-21 15:28:52 / Modified: 15:55:27" itemprop="dateCreated datePublished" datetime="2020-02-21T15:28:52-05:00">2020-02-21</time>
             </span>
           
             
@@ -1007,7 +594,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -1026,7 +613,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/03/剑指offer032-3按之字形顺序打印二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer032-3按之字形顺序打印二叉树/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/21/Leetcode627-Swap-salary/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/Leetcode627-Swap-salary/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -1040,9 +627,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>在上一题的基础上加一个reverse变量每打印一行就更新就行了。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_032_2</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(pRoot);</span><br><span class="line">        <span class="keyword">boolean</span> reverse = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">int</span> cnt = queue.size();</span><br><span class="line">            <span class="keyword">while</span> (cnt-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                TreeNode node = queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (node == <span class="keyword">null</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                list.add(node.val);</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (reverse)</span><br><span class="line">                Collections.reverse(list);</span><br><span class="line">            reverse = !reverse;</span><br><span class="line">            <span class="keyword">if</span> (list.size() != <span class="number">0</span>)</span><br><span class="line">                ret.add(list);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database627.png" alt></p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>两个相等的数异或的结果为 0，而 0 与任何一个数异或的结果为这个数。</p>
+<p>注意抑或操作是同时满足交换律和结合率的，所以顺序可以随便换。</p>
+<p>sex 字段只有两个取值：’f’ 和 ‘m’，并且有以下规律：</p>
+<p>‘f’ ^ (‘m’ ^ ‘f’) = ‘m’ ^ (‘f’ ^ ‘f’) = ‘m’<br>‘m’ ^ (‘m’ ^ ‘f’) = ‘f’ ^ (‘m’ ^ ‘m’) = ‘f’<br>因此将 sex 字段和 ‘m’ ^ ‘f’ 进行异或操作，最后就能反转 sex 字段。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> salary</span><br><span class="line"><span class="keyword">SET</span> sex = <span class="built_in">CHAR</span> ( <span class="keyword">ASCII</span>(sex) ^ <span class="keyword">ASCII</span>( <span class="string">'m'</span> ) ^ <span class="keyword">ASCII</span>( <span class="string">'f'</span> ) );</span><br></pre></td></tr></table></figure>
 
 
         
@@ -1068,7 +658,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer032-2把二叉树打印成多行/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/Leetcode595-Big-Countries/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -1082,7 +672,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/02/03/剑指offer032-2把二叉树打印成多行/" class="post-title-link" itemprop="url">剑指offer032.2把二叉树打印成多行</a>
+            <a href="/2020/02/21/Leetcode595-Big-Countries/" class="post-title-link" itemprop="url">Leetcode595 Big Countries</a>
           
         </h1>
 
@@ -1097,7 +687,7 @@
                 
               
 
-              <time title="Created: 2020-02-03 17:13:24 / Modified: 21:56:27" itemprop="dateCreated datePublished" datetime="2020-02-03T17:13:24-05:00">2020-02-03</time>
+              <time title="Created: 2020-02-21 15:14:06 / Modified: 15:23:23" itemprop="dateCreated datePublished" datetime="2020-02-21T15:14:06-05:00">2020-02-21</time>
             </span>
           
             
@@ -1110,7 +700,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -1129,7 +719,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/03/剑指offer032-2把二叉树打印成多行/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer032-2把二叉树打印成多行/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/21/Leetcode595-Big-Countries/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/Leetcode595-Big-Countries/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -1143,10 +733,135 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>从上往下打印出二叉树的每个节点，同层节点从左至右打印。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>要打印多行，只用按行整理出list就行了。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_032_2</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(pRoot);</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">int</span> cnt = queue.size();</span><br><span class="line">            <span class="keyword">while</span> (cnt-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">//poll是删除队列的第一个元素并且返回该元素</span></span><br><span class="line">                TreeNode node = queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (node == <span class="keyword">null</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                list.add(node.val);</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (list.size() != <span class="number">0</span>)</span><br><span class="line">                ret.add(list);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database595.png" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,</span><br><span class="line">    population,</span><br><span class="line">    area</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    World</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    area &gt; <span class="number">3000000</span></span><br><span class="line">    <span class="keyword">OR</span> population &gt; <span class="number">25000000</span>;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
 
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/数据库高级特性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/21/数据库高级特性/" class="post-title-link" itemprop="url">数据库高级特性</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-21 14:34:04 / Modified: 14:54:35" itemprop="dateCreated datePublished" datetime="2020-02-21T14:34:04-05:00">2020-02-21</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/21/数据库高级特性/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/数据库高级特性/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>什么是视图？<br>在 SQL 中，视图是基于 SQL 语句的结果集的可视化的表。</p>
+<p>视图包含行和列，就像一个真实的表。视图中的字段就是来自一个或多个数据库中的真实的表中的字段。我们可以向视图添加 SQL 函数、WHERE 以及 JOIN 语句，我们也可以提交数据，就像这些来自于某个单一的表。</p>
+<p>注释：数据库的设计和结构不会受到视图中的函数、where 或 join 语句的影响。</p>
+<p>SQL CREATE VIEW 实例<br>可以从某个查询内部、某个存储过程内部，或者从另一个视图内部来使用视图。通过向视图添加函数、join 等等，我们可以向用户精确地提交我们希望提交的数据。</p>
+<p>样本数据库 Northwind 拥有一些被默认安装的视图。视图 “Current Product List” 会从 Products 表列出所有正在使用的产品。这个视图使用下列 SQL 创建：</p>
+<p>CREATE VIEW [Current Product List] AS<br>SELECT ProductID,ProductName<br>FROM Products<br>WHERE Discontinued=No<br>我们可以查询上面这个视图：</p>
+<p>SELECT * FROM [Current Product List]<br>Northwind 样本数据库的另一个视图会选取 Products 表中所有单位价格高于平均单位价格的产品：</p>
+<p>CREATE VIEW [Products Above Average Price] AS<br>SELECT ProductName,UnitPrice<br>FROM Products<br>WHERE UnitPrice&gt;(SELECT AVG(UnitPrice) FROM Products)<br>我们可以像这样查询上面这个视图：</p>
+<p>SELECT * FROM [Products Above Average Price]</p>
+<p>总结：<br>SQL CREATE VIEW 语法<br>CREATE VIEW view_name AS<br>SELECT column_name(s)<br>FROM table_name<br>WHERE condition<br>注释：视图总是显示最近的数据。每当用户查询视图时，数据库引擎通过使用 SQL 语句来重建数据。</p>
+<p>视图是虚拟的表，本身不包含数据，也就不能对其进行索引操作。</p>
+<p>对视图的操作和对普通表的操作一样。</p>
+<p>视图具有如下好处：</p>
+<p>简化复杂的 SQL 操作，比如复杂的连接；<br>只使用实际表的一部分数据；<br>通过只给用户访问视图的权限，保证数据的安全性；<br>更改数据格式和表示。<br>CREATE VIEW myview AS<br>SELECT Concat(col1, col2) AS concat_col, col3*col4 AS compute_col<br>FROM mytable<br>WHERE col5 = val;</p>
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p>触发器会在某个表执行以下语句时而自动执行：DELETE、INSERT、UPDATE。</p>
+<p>触发器必须指定在语句执行之前还是之后自动执行，之前执行使用 BEFORE 关键字，之后执行使用 AFTER 关键字。BEFORE 用于数据验证和净化，AFTER 用于审计跟踪，将修改记录到另外一张表中。</p>
+<p>INSERT 触发器包含一个名为 NEW 的虚拟表。</p>
+<p>CREATE TRIGGER mytrigger AFTER INSERT ON mytable<br>FOR EACH ROW SELECT NEW.col into @result;</p>
+<p>SELECT @result; – 获取结果<br>DELETE 触发器包含一个名为 OLD 的虚拟表，并且是只读的。</p>
+<p>UPDATE 触发器包含一个名为 NEW 和一个名为 OLD 的虚拟表，其中 NEW 是可以被修改的，而 OLD 是只读的。</p>
+<p>MySQL 不允许在触发器中使用 CALL 语句，也就是不能调用存储过程。</p>
+<p>触发器实例练习</p>
+<p>1﹕在Orders表中建立触发器﹐当向Orders表中插入一条订单记录时﹐检查goods表的货品状态status是否为1(正在整理)﹐是﹐则不能往Orders表加入该订单。<br>create trigger orderinsert<br>on orders<br>after insert<br>as<br>if (select status from goods,inserted<br>where goods.name=inserted.goodsname)=1<br>begin<br>print ‘the goods is being processed’<br>print ‘the order cannot be committed’<br>rollback transaction   –回滚﹐避免加入<br>end</p>
+<p>2﹕在Orders表建立一个插入触发器﹐在添加一条订单时﹐减少Goods表相应的货品记录中的库存。<br>create trigger orderinsert1<br>on orders<br>after insert<br>as<br>update goods set storage=storage-inserted.quantity<br>from goods,inserted<br>where<br>goods.name=inserted.goodsname</p>
+<p>3﹕在Goods表建立删除触发器﹐实现Goods表和Orders表的级联删除。<br>create trigger goodsdelete<br>on goods<br>after delete<br>as<br>delete from orders<br>where goodsname in<br>(select name from deleted)</p>
+<p>4﹕在Orders表建立一个更新触发器﹐监视Orders表的订单日期(OrderDate)列﹐使其不能手工修改.<br>create trigger orderdateupdate<br>on orders<br>after update<br>as<br>if update(orderdate)<br>begin<br>raiserror(‘ orderdate cannot be modified’,10,1)<br>rollback transaction<br>end</p>
+<p>5﹕在Orders表建立一个插入触发器﹐保证向Orders表插入的货品名必须要在Goods表中一定存在。<br>create trigger orderinsert3<br>on orders<br>after insert<br>as<br>if (select count(*) from goods,inserted where goods.name=inserted.goodsname)=0<br>begin<br>print ‘ no entry in goods for this order’<br>rollback transaction<br>end</p>
+<p>6：Orders表建立一个插入触发器，保证向Orders表插入的货品信息要在Order表中添加</p>
+<p>alter trigger addOrder<br>on Orders<br>for insert<br>as<br>insert into Order<br>select inserted.Id, inserted.goodName,inserted.Number from inserted</p>
 
         
       
@@ -1171,7 +886,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/03/剑指offer032-1从上往下打印二叉树/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/21/数据库表的连接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -1185,7 +900,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/02/03/剑指offer032-1从上往下打印二叉树/" class="post-title-link" itemprop="url">剑指offer032.1从上往下打印二叉树</a>
+            <a href="/2020/02/21/数据库表的连接/" class="post-title-link" itemprop="url">数据库表的连接</a>
           
         </h1>
 
@@ -1200,7 +915,7 @@
                 
               
 
-              <time title="Created: 2020-02-03 15:18:03 / Modified: 15:45:53" itemprop="dateCreated datePublished" datetime="2020-02-03T15:18:03-05:00">2020-02-03</time>
+              <time title="Created: 2020-02-21 00:58:24 / Modified: 14:30:55" itemprop="dateCreated datePublished" datetime="2020-02-21T00:58:24-05:00">2020-02-21</time>
             </span>
           
             
@@ -1213,7 +928,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -1232,7 +947,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/03/剑指offer032-1从上往下打印二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/剑指offer032-1从上往下打印二叉树/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/21/数据库表的连接/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/数据库表的连接/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -1246,10 +961,431 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>从上往下打印出二叉树的每个节点，同层节点从左至右打印。</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>要实现按层打印，只需要将左右节点存到一个队列里面，按顺序打印即可</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_032</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">            <span class="keyword">this</span>.val=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">PrintFromTopToBottom</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            ArrayList&lt;TreeNode&gt; queue = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> list;</span><br><span class="line">            &#125;</span><br><span class="line">            queue.add(root);</span><br><span class="line">            <span class="keyword">while</span> (queue.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                TreeNode temp = queue.remove(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (temp.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.add(temp.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (temp.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    queue.add(temp.right);</span><br><span class="line">                &#125;</span><br><span class="line">                list.add(temp.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><p>连接用于连接多个表，使用 JOIN 关键字，并且条件语句使用 ON 而不是 WHERE。<br>连接可以替换子查询，并且比子查询的效率一般会更快。<br>可以用 AS 给列名、计算字段和表名取别名，给表名取别名是为了简化 SQL 语句以及连接相同表。</p>
+<h4 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h4><p>内连接又称等值连接，使用 INNER JOIN 关键字。</p>
+<p>SELECT A.value, B.value<br>FROM tablea AS A INNER JOIN tableb AS B<br>ON A.key = B.key;<br>可以不明确使用 INNER JOIN，而使用普通查询并在 WHERE 中将两个表中要连接的列用等值方法连接起来。</p>
+<p>SELECT A.value, B.value<br>FROM tablea AS A, tableb AS B<br>WHERE A.key = B.key;</p>
+<h4 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h4><p>自连接可以看成内连接的一种，只是连接的表是自身而已。</p>
+<p>一张员工表，包含员工姓名和员工所属部门，要找出与 Jim 处在同一部门的所有员工姓名。</p>
+<p>子查询版本</p>
+<p>SELECT name<br>FROM employee<br>WHERE department = (<br>      SELECT department<br>      FROM employee<br>      WHERE name = “Jim”);<br>自连接版本</p>
+<p>SELECT e1.name<br>FROM employee AS e1 INNER JOIN employee AS e2<br>ON e1.department = e2.department<br>      AND e2.name = “Jim”;</p>
+<h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>自然连接是把同名列通过等值测试连接起来的，同名列可以有多个。</p>
+<p>内连接和自然连接的区别：内连接提供连接的列，而自然连接自动连接所有同名列。</p>
+<p>SELECT A.value, B.value<br>FROM tablea AS A NATURAL JOIN tableb AS B;</p>
+<h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><p>外连接保留了没有关联的那些行。分为左外连接，右外连接以及全外连接，左外连接就是保留左表没有关联的行。比如下面这个例子中customers表中cust_id为2的表项在orders表中没有对应。如果我们采用左外连接，那么还是会在嘴中结果中打印出</p>
+<p>检索所有顾客的订单信息，包括还没有订单信息的顾客。</p>
+<p>SELECT Customers.cust_id, Orders.order_num<br>FROM Customers LEFT OUTER JOIN Orders<br>ON Customers.cust_id = Orders.cust_id;<br>customers 表：</p>
+<p>cust_id    cust_name<br>1         a<br>2         b<br>3         c<br>orders 表：</p>
+<p>order_id    cust_id<br>1            1<br>2            1<br>3            3<br>4            3<br>结果：</p>
+<p>cust_id    cust_name    order_id<br>1        a            1<br>1        a            2<br>3        c            3<br>3        c            4<br>2        b            Null</p>
+<h4 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h4><p>使用 UNION 来组合两个查询，如果第一个查询返回 M 行，第二个查询返回 N 行，那么组合查询的结果一般为 M+N 行。</p>
+<p>每个查询必须包含相同的列、表达式和聚集函数。</p>
+<p>默认会去除相同行，如果需要保留相同行，使用 UNION ALL。</p>
+<p>只能包含一个 ORDER BY 子句，并且必须位于语句的最后。</p>
+<p>SELECT col<br>FROM mytable<br>WHERE col = 1<br>UNION<br>SELECT col<br>FROM mytable<br>WHERE col =2;</p>
 
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/20/数据库基本操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/20/数据库基本操作/" class="post-title-link" itemprop="url">数据库基本操作</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-20 15:23:43 / Modified: 17:27:43" itemprop="dateCreated datePublished" datetime="2020-02-20T15:23:43-05:00">2020-02-20</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/20/数据库基本操作/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/20/数据库基本操作/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><p>CREATE TABLE mytable (<br>  int 类型，不为空，自增<br>  id INT NOT NULL AUTO_INCREMENT,<br>  int 类型，不可为空，默认值为 1，不为空<br>  col1 INT NOT NULL DEFAULT 1,<br>  变长字符串类型，最长为 45 个字符，可以为空<br>  col2 VARCHAR(45) NULL,<br>  日期类型，可为空<br>  col3 DATE NULL,<br>  设置主键为 id<br>  PRIMARY KEY (<code>id</code>));</p>
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><p>添加列</p>
+<p>ALTER TABLE mytable<br>ADD col CHAR(20);<br>删除列</p>
+<p>ALTER TABLE mytable<br>DROP COLUMN col;<br>删除表</p>
+<p>DROP TABLE mytable;</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>普通插入</p>
+<p>INSERT INTO mytable(col1, col2)<br>VALUES(val1, val2);</p>
+<p>插入检索出来的数据</p>
+<p>INSERT INTO mytable1(col1, col2)<br>SELECT col1, col2<br>FROM mytable2;<br>将一个表的内容插入到一个新表</p>
+<p>CREATE TABLE newtable AS<br>SELECT * FROM mytable;</p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>UPDATE mytable<br>SET col = val<br>WHERE id = 1;</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>DELETE FROM mytable<br>WHERE id = 1;</p>
+<p>TRUNCATE TABLE 可以清空表，也就是删除所有行。</p>
+<p>TRUNCATE TABLE mytable;</p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>DISTINCT<br>相同值只会出现一次。它作用于所有列，也就是说所有列的值都相同才算相同。</p>
+<p>SELECT DISTINCT col1, col2<br>FROM mytable;<br>LIMIT<br>限制返回的行数。可以有两个参数，第一个参数为起始行，从 0 开始；第二个参数为返回的总行数。</p>
+<p>返回前 5 行：</p>
+<p>SELECT *<br>FROM mytable<br>LIMIT 5;<br>SELECT *<br>FROM mytable<br>LIMIT 0, 5;<br>返回第 3 ~ 5 行：</p>
+<p>SELECT *<br>FROM mytable<br>LIMIT 2, 3;</p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>ASC ：升序（默认）<br>DESC ：降序<br>可以按多个列进行排序，并且为每个列指定不同的排序方式：</p>
+<p>SELECT *<br>FROM mytable<br>ORDER BY col1 DESC, col2 ASC;</p>
+<p>先根据col1降序排序，再根据col2升序排序</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>不进行过滤的数据非常大，导致通过网络传输了多余的数据，从而浪费了网络带宽。因此尽量使用 SQL 语句来过滤不必要的数据，而不是传输所有的数据到客户端中然后由客户端进行过滤。</p>
+<p>SELECT *<br>FROM mytable<br>WHERE col IS NULL;<br>下表显示了 WHERE 子句可用的操作符</p>
+<p>操作符    说明<br>=    等于<br>&lt;    小于</p>
+<blockquote>
+<p>   大于<br>&lt;&gt; !=    不等于<br>&lt;= !&gt;    小于等于<br>= !&lt;    大于等于<br>BETWEEN    在两个值之间<br>IS NULL    为 NULL 值<br>应该注意到，NULL 与 0、空字符串都不同。</p>
+</blockquote>
+<p>AND 和 OR 用于连接多个过滤条件。优先处理 AND，当一个过滤表达式涉及到多个 AND 和 OR 时，可以使用 () 来决定优先级，使得优先级关系更清晰。</p>
+<p>IN 操作符用于匹配一组值，其后也可以接一个 SELECT 子句，从而匹配子查询得到的一组值。</p>
+<p>NOT 操作符用于否定一个条件。</p>
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>通配符也是用在过滤语句中，但它只能用于文本字段。</p>
+<p>% 匹配 &gt;=0 个任意字符；</p>
+<p>_ 匹配 ==1 个任意字符；</p>
+<p>[ ] 可以匹配集合内的字符，例如 [ab] 将匹配字符 a 或者 b。用脱字符 ^ 可以对其进行否定，也就是不匹配集合内的字符。</p>
+<p>使用 Like 来进行通配符匹配。</p>
+<p>SELECT *<br>FROM mytable<br>WHERE col LIKE ‘[^AB]%’; – 不以 A 和 B 开头的任意文本<br>不要滥用通配符，通配符位于开头处匹配会非常慢。</p>
+<p><img src="/images/CYC/database004.png" alt><br><img src="/images/CYC/database005.png" alt></p>
+<h4 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h4><p>在数据库服务器上完成数据的转换和格式化的工作往往比客户端上快得多，并且转换和格式化后的数据量更少的话可以减少网络通信量。</p>
+<p>计算字段通常需要使用 AS 来取别名，否则输出的时候字段名为计算表达式。</p>
+<p>SELECT col1 * col2 AS alias<br>FROM mytable;<br>CONCAT() 用于连接两个字段。许多数据库会使用空格把一个值填充为列宽，因此连接的结果会出现一些不必要的空格，使用 TRIM() 可以去除首尾空格。</p>
+<p>SELECT CONCAT(TRIM(col1), ‘(‘, TRIM(col2), ‘)’) AS concat_col<br>FROM mytable;</p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>各个 DBMS 的函数都是不相同的，因此不可移植，以下主要是 MySQL 的函数。</p>
+<p>汇总<br>函 数    说 明<br>AVG()    返回某列的平均值<br>COUNT()    返回某列的行数<br>MAX()    返回某列的最大值<br>MIN()    返回某列的最小值<br>SUM()    返回某列值之和<br>AVG() 会忽略 NULL 行。</p>
+<p>使用 DISTINCT 可以汇总不同的值。</p>
+<p>SELECT AVG(DISTINCT col1) AS avg_col<br>FROM mytable;</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>把具有相同的数据值的行放在同一组中。</p>
+<p>可以对同一分组数据使用汇总函数进行处理，例如求分组数据的平均值等。</p>
+<p>指定的分组字段除了能按该字段进行分组，也会自动按该字段进行排序。</p>
+<p>SELECT col, COUNT(<em>) AS num<br>FROM mytable<br>GROUP BY col;<br><br>GROUP BY 自动按分组字段进行排序，ORDER BY 也可以按汇总字段来进行排序。上面这一行语句打印出来就是col,num的数对，每一个col对应一个统计数据。比如下面这个例子<br><img src="/images/CYC/database_003.png" alt><br><br>SELECT col, COUNT(</em>) AS num<br>FROM mytable<br>GROUP BY col<br>ORDER BY num;<br>WHERE 过滤行，HAVING 过滤分组，行过滤应当先于分组过滤。</p>
+<p>SELECT col, COUNT(*) AS num<br>FROM mytable<br>WHERE col &gt; 2<br>GROUP BY col<br>HAVING num &gt;= 2;<br>分组规定：<br>GROUP BY 子句出现在 WHERE 子句之后，ORDER BY 子句之前；<br>除了汇总字段外，SELECT 语句中的每一字段都必须在 GROUP BY 子句中给出；<br>NULL 的行会单独分为一组；<br>大多数 SQL 实现不支持 GROUP BY 列具有可变长度的数据类型。</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>子查询中只能返回一个字段的数据。<br>可以将子查询的结果作为 WHRER 语句的过滤条件：<br>SELECT *<br>FROM mytable1<br>WHERE col1 IN (SELECT col2<br>               FROM mytable2);<br>下面的语句可以检索出客户的订单数量，子查询语句会对第一个查询检索出的每个客户执行一次：<br>SELECT cust_name, (SELECT COUNT(*)<br>                   FROM Orders<br>                   WHERE Orders.cust_id = Customers.cust_id)<br>                   AS orders_num<br>FROM Customers<br>ORDER BY cust_name;</p>
+<p><img src="/images/CYC/database006.png" alt></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/20/数据库四大范式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/20/数据库四大范式/" class="post-title-link" itemprop="url">数据库四大范式</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-20 11:09:41 / Modified: 14:24:07" itemprop="dateCreated datePublished" datetime="2020-02-20T11:09:41-05:00">2020-02-20</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/20/数据库四大范式/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/20/数据库四大范式/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="异常（范式理论解决的是什么问题）"><a href="#异常（范式理论解决的是什么问题）" class="headerlink" title="异常（范式理论解决的是什么问题）"></a>异常（范式理论解决的是什么问题）</h4><p>以下的学生课程关系的函数依赖为 {Sno, Cname} -&gt; {Sname, Sdept, Mname, Grade}，键码为 {Sno, Cname}。也就是说，确定学生和课程之后，就能确定其它信息。</p>
+<p>Sno    Sname    Sdept    Mname    Cname    Grade<br>1    学生-1    学院-1    院长-1    课程-1    90<br>2    学生-2    学院-2    院长-2    课程-2    80<br>2    学生-2    学院-2    院长-2    课程-1    100<br>3    学生-3    学院-2    院长-2    课程-2    95<br>不符合范式的关系，会产生很多异常，主要有以下四种异常：</p>
+<p>冗余数据：例如 学生-2 出现了两次。<br>修改异常：修改了一个记录中的信息，但是另一个记录中相同的信息却没有被修改。<br>删除异常：删除一个信息，那么也会丢失其它信息。例如删除了 课程-1 需要删除第一行和第三行，那么 学生-1 的信息就会丢失。<br>插入异常：例如想要插入一个学生的信息，如果这个学生还没选课，那么就无法插入。</p>
+<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p>范式理论是为了解决以上提到四种异常。</p>
+<p>高级别范式的依赖于低级别的范式，1NF 是最低级别的范式。</p>
+<p>1.第一范式 (1NF)<br>属性不可分。<br>所谓第一范式（1NF）是指数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值.例如:联系人的中的姓名,电话,性别,其中电话不属于第一范式,要属于第一范式的话就要对电话在进一步分裂(姓名,性别,手机,家庭电话)</p>
+<p>2.第二范式 (2NF)<br>首先要满足第一范式，并且每个非主属性完全函数依赖于键码。</p>
+<p>可以通过分解来满足。</p>
+<p>分解前</p>
+<p>Sno    Sname    Sdept    Mname    Cname    Grade<br>1    学生-1    学院-1    院长-1    课程-1    90<br>2    学生-2    学院-2    院长-2    课程-2    80<br>2    学生-2    学院-2    院长-2    课程-1    100<br>3    学生-3    学院-2    院长-2    课程-2    95<br>以上学生课程关系中，{Sno, Cname} 为键码，有如下函数依赖：</p>
+<p>Sno -&gt; Sname, Sdept<br>Sdept -&gt; Mname<br>Sno, Cname-&gt; Grade<br>Grade 完全函数依赖于键码，它没有任何冗余数据，每个学生的每门课都有特定的成绩。</p>
+<p>Sname, Sdept 和 Mname 都只依赖于部分键码，它们可以由Sno唯一决定，与Cname无关。这样是不满足第二范式的。<br>分解后</p>
+<p>关系-1</p>
+<p>Sno    Sname    Sdept    Mname<br>1    学生-1    学院-1    院长-1<br>2    学生-2    学院-2    院长-2<br>3    学生-3    学院-2    院长-2<br>有以下函数依赖：</p>
+<p>Sno -&gt; Sname, Sdept<br>Sdept -&gt; Mname<br>关系-2</p>
+<p>Sno    Cname    Grade<br>1    课程-1    90<br>2    课程-2    80<br>2    课程-1    100<br>3    课程-2    95<br>有以下函数依赖：</p>
+<p>Sno, Cname -&gt; Grade</p>
+<p>3.第三范式 (3NF)<br>第三范式（3NF）：在第二范式的基础上，数据表中如果不存在非关键字段对任一候选关键字段的传递函数依赖则符合第三范式。简而言之，第三范式就是属性不依赖于其它非主属性。[ 消除传递依赖 ]</p>
+<p>上面的 关系-1 中存在以下传递函数依赖：</p>
+<p>Sno -&gt; Sdept -&gt; Mname<br>可以进行以下分解：</p>
+<p>关系-11</p>
+<p>Sno    Sname    Sdept<br>1    学生-1    学院-1<br>2    学生-2    学院-2<br>3    学生-3    学院-2<br>关系-12</p>
+<p>Sdept    Mname<br>学院-1    院长-1<br>学院-2    院长-2</p>
+<p>4.BCNF是3NF的改进形式</p>
+<p>候选键:<br>能够确定全部属性的某个属性或某组属性，称为候选键。若候选键多于一个，则选定其中一个作为主键。</p>
+<p>主属性：<br>包含在任何一个候选键中的属性，叫做主属性(Prime attribute),不包含在任何候选键中的属性称为非主属性或非键属性或非关键字段。</p>
+<p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。BCNF范式排除了任何属性(不光是非主属性，2NF和3NF所限制的都是非主属性)对候选键的传递依赖与部分依赖。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/19/数据库基本概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/19/数据库基本概念/" class="post-title-link" itemprop="url">数据库基本概念</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-19 23:21:25" itemprop="dateCreated datePublished" datetime="2020-02-19T23:21:25-05:00">2020-02-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-20 11:39:18" itemprop="dateModified" datetime="2020-02-20T11:39:18-05:00">2020-02-20</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/19/数据库基本概念/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/19/数据库基本概念/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h4><p>数据库的四大特性：</p>
+<p>Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。<br>Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设约束、触发器、级联回滚等。<br>Isolation（隔离性）：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括未提交读（Read uncommitted）、提交读（read committed）、可重复读（repeatable read）和串行化（Serializable）。<br>Durability（持久性）：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+<p>ACID特性之间的关系：<br>只有满足一致性，事务的执行结果才是正确的。<br>在无并发的情况下，事务串行执行，隔离性一定能够满足。此时只要能满足原子性，就一定能满足一致性。<br>在并发的情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。<br>事务满足持久化是为了能应对系统崩溃的情况。</p>
+<p><img src="/images/CYC/database_001.png" alt></p>
+<p>数据库如何解决并发中的一致性问题？</p>
+<p>锁。MySQL 中提供了两种封锁粒度：行级锁以及表级锁。</p>
+<p>应该尽量只锁定需要修改的那部分数据，而不是所有的资源。锁定的数据量越少，发生锁争用的可能就越小，系统的并发程度就越高。</p>
+<p>但是加锁需要消耗资源，锁的各种操作（包括获取锁、释放锁、以及检查锁状态）都会增加系统开销。因此封锁粒度越小，系统开销就越大。</p>
+<p>下面对锁的类型进行简单介绍<br>1.读写锁<br>互斥锁（Exclusive），简写为 X 锁，又称写锁。<br>共享锁（Shared），简写为 S 锁，又称读锁。<br>有以下两个规定：</p>
+<p>一个事务对数据对象 A 加了 X 锁，就可以对 A 进行读取和更新。加锁期间其它事务不能对 A 加任何锁。<br>一个事务对数据对象 A 加了 S 锁，可以对 A 进行读取操作，但是不能进行更新操作。加锁期间其它事务能对 A 加 S 锁，但是不能加 X 锁。</p>
+<p>2.意向锁<br>使用意向锁（Intention Locks）可以更容易地支持多粒度封锁。</p>
+<p>在存在行级锁和表级锁的情况下，事务 T 想要对表 A 加 X 锁，就需要先检测是否有其它事务对表 A 或者表 A 中的任意一行加了锁，那么就需要对表 A 的每一行都检测一次，这是非常耗时的(因为如果一行被别的事务挂了读锁，那么这个时候就不允许再有其他程序对该表进行写入了)。</p>
+<p>意向锁在原来的 X/S 锁之上引入了 IX/IS，IX/IS 都是表锁，用来表示一个事务想要在表中的某个数据行上加 X 锁或 S 锁。有以下两个规定：</p>
+<p>一个事务在获得某个数据行对象的 S 锁之前，必须先获得表的 IS 锁或者更强的锁；<br>一个事务在获得某个数据行对象的 X 锁之前，必须先获得表的 IX 锁。<br>通过引入意向锁，事务 T 想要对表 A 加 X 锁，只需要先检测是否有其它事务对表 A 加了 X/IX/S/IS 锁，如果加了就表示有其它事务正在使用这个表或者表中某一行的锁，因此事务 T 加 X 锁失败。</p>
+<p>下表请按这样的逻辑理解<br>X:对表进行写操作，有可能写表的任意行，所以和任何操作都不兼容<br>IX:对表中某一行进行写操作，同时告诉别人有人在写这个表<br>S:对表进行读操作，可能读表的任意一行，所以对X和IX都不兼容<br>IS:对表的某一行进行读操作，同时告诉别人有人在读这个表，只和对表进行写操作不兼容。</p>
+<p><img src="/images/CYC/database_002.png" alt></p>
+<p>任意 IS/IX 锁之间都是兼容的，因为它们只表示想要对表加锁，而不是真正加锁；<br>这里兼容关系针对的是表级锁，而表级的 IX 锁和行级的 X 锁兼容，两个事务可以对两个数据行加 X 锁。（事务 T1 想要对数据行 R1 加 X 锁，事务 T2 想要对同一个表的数据行 R2 加 X 锁，两个事务都需要对该表加 IX 锁，但是 IX 锁是兼容的，并且 IX 锁与行级的 X 锁也是兼容的，因此两个事务都能加锁成功，对同一个表中的两个数据行做修改。）</p>
 
         
       
@@ -1273,7 +1409,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1321,7 +1457,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
