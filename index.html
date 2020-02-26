@@ -720,11 +720,19 @@
                 
               
 
-              <time title="Created: 2020-02-22 10:53:10 / Modified: 11:22:34" itemprop="dateCreated datePublished" datetime="2020-02-22T10:53:10-05:00">2020-02-22</time>
+              <time title="Created: 2020-02-22 10:53:10" itemprop="dateCreated datePublished" datetime="2020-02-22T10:53:10-05:00">2020-02-22</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-26 17:43:35" itemprop="dateModified" datetime="2020-02-26T17:43:35-05:00">2020-02-26</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -767,7 +775,7 @@
 
       
           <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database184.png" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    D.NAME Department,</span><br><span class="line">    E.NAME Employee,</span><br><span class="line">    E.Salary</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee E,</span><br><span class="line">    Department D,</span><br><span class="line">    ( <span class="keyword">SELECT</span> DepartmentId, <span class="keyword">MAX</span>( Salary ) Salary </span><br><span class="line">     <span class="keyword">FROM</span> Employee </span><br><span class="line">     <span class="keyword">GROUP</span> <span class="keyword">BY</span> DepartmentId ) M</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    E.DepartmentId = D.Id</span><br><span class="line">    <span class="keyword">AND</span> E.DepartmentId = M.DepartmentId</span><br><span class="line">    <span class="keyword">AND</span> E.Salary = M.Salary;</span><br></pre></td></tr></table></figure>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    DepartmentId, <span class="keyword">MAX</span>(Salary)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> DepartmentId;</span><br></pre></td></tr></table></figure>
 
 
         

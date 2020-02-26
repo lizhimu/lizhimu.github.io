@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lizhimu.github.io/2020/02/22/Leetcode184-Department-Highest-Salary/</loc>
+    
+    <lastmod>2020-02-26T22:43:35.533Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lizhimu.github.io/2020/02/22/Leetcode196-Delete-Duplicate-Emails/</loc>
     
     <lastmod>2020-02-26T22:14:00.539Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://lizhimu.github.io/2020/02/22/Leetcode176-Second-Highest-Salary/</loc>
     
     <lastmod>2020-02-22T16:48:47.759Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lizhimu.github.io/2020/02/22/Leetcode184-Department-Highest-Salary/</loc>
-    
-    <lastmod>2020-02-22T16:22:34.035Z</lastmod>
     
   </url>
   
