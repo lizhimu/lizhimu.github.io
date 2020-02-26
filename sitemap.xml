@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lizhimu.github.io/2020/02/22/Leetcode180-Consecutive-Numbers/</loc>
+    
+    <lastmod>2020-02-26T17:01:13.891Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lizhimu.github.io/2020/02/22/Leetcode178-Rank-Scores/</loc>
     
     <lastmod>2020-02-22T17:33:39.504Z</lastmod>
@@ -19,20 +26,6 @@
     <loc>https://lizhimu.github.io/2020/02/22/Leetcode176-Second-Highest-Salary/</loc>
     
     <lastmod>2020-02-22T16:48:47.759Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lizhimu.github.io/2020/02/22/Leetcode626-Exchange-Seats/</loc>
-    
-    <lastmod>2020-02-22T16:35:03.984Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lizhimu.github.io/2020/02/22/Leetcode180-Consecutive-Numbers/</loc>
-    
-    <lastmod>2020-02-22T16:34:47.364Z</lastmod>
     
   </url>
   
