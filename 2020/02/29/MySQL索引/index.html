@@ -57,21 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="Problem: Solution:1234567891011SELECT *FROM    Logs l1,    Logs l2,    Logs l3WHERE    l1.Id = l2.Id - 1    AND l2.Id = l3.Id - 1    AND l1.Num = l2.Num    AND l2.Num = l3.Num;">
-<meta name="keywords" content="数据库">
+  <meta name="description" content="Open doors don&apos;t stay open forever">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode180 Consecutive Numbers">
-<meta property="og:url" content="https://lizhimu.github.io/2020/02/22/Leetcode180-Consecutive-Numbers/index.html">
+<meta property="og:title" content="MySQL索引">
+<meta property="og:url" content="https://lizhimu.github.io/2020/02/29/MySQL索引/index.html">
 <meta property="og:site_name" content="Moon River&#39;s Blog">
-<meta property="og:description" content="Problem: Solution:1234567891011SELECT *FROM    Logs l1,    Logs l2,    Logs l3WHERE    l1.Id = l2.Id - 1    AND l2.Id = l3.Id - 1    AND l1.Num = l2.Num    AND l2.Num = l3.Num;">
+<meta property="og:description" content="Open doors don&apos;t stay open forever">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lizhimu.github.io/images/CYC/database180.png">
-<meta property="og:updated_time" content="2020-02-26T17:01:13.891Z">
+<meta property="og:updated_time" content="2020-02-29T17:04:46.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode180 Consecutive Numbers">
-<meta name="twitter:description" content="Problem: Solution:1234567891011SELECT *FROM    Logs l1,    Logs l2,    Logs l3WHERE    l1.Id = l2.Id - 1    AND l2.Id = l3.Id - 1    AND l1.Num = l2.Num    AND l2.Num = l3.Num;">
-<meta name="twitter:image" content="https://lizhimu.github.io/images/CYC/database180.png">
-  <link rel="canonical" href="https://lizhimu.github.io/2020/02/22/Leetcode180-Consecutive-Numbers/">
+<meta name="twitter:title" content="MySQL索引">
+<meta name="twitter:description" content="Open doors don&apos;t stay open forever">
+  <link rel="canonical" href="https://lizhimu.github.io/2020/02/29/MySQL索引/">
 
 
 <script id="page-configurations">
@@ -85,7 +82,7 @@
   };
 </script>
 
-  <title>Leetcode180 Consecutive Numbers | Moon River's Blog</title>
+  <title>MySQL索引 | Moon River's Blog</title>
   
 
 
@@ -234,7 +231,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/22/Leetcode180-Consecutive-Numbers/">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/29/MySQL索引/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lizhimu">
@@ -246,7 +243,7 @@
       <meta itemprop="name" content="Moon River's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode180 Consecutive Numbers
+        <h1 class="post-title" itemprop="name headline">MySQL索引
 
           
         </h1>
@@ -262,32 +259,7 @@
                 
               
 
-              <time title="Created: 2020-02-22 11:34:47" itemprop="dateCreated datePublished" datetime="2020-02-22T11:34:47-05:00">2020-02-22</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-26 12:01:13" itemprop="dateModified" datetime="2020-02-26T12:01:13-05:00">2020-02-26</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-              
+              <time title="Created: 2020-02-29 12:04:46" itemprop="dateCreated datePublished" datetime="2020-02-29T12:04:46-05:00">2020-02-29</time>
             </span>
           
 
@@ -302,7 +274,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/22/Leetcode180-Consecutive-Numbers/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/22/Leetcode180-Consecutive-Numbers/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/02/29/MySQL索引/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/29/MySQL索引/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -316,10 +288,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database180.png" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    <span class="keyword">Logs</span> l1,</span><br><span class="line">    <span class="keyword">Logs</span> l2,</span><br><span class="line">    <span class="keyword">Logs</span> l3</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    l1.Id = l2.Id - <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> l2.Id = l3.Id - <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> l1.Num = l2.Num</span><br><span class="line">    <span class="keyword">AND</span> l2.Num = l3.Num</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-
+        
     </div>
 
     
@@ -329,23 +298,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/数据库/" rel="tag"># 数据库</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/02/22/Leetcode178-Rank-Scores/" rel="next" title="Leetcode178 Rank Scores">
-                  <i class="fa fa-chevron-left"></i> Leetcode178 Rank Scores
+                <a href="/2020/02/26/数据库索引的数据结构基础/" rel="next" title="数据库索引的数据结构基础">
+                  <i class="fa fa-chevron-left"></i> 数据库索引的数据结构基础
                 </a>
               
             </div>
@@ -353,10 +313,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/02/26/数据库索引的数据结构基础/" rel="prev" title="数据库索引的数据结构基础">
-                  数据库索引的数据结构基础 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -408,8 +364,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution:</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
