@@ -229,6 +229,216 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/14/剑指offer008-二叉树的下一个节点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/14/剑指offer008-二叉树的下一个节点/" class="post-title-link" itemprop="url">剑指offer008 二叉树的下一个节点</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-14 15:59:00 / Modified: 17:21:27" itemprop="dateCreated datePublished" datetime="2020-01-14T15:59:00-05:00">2020-01-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/14/剑指offer008-二叉树的下一个节点/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/14/剑指offer008-二叉树的下一个节点/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回 。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeLinkNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeLinkNode left = <span class="keyword">null</span>;</span><br><span class="line">    TreeLinkNode right = <span class="keyword">null</span>;</span><br><span class="line">    TreeLinkNode next = <span class="keyword">null</span>; <span class="comment">// 指向父结点的指针</span></span><br><span class="line"></span><br><span class="line">    TreeLinkNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p> <img src="/images/CYC/CYC2018_008.png" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_008</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TreeLinkNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeLinkNode left = <span class="keyword">null</span>;</span><br><span class="line">        TreeLinkNode right = <span class="keyword">null</span>;</span><br><span class="line">        TreeLinkNode next = <span class="keyword">null</span>; <span class="comment">// 指向父结点的指针</span></span><br><span class="line"></span><br><span class="line">        TreeLinkNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> TreeLinkNode <span class="title">GetNext</span><span class="params">(TreeLinkNode pNode)</span></span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(pNode.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">             TreeLinkNode node=pNode.right;</span><br><span class="line">             <span class="keyword">while</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                 node=node.left;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> node;</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">             <span class="keyword">while</span>(pNode.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                 <span class="comment">//注意下面的next是指向父节点</span></span><br><span class="line">                 TreeLinkNode parent=pNode.next;</span><br><span class="line">                 <span class="keyword">if</span>(parent.left==pNode)&#123;</span><br><span class="line">                     <span class="keyword">return</span> parent;</span><br><span class="line">                 &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                     pNode=parent;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/01/13/剑指offer005-重建二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/13/剑指offer005-重建二叉树/" class="post-title-link" itemprop="url">剑指offer005 重建二叉树</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-01-13 17:25:20 / Modified: 22:51:26" itemprop="dateCreated datePublished" datetime="2020-01-13T17:25:20-05:00">2020-01-13</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/13/剑指offer005-重建二叉树/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/13/剑指offer005-重建二叉树/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>根据二叉树的前序遍历和中序遍历的结果，重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
+<p> <img src="/images/CYC/CYC2018_006.png" alt></p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两部分，左部分为树的左子树中序遍历结果，右部分为树的右子树中序遍历的结果。然后分别对左右子树递归地求解。<br>每次递归就相当于在前序数组和中序数组中分别划一刀。首先我们根据root（前序数组的第一个元素）在中序数组中的位置对中序数组划一刀，这样这道划痕的左边部分就是左子树的中序遍历数组，划痕的右边就是右子树的中序遍历数组。然后我们记下左子树的大小，再对前序遍历的数组划一刀，这样就完成了这道题的递归过程。<br>我们这一题应该抓住的核心是前序遍历数组的第一个元素是root,然后该元素在中序遍历数组中的位置的左边即为左子树的元素，右边即为右子树的元素。</p>
+<p> <img src="/images/CYC/CYC2018_006_002.gif" alt></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_005</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">       <span class="keyword">int</span> val;</span><br><span class="line">       TreeNode left;</span><br><span class="line">       TreeNode right;</span><br><span class="line">       TreeNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">           <span class="keyword">this</span>.val=val;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructBinaryTree</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> [] in)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (pre.length == <span class="number">0</span> || in.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(pre[<span class="number">0</span>]);</span><br><span class="line">        <span class="comment">// 在中序中找到前序的根</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; in.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (in[i] == pre[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="comment">// 左子树，注意 copyOfRange 函数，左闭右开</span></span><br><span class="line">                root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, <span class="number">1</span>, i + <span class="number">1</span>), Arrays.copyOfRange(in, <span class="number">0</span>, i));</span><br><span class="line">                <span class="comment">// 右子树，注意 copyOfRange 函数，左闭右开</span></span><br><span class="line">                root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + <span class="number">1</span>, pre.length), Arrays.copyOfRange(in, i + <span class="number">1</span>, in.length));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/31/泛型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1137,237 +1347,11 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/10/30/剑指offer001-寻找重复数组元素/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/30/剑指offer001-寻找重复数组元素/" class="post-title-link" itemprop="url">剑指offer001 寻找重复数组元素</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-30 15:28:56 / Modified: 18:23:17" itemprop="dateCreated datePublished" datetime="2019-10-30T15:28:56-04:00">2019-10-30</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/30/剑指offer001-寻找重复数组元素/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/剑指offer001-寻找重复数组元素/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>在一个长度为 n 的数组里的所有数字都在 0 到 n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。<br>要求时间复杂度 O(N)，空间复杂度 O(1)</p>
-<p>Input:<br>{2, 3, 1, 0, 2, 5}</p>
-<p>Output:<br>2</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>  对于这种数组元素在 [0, n-1] 范围内的问题，可以将值为 i 的元素调整到第 i 个位置上进行求解。<br>  以 (2, 3, 1, 0, 2, 5) 为例，遍历到位置 4 时，该位置上的数为 2，但是第 2 个位置上已经有一个 2 的值了，因此可以知道 2 重复：<br>  <img src="/images/CYC/CYC2018_001.gif" alt></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodingInterview_001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> ans=findRepeatNum(a);</span><br><span class="line">        <span class="keyword">if</span>(ans==-<span class="number">1</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"There isn't any repeat number."</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findRepeatNum</span><span class="params">(<span class="keyword">int</span>[] duplicate)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(duplicate==<span class="keyword">null</span>||duplicate.length&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//我们在循环中保证看到一个元素i，就把它放到数组的第i个格子里。那么如果数组中有重复元素就等价于我</span></span><br><span class="line">        <span class="comment">//在对某个元素j换位置的时候发现元素j所在的格子装的数也是j(因为题目已经限定好了数字是从0-n-1)</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;duplicate.length;i++)&#123;</span><br><span class="line">            <span class="comment">//如果duplicate[i]里装的就是i那么我们就什么都不做，直接把下标往后移</span></span><br><span class="line">            <span class="keyword">if</span>(duplicate[i]!=i&amp;&amp;duplicate[duplicate[i]]==duplicate[i])&#123;</span><br><span class="line">                <span class="keyword">return</span> duplicate[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(duplicate[i]!=i)&#123;</span><br><span class="line">                swap(duplicate,i,duplicate[i]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] duplicate,<span class="keyword">int</span> index1,<span class="keyword">int</span> index2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp=duplicate[index1];</span><br><span class="line">        duplicate[index1]=duplicate[index2];</span><br><span class="line">        duplicate[index2]=temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2019/09/30/Leetcode010-Regular-Expression-Matching/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/30/Leetcode010-Regular-Expression-Matching/" class="post-title-link" itemprop="url">Leetcode010 Regular Expression Matching</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-30 16:16:30" itemprop="dateCreated datePublished" datetime="2019-09-30T16:16:30-04:00">2019-09-30</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-12 00:24:34" itemprop="dateModified" datetime="2020-01-12T00:24:34-05:00">2020-01-12</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/09/30/Leetcode010-Regular-Expression-Matching/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/30/Leetcode010-Regular-Expression-Matching/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given an input string (s) and a pattern (p), implement regular expression matching with support for ‘.’ and ‘<em>‘.<br>‘.’ Matches any single character.<br>‘</em>‘ Matches zero or more of the preceding element.<br>The matching should cover the entire input string (not partial).<br>Note:<br>s could be empty and contains only lowercase letters a-z.<br>p could be empty and contains only lowercase letters a-z, and characters like . or <em>.<br>Example 1:<br>Input:<br>s = “aa”<br>p = “a”<br>Output: false<br>Explanation: “a” does not match the entire string “aa”.<br>Example 2:<br>Input:<br>s = “aa”<br>p = “a</em>“<br>Output: true<br>Explanation: ‘<em>‘ means zero or more of the preceding element, ‘a’. Therefore, by repeating ‘a’ once, it becomes “aa”.<br>Example 3:<br>Input:<br>s = “ab”<br>p = “.</em>“<br>Output: true<br>Explanation: “.*” means “zero or more (*) of any character (.)”.<br>Example 4:</p>
-<p>Input:<br>s = “aab”<br>p = “c<em>a</em>b”<br>Output: true<br>Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches “aab”.<br>Example 5:</p>
-<p>Input:<br>s = “mississippi”<br>p = “mis<em>is*p</em>.”<br>Output: false</p>
-<h3 id="Intuition（Recursion）"><a href="#Intuition（Recursion）" class="headerlink" title="Intuition（Recursion）:"></a>Intuition（Recursion）:</h3><p>这一题难度较大，先考虑用递归的思路来解。本题是要求用正则表达式对字符串进行匹配，那么我们就按从左到右的顺序依次扫描，进行匹配。这个时候难点来了，如何处理.和*这两个正则表达式特有字符。</p>
-<p>.好理解，能够对任意字符进行匹配。*则是能够让前面的字符出现任意次。这个任意次放到递归里面表达就可以等价看成忽略正则表达式的前面一个字符再与被匹配字符串进行一次匹配。第一种情况放到代码中实际就是被匹配字符串不动，正则表达式下标右移两格，其中移两格而不是一格的原因是要包括星号（isMatch(text, pattern.substring(2))）。</p>
-<p>第二种情况就是被匹配表达式右移一格，正则表达式不动(first_match &amp;&amp; isMatch(text.substring(1), pattern))。我们可以看到第二种情况不只包括*号前面的字符c出现一次的情况，也能包含c出现任意次的情况。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String text, String pattern)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pattern.isEmpty()) <span class="keyword">return</span> text.isEmpty();</span><br><span class="line">    <span class="keyword">boolean</span> first_match = (!text.isEmpty() &amp;&amp;</span><br><span class="line">            (pattern.charAt(<span class="number">0</span>) == text.charAt(<span class="number">0</span>) || pattern.charAt(<span class="number">0</span>) == <span class="string">'.'</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pattern.length() &gt;= <span class="number">2</span> &amp;&amp; pattern.charAt(<span class="number">1</span>) == <span class="string">'*'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (isMatch(text, pattern.substring(<span class="number">2</span>)) ||</span><br><span class="line">                (first_match &amp;&amp; isMatch(text.substring(<span class="number">1</span>), pattern)));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> first_match &amp;&amp; isMatch(text.substring(<span class="number">1</span>), pattern.substring(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Intuition（dynamic-programming）"><a href="#Intuition（dynamic-programming）" class="headerlink" title="Intuition（dynamic programming）:"></a>Intuition（dynamic programming）:</h3><p>先贴一个讲dynamic programming讲的还可以的链接：<a href="https://blog.csdn.net/u013309870/article/details/75193592" target="_blank" rel="noopener">https://blog.csdn.net/u013309870/article/details/75193592</a></p>
-<p>所谓dynamic programming,核心也就是要记住自己已经求解过的解。放到本题中，整体思路就是通过dp[i-][j-]来生成dp[s.length][p.length].其中s表示的是被测试字符串，p表示的是正则表达式。i表示的是被测试字符串当前匹配到的下标，j表示的是正则表达式的当前下标。</p>
-<p>我们可以看到如果不考虑<em>号，dp[i][j]如果要和dp[i-1][j-1]建立联系其实很简单。只要s[i-1]和p[j-1]一样或者p[j-1]是可以匹配任意字符的.就行了。整个二维矩阵的第一列我们也很清楚，如果被匹配字符串的长度为0，你正则表达式只要不为空，随便匹配啥都应该是false。第一行同理，那么这个时候我们就先生成了一个不考虑正则表达式带</em>号的二维矩阵。</p>
-<p>接下来的考验就是加入<em>号后研究整个矩阵的变化。如果正则表达式出现</em>号（出现在j-1的地方），那么要知道dp[i][j]能够为true(成功匹配)，只要满足dp[i][j-2]为true或者dp[i-1][j]为true。其中逻辑在上面讲递归逻辑的时候已经做了详细说明。这些工作都做完后，只需要放到for循环中进行遍历题目就出来了。最后说明一下为什么判断条件里面是p.charAt(j-1)而不是p.charAt(j).因为p.charAt(j-1)表示的是正则表达式的第j个字符而不是第j-1个字符，也就是二维数组中第二维的内容。</p>
-<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>][p.length()+<span class="number">1</span>];</span><br><span class="line">     dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=s.length();i++) &#123; <span class="comment">// i == 0 to fill up i=0 column. in order to handle s="", p="x*"</span></span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=p.length();j++) &#123;</span><br><span class="line">             <span class="keyword">if</span> (j-<span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; p.charAt(j-<span class="number">1</span>) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                 <span class="keyword">boolean</span> firstMatch = i &gt; <span class="number">0</span> &amp;&amp; (s.charAt(i-<span class="number">1</span>) == p.charAt(j-<span class="number">2</span>) || p.charAt(j-<span class="number">2</span>) == <span class="string">'.'</span>);</span><br><span class="line">                 dp[i][j] = firstMatch &amp;&amp; dp[i-<span class="number">1</span>][j] || dp[i][j-<span class="number">2</span>];</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                 <span class="keyword">boolean</span> firstMatch = i &gt; <span class="number">0</span> &amp;&amp; (s.charAt(i-<span class="number">1</span>) == p.charAt(j-<span class="number">1</span>) || p.charAt(j-<span class="number">1</span>) == <span class="string">'.'</span>);</span><br><span class="line">                 dp[i][j] = firstMatch &amp;&amp; dp[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> dp[s.length()][p.length()];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1415,7 +1399,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
