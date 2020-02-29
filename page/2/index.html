@@ -229,6 +229,109 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/22/Leetcode175-Combine-two-tables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizhimu">
+      <meta itemprop="description" content="Open doors don't stay open forever">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moon River's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/22/Leetcode175-Combine-two-tables/" class="post-title-link" itemprop="url">Leetcode175 Combine two tables</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2020-02-22 10:30:34 / Modified: 10:49:27" itemprop="dateCreated datePublished" datetime="2020-02-22T10:30:34-05:00">2020-02-22</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/22/Leetcode175-Combine-two-tables/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/22/Leetcode175-Combine-two-tables/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p><img src="/images/CYC/database175.png" alt></p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>涉及到 Person 和 Address 两个表，在对这两个表执行连接操作时，因为要保留 Person 表中的信息，即使在 Address 表中没有关联的信息也要保留。此时可以用左外连接，将 Person 表放在 LEFT JOIN 的左边。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    FirstName,</span><br><span class="line">    LastName,</span><br><span class="line">    City,</span><br><span class="line">    State</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person P</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Address A</span><br><span class="line">    <span class="keyword">ON</span> P.PersonId = A.PersonId;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/22/Leetcode196-Delete-Duplicate-Emails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1266,132 +1369,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://lizhimu.github.io/2020/02/20/数据库四大范式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lizhimu">
-      <meta itemprop="description" content="Open doors don't stay open forever">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moon River's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/02/20/数据库四大范式/" class="post-title-link" itemprop="url">数据库四大范式</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-02-20 11:09:41 / Modified: 14:24:07" itemprop="dateCreated datePublished" datetime="2020-02-20T11:09:41-05:00">2020-02-20</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/20/数据库四大范式/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/20/数据库四大范式/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="异常（范式理论解决的是什么问题）"><a href="#异常（范式理论解决的是什么问题）" class="headerlink" title="异常（范式理论解决的是什么问题）"></a>异常（范式理论解决的是什么问题）</h4><p>以下的学生课程关系的函数依赖为 {Sno, Cname} -&gt; {Sname, Sdept, Mname, Grade}，键码为 {Sno, Cname}。也就是说，确定学生和课程之后，就能确定其它信息。</p>
-<p>Sno    Sname    Sdept    Mname    Cname    Grade<br>1    学生-1    学院-1    院长-1    课程-1    90<br>2    学生-2    学院-2    院长-2    课程-2    80<br>2    学生-2    学院-2    院长-2    课程-1    100<br>3    学生-3    学院-2    院长-2    课程-2    95<br>不符合范式的关系，会产生很多异常，主要有以下四种异常：</p>
-<p>冗余数据：例如 学生-2 出现了两次。<br>修改异常：修改了一个记录中的信息，但是另一个记录中相同的信息却没有被修改。<br>删除异常：删除一个信息，那么也会丢失其它信息。例如删除了 课程-1 需要删除第一行和第三行，那么 学生-1 的信息就会丢失。<br>插入异常：例如想要插入一个学生的信息，如果这个学生还没选课，那么就无法插入。</p>
-<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p>范式理论是为了解决以上提到四种异常。</p>
-<p>高级别范式的依赖于低级别的范式，1NF 是最低级别的范式。</p>
-<p>1.第一范式 (1NF)<br>属性不可分。<br>所谓第一范式（1NF）是指数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值.例如:联系人的中的姓名,电话,性别,其中电话不属于第一范式,要属于第一范式的话就要对电话在进一步分裂(姓名,性别,手机,家庭电话)</p>
-<p>2.第二范式 (2NF)<br>首先要满足第一范式，并且每个非主属性完全函数依赖于键码。</p>
-<p>可以通过分解来满足。</p>
-<p>分解前</p>
-<p>Sno    Sname    Sdept    Mname    Cname    Grade<br>1    学生-1    学院-1    院长-1    课程-1    90<br>2    学生-2    学院-2    院长-2    课程-2    80<br>2    学生-2    学院-2    院长-2    课程-1    100<br>3    学生-3    学院-2    院长-2    课程-2    95<br>以上学生课程关系中，{Sno, Cname} 为键码，有如下函数依赖：</p>
-<p>Sno -&gt; Sname, Sdept<br>Sdept -&gt; Mname<br>Sno, Cname-&gt; Grade<br>Grade 完全函数依赖于键码，它没有任何冗余数据，每个学生的每门课都有特定的成绩。</p>
-<p>Sname, Sdept 和 Mname 都只依赖于部分键码，它们可以由Sno唯一决定，与Cname无关。这样是不满足第二范式的。<br>分解后</p>
-<p>关系-1</p>
-<p>Sno    Sname    Sdept    Mname<br>1    学生-1    学院-1    院长-1<br>2    学生-2    学院-2    院长-2<br>3    学生-3    学院-2    院长-2<br>有以下函数依赖：</p>
-<p>Sno -&gt; Sname, Sdept<br>Sdept -&gt; Mname<br>关系-2</p>
-<p>Sno    Cname    Grade<br>1    课程-1    90<br>2    课程-2    80<br>2    课程-1    100<br>3    课程-2    95<br>有以下函数依赖：</p>
-<p>Sno, Cname -&gt; Grade</p>
-<p>3.第三范式 (3NF)<br>第三范式（3NF）：在第二范式的基础上，数据表中如果不存在非关键字段对任一候选关键字段的传递函数依赖则符合第三范式。简而言之，第三范式就是属性不依赖于其它非主属性。[ 消除传递依赖 ]</p>
-<p>上面的 关系-1 中存在以下传递函数依赖：</p>
-<p>Sno -&gt; Sdept -&gt; Mname<br>可以进行以下分解：</p>
-<p>关系-11</p>
-<p>Sno    Sname    Sdept<br>1    学生-1    学院-1<br>2    学生-2    学院-2<br>3    学生-3    学院-2<br>关系-12</p>
-<p>Sdept    Mname<br>学院-1    院长-1<br>学院-2    院长-2</p>
-<p>4.BCNF是3NF的改进形式</p>
-<p>候选键:<br>能够确定全部属性的某个属性或某组属性，称为候选键。若候选键多于一个，则选定其中一个作为主键。</p>
-<p>主属性：<br>包含在任何一个候选键中的属性，叫做主属性(Prime attribute),不包含在任何候选键中的属性称为非主属性或非键属性或非关键字段。</p>
-<p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。BCNF范式排除了任何属性(不光是非主属性，2NF和3NF所限制的都是非主属性)对候选键的传递依赖与部分依赖。</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1444,7 +1421,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

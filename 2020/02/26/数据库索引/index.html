@@ -70,8 +70,7 @@
 <meta property="og:image" content="https://lizhimu.github.io/images/CYC/databaseIndex004.jpg">
 <meta property="og:image" content="https://lizhimu.github.io/images/CYC/databaseIndex005.jpg">
 <meta property="og:image" content="https://lizhimu.github.io/images/CYC/databaseIndex006.jpg">
-<meta property="og:image" content="https://lizhimu.github.io/images/CYC/databaseIndex001.png">
-<meta property="og:updated_time" content="2020-02-29T16:58:34.753Z">
+<meta property="og:updated_time" content="2020-02-29T17:12:16.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库索引的数据结构基础">
 <meta name="twitter:description" content="B+Treee原理1.数据结构B Tree指的是平衡树。平衡树是一棵查找树，所有的叶子节点应该位于同一层。B树和平衡二叉树稍有不同的是B树属于多叉树又名平衡多路查找树（查找路径不只两个）。下面我们来看B树的规则：（1）排序方式：所有节点关键字是按递增次序排列，并遵循左小右大原则；（2）子节点数：非叶节点的子节点数&amp;gt;1，且&amp;lt;=M ，且M&amp;gt;=2，空树除外（注：M阶代表一个树节点最多有">
@@ -278,7 +277,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-29 11:58:34" itemprop="dateModified" datetime="2020-02-29T11:58:34-05:00">2020-02-29</time>
+                <time title="Modified: 2020-02-29 12:12:16" itemprop="dateModified" datetime="2020-02-29T12:12:16-05:00">2020-02-29</time>
               </span>
             
           
@@ -328,7 +327,13 @@
 <p>B树节点的删除流程<br>规则：<br>（1）节点合并规则：当前是要组成一个5路查找树，那么此时m=5,关键字数必须大于等于ceil（5/2）（这里关键字数&lt;2就要进行节点合并）；<br>（2）满足节点本身比左边节点大，比右边节点小的排序规则;<br>（3）关键字数小于ceil(5/2)时先从子节点取，子节点没有符合条件时就向向父节点取，取中间值往父节点放；</p>
 <p><img src="/images/CYC/databaseIndex006.jpg" alt></p>
 <p>B+树是B树的一个升级版，相对于B树来说B+树更充分的利用了节点的空间，让查询速度更加稳定，其速度完全接近于二分法查找。为什么说B+树查找的效率要比B树更高、更稳定；我们先看看两者的区别<br>规则<br>（1）B+跟B树不同B+树的非叶子节点不保存关键字记录的指针，只进行数据索引，这样使得B+树每个非叶子节点所能保存的关键字大大增加；<br>（2）B+树叶子节点保存了父节点的所有关键字记录的指针，所有数据地址必须要到叶子节点才能获取到。所以每次数据查询的次数都一样；<br>（3）B+树叶子节点的关键字从小到大有序排列，左边结尾数据都会保存右边节点开始数据的指针。<br>（4）非叶子节点的子节点数=关键字数（来源百度百科）（根据各种资料 这里有两种算法的实现方式，另一种为非叶节点的关键字数=子节点数-1（来源维基百科)，虽然他们数据排列结构不一样，但其原理还是一样的Mysql 的B+树是用第一种方式实现）;</p>
-<p>B+ Tree是基于B Tree和叶子节点顺序访问指针进行实现，它具有BTree的平衡性，并且通过顺序访问指针来提高区间查询的性能。<br>在B+ Tree中，一个节点的key从左到右非递减排列，如果某个指针的左右相邻key分别是keyi和key(i+1),且不为null,则该指针指向节点的所有key大于等于keyi且小于等于keyi+1。看下图<br><img src="/images/CYC/databaseIndex001.png" alt></p>
+<p>与红黑树的比较<br>红黑树等平衡树也可以用来实现索引，但是文件系统及数据库系统普遍采用 B+ Tree 作为索引结构，主要有以下两个原因：</p>
+<p>（一）更少的查找次数</p>
+<p>平衡树查找操作的时间复杂度和树高 h 相关，O(h)=O(logdN)，其中 d 为每个节点的出度。</p>
+<p>红黑树的出度为 2，而 B+ Tree 的出度一般都非常大，所以红黑树的树高 h 很明显比 B+ Tree 大非常多，查找的次数也就更多。</p>
+<p>（二）利用磁盘预读特性</p>
+<p>为了减少磁盘 I/O 操作，磁盘往往不是严格按需读取，而是每次都会预读。预读过程中，磁盘进行顺序读取，顺序读取不需要进行磁盘寻道，并且只需要很短的磁盘旋转时间，速度会非常快。</p>
+<p>操作系统一般将内存和磁盘分割成固定大小的块，每一块称为一页，内存与磁盘以页为单位交换数据。数据库系统将索引的一个节点的大小设置为页的大小，使得一次 I/O 就能完全载入一个节点。并且可以利用预读特性，相邻的节点也能够被预先载入。</p>
 
     </div>
 
@@ -354,8 +359,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/02/26/数据库索引的数据结构基础/" rel="next" title="数据库索引">
-                  <i class="fa fa-chevron-left"></i> 数据库索引
+                <a href="/2020/02/26/数据库索引的数据结构基础/" rel="next" title="数据库索引的数据结构基础">
+                  <i class="fa fa-chevron-left"></i> 数据库索引的数据结构基础
                 </a>
               
             </div>
@@ -363,6 +368,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/02/29/MySQL索引/" rel="prev" title="MySQL索引">
+                  MySQL索引 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -432,7 +441,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
